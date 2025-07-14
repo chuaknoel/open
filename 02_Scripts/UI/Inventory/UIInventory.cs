@@ -1,0 +1,149 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Search;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using static UnityEditor.Progress;
+
+public class UIInventory : BaseWindow
+{
+    Inventory inventory;
+    ItemFactory itemFactory;
+    public override UIType UIType => UIType.Inventroy;
+    public int slotCount = 20;
+    private bool isInitialized = false;
+
+    ItemFilter itemFilter = new ItemFilter();
+    ItemSort itemSort = new ItemSort();
+
+    public GameObject uiSlotPrefab;
+    public Transform slotsParent;
+
+    // 검색
+    [SerializeField] private TMP_InputField searchInput;
+    [SerializeField] private List<ItemGradeColorPair> colorList;
+
+    // 카테고리 버튼과 버튼별 아이템 타입
+    [SerializeField] private List<Button> categoryButtons;
+    [SerializeField] private List<ItemType> categoryTypes;
+
+    // 필터
+    [SerializeField] private TMP_Dropdown sortDropdown;
+
+    public GameObject destroyItemWindow;
+    [SerializeField] private Tooltip toolTip;
+
+    public override void OpenInventroy()
+    {
+        base.OpenInventroy();
+        Init();
+        transform.SetAsLastSibling();
+    }
+    public override void CloseInventroy()
+    {
+        toolTip.CloseUI();
+        base.CloseInventroy();
+    }
+    /// <summary>
+    /// 닫기 버튼 이벤트 연결
+    /// </summary>
+    /// <param name="action"></param>
+    protected override void AddCloseButtonListener(UnityEngine.Events.UnityAction action)
+    {
+        if (closeButton != null)
+        {
+            toolTip.CloseUI();
+            closeButton.onClick.AddListener(action);
+        }
+    }
+
+    // UI 업데이트
+    public void UpdateSlot(Slot slot)
+    {
+        slot.UpdateSlot();
+    }
+    private void Init()
+    {
+        if (!isInitialized)
+        {
+            itemFactory = GetComponent<ItemFactory>();
+            inventory = GetComponent<Inventory>();
+
+            inventory.CreateSlots();  // 슬롯 동적 생성
+            itemFactory.AddItemData();
+            inventory.SetInventory(); // 인벤토리 초기 설정
+
+            searchInput.onValueChanged.AddListener(OnSearch);
+            sortDropdown.onValueChanged.AddListener(SortItem);
+
+            OnCategorySelected(); // 카테고리별 아이템 분류 버튼 연결
+            isInitialized = true;
+        }
+    }
+    // 검색
+    public void OnSearch(string keyword)
+    {
+        List<Item> searchItems = itemFilter.FilterByKeyword(inventory.items, keyword);
+        inventory.ClearInventory();
+        AddItemInInventory(searchItems, false);
+    }
+    // 카테고리 선택
+    private void OnCategorySelected()
+    {
+        for (int i = 0; i < categoryButtons.Count; i++)
+        {
+            int index = i; 
+            categoryButtons[i].onClick.AddListener(() =>
+            {   
+                if(index == 0)
+                {
+                    // 전체 인벤토리 아이템들 보여주기
+                    inventory.ClearInventory();
+                    AddItemInInventory(inventory.items, true);
+                }
+                else
+                {
+                    Debug.Log("필터");
+                    List<Item> searchItems = itemFilter.FilterByCategory(inventory.items, categoryTypes[index]);
+                    inventory.ClearInventory();
+                    AddItemInInventory(searchItems, false);
+                }              
+            });
+        }
+    }
+    // 아이템 정렬
+    private void SortItem(int index)
+    {
+        inventory.ClearInventory();
+
+        string selectedText = sortDropdown.options[index].text;
+        switch (selectedText)
+        {
+            case "카테고리별 정렬":                
+                AddItemInInventory(inventory.items, true); // 정렬 풀기
+                break;
+            case "등급별":
+                AddItemInInventory(itemSort.SortByItemGrade(inventory.items), false);
+                break;
+            case "이름순":
+                AddItemInInventory(itemSort.SortByItemName(inventory.items), false);
+                break;
+        }
+    }
+    // 인벤토리에 아이템 넣기
+    private void AddItemInInventory(List<Item> searchItems, bool useInventoryIndex = false)
+    {
+        foreach (Item item in searchItems)
+        {
+            inventory.AddItem(item, useInventoryIndex);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+ID,Name,Description,HP,ATK,DEF,MoveSpeed,AIType,DropItemID,ExpReward
+ENEMY_001,언데드 정찰병,북방 경계를 순찰하는 제국의 옛 정찰병. 죽어서도 임무를 잊지 못했다.,110,22,12,3.0,Melee_Patrol,MATERIAL_033,40
+ENEMY_002,좀비,죽음의 저주에 의해 살아 움직이는 시체. 지성 없이 오직 식욕에만 이끌린다.,80,15,5,2.0,Melee_Aggressive_Swarm,MATERIAL_060,20
+ENEMY_003,스켈레톤 전사,강력한 전사의 유해가 되살아난 존재. 녹슨 무기를 능숙하게 다룬다.,150,28,15,2.5,Melee_Defensive,MATERIAL_002,50
+ENEMY_004,야생 늑대,잿빛 숲을 배회하는 굶주린 늑대. 무리를 지어 사냥한다.,60,12,3,4.5,Melee_Aggressive,MATERIAL_001,15
+ENEMY_005,타락한 까마귀,저주에 잠식된 거대한 까마귀. 날카로운 부리로 상대를 기습한다.,40,10,0,5.0,Flying_HitAndRun,MATERIAL_031,10
+ENEMY_006,방랑 스켈레톤,"갑옷도 없이 배회하는 약한 스켈레톤. 쉽게 부서지지만, 수가 많다.",50,10,2,2.8,Melee_Aggressive,MATERIAL_002,12
+ENEMY_007,들개,남부 도로를 떠도는 야생 들개. 무리를 지어 여행자를 공격한다.,40,8,2,4.8,Melee_Aggressive_Swarm,MATERIAL_001,8
+ENEMY_008,산적 정찰병,여행자들을 노리는 산적단의 정찰병. 재빠르게 움직이며 단검을 사용한다.,90,18,6,4.0,Melee_Skirmisher,MATERIAL_003,30
+ENEMY_009,고대 수호령,지하 묘소를 지키는 강력한 영체. 물리 공격에 거의 영향을 받지 않는다.,300,40,30,3.0,Melee_Ethereal,MATERIAL_026,150
+ENEMY_010,망령,원한을 품고 죽은 자의 영혼. 상대를 저주하며 생명력을 흡수한다.,150,25,10,4.0,Melee_Lifesteal,MATERIAL_060,90
+ENEMY_011,저주받은 해골,강력한 저주에 묶여 묘소를 떠도는 해골. 섬뜩한 비명을 지른다.,100,20,8,2.5,Melee_Aggressive,MATERIAL_006,45
+ENEMY_012,타락한 순례자,성지를 순례하던 중 타락한 존재. 신성한 힘을 역으로 사용하여 상대를 공격한다.,130,25,10,3.2,Melee_Magic,MATERIAL_037,70
+ENEMY_013,어둠의 그림자,형체가 없는 순수한 어둠의 존재. 은밀하게 접근하여 기습한다.,80,30,5,5.0,Melee_Stealth,MATERIAL_067,65
+ENEMY_014,광신도 좀비,광신도가 죽어 되살아난 존재. 일반 좀비보다 훨씬 빠르고 공격적이다.,100,18,5,3.5,Melee_Fanatic_Swarm,MATERIAL_036,40
+ENEMY_015,들짐승,순례길에 가끔 나타나는 일반적인 야생 동물.,30,5,0,4.0,Melee_Neutral,MATERIAL_001,5
+ENEMY_016,변이 쥐,알케미아의 연금술 폐기물에 오염되어 거대하게 변이된 쥐. 재빠르고 독성이 있다.,70,15,2,5.0,Melee_Fast_Poison,MATERIAL_040,30
+ENEMY_017,하수도 슬라임,알케미아 지하 수로에 서식하는 슬라임. 물리 공격에 강한 내성을 가지고 있다.,130,20,15,2.0,Melee_Resistant,MATERIAL_041,45
+ENEMY_018,지하 도둑,하수도를 근거지로 삼는 숙련된 도둑. 비겁한 수단을 가리지 않는다.,140,30,8,4.5,Melee_Backstab,MATERIAL_045,85
+ENEMY_019,실험체 탈출종,연금술 실험실에서 탈출한 정체불명의 생물. 예측 불가능한 패턴으로 공격한다.,250,40,15,4.0,Melee_Unpredictable,MATERIAL_042,200
+ENEMY_020,깡패,알케미아 뒷골목의 무법자. 둔기를 들고 위협하며 돈을 요구한다.,100,18,8,3.5,Melee_Aggressive,MATERIAL_003,30
+ENEMY_021,도시 늑대,도시에 적응한 교활한 늑대. 일반 늑대보다 영리하게 움직인다.,80,15,5,4.2,Melee_Skirmisher,MATERIAL_001,25
+ENEMY_022,노상강도,시 외곽에서 여행자를 노리는 강도. 기습에 능하다.,90,20,6,3.8,Melee_Ambusher,MATERIAL_003,32
