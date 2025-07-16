@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class InputManager : MonoBehaviour
 {
@@ -100,8 +101,26 @@ public class InputManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("슬롯 교체");
             currentBinder?.DeSelect();
             currentBinder = selectBinder;
+
+            ///////////  조하늘 추가
+            if (Keyboard.current == null)
+            {
+                Debug.LogWarning("❌ Keyboard.current is null — Input System 설정 안 됐을 수 있음");
+                return;
+            }
+
+            foreach (KeyControl key in Keyboard.current.allKeys)
+            {
+                Debug.Log(key.wasPressedThisFrame);
+                if (key.wasPressedThisFrame)
+                {
+                    Debug.Log($"누른 키: {key.displayName} ({key.name})");
+                    break;
+                }
+            }
         }
     }
 

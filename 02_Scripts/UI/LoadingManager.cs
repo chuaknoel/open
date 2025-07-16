@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 /// <summary>
 /// 게임씬을 로드하는 스크립트입니다.
@@ -12,11 +13,12 @@ public class LoadingManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Slider loadingSlider;
+   
     private float time = 0;
 
-    public void Start()
+    private void Start()
     {
-        StartCoroutine(LoadScene("TutorialScene"));
+        StartCoroutine(LoadSceneRoutine("TutorialScene"));
     }
 
     /// <summary>
@@ -24,7 +26,7 @@ public class LoadingManager : MonoBehaviour
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    IEnumerator LoadScene(string name)
+    public IEnumerator LoadSceneRoutine(string name)
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);
         asyncOperation.allowSceneActivation = false;

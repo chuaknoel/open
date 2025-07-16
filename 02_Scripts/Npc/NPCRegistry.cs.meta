@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/02_Scripts/Quest/QuestData/QuestData.cs.meta
+guid: 16bec8500ba9be8438431209fb41321d
+========
 guid: 2703425d545bd4f48adda680631d6aa1
+>>>>>>>> develop:Assets/02_Scripts/Npc/NPCRegistry.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

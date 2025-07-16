@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 using UnityEngine.UI;
 
 /// <summary>
@@ -38,7 +36,7 @@ public class LoadGameWindow : BaseWindow
     /// </summary>
     private void LoadGame()
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneLoader.Instance.Load("LoadingScene");
     }
 
     /// <summary>

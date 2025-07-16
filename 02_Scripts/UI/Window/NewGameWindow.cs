@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 
 /// <summary>
@@ -39,6 +38,7 @@ public class NewGameWindow : BaseWindow
     /// </summary>
     private void GameStart()
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneLoader.Instance.Load("LoadingScene");
+        Logger.Log("게임 시작");
     }
 }

@@ -83,6 +83,7 @@ public class SkillQuickSlot : Slot, ISkillSlot
     {
         skillCoolTimeImage.gameObject.SetActive(true);
         skillCoolTimeImage.fillAmount = 1f;
+
         while (executor.remainingTime > 0)
         {
             skillCoolTimeImage.fillAmount = Mathf.Clamp01(executor.remainingTime / executor.skill.coolTime);
