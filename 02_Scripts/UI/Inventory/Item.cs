@@ -27,7 +27,6 @@ public class Item
     [Header("Info")]
     [SerializeField] protected string itemName;
     [SerializeField] protected ItemType type;
-    [SerializeField] protected ItemGrade itemGrade;
     [SerializeField] protected string itemDescription;
     [SerializeField] protected Sprite image;
     [SerializeField] protected int inventoryIndex;
@@ -38,7 +37,6 @@ public class Item
 
     public string ItemName => itemName;
     public ItemType Type => type;
-    public ItemGrade ItemGrade => itemGrade;
     public string ItemDescription => itemDescription;
     public Sprite Image => image;
 
@@ -46,12 +44,12 @@ public class Item
     public int MaxCount => maxCount;
     public int InventoryIndex => inventoryIndex;
 
-    public Item(string itemName,ItemType type, ItemGrade itemGrade, string itemDescription, Sprite image,
+    public Item(string itemName,ItemType type, string itemDescription, Sprite image,
     int inventoryIndex, int count, int maxCount)
     {
         this.itemName = itemName;
         this.type = type;
-        this.itemGrade = itemGrade;
+
         this.itemDescription = itemDescription;
         this.image = image;
         this.inventoryIndex = inventoryIndex;

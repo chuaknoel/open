@@ -14,7 +14,7 @@ public class Tooltip : BaseWindow
 
     public RectTransform rect;
 
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     /// <summary>
     /// Tooltip이 열렸을 때 정보를 출력해줍니다.
@@ -34,7 +34,6 @@ public class Tooltip : BaseWindow
     /// </summary>
     public override void CloseUI()
     {
-        Logger.Log("툽팁 비활성화");
         base.CloseUI();
     }
 }

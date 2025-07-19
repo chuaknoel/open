@@ -5,5 +5,6 @@ using UnityEngine;
 public interface ISkillSlot 
 {
     public SkillData GetSkill();
-    public void SetSkill(SkillData skill);  
+    public void SetSkill(SkillData skill);
+    public void UpdateSkill();
 }

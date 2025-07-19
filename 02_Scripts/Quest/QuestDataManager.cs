@@ -65,36 +65,36 @@ public class QuestDataManager : MonoBehaviour
 
             // 메인퀘스트 완료 시 다음 메인퀘스트 자동 활성화 로직 추가 가능
             var quest = GetQuestData(questID);
-            if (quest != null && quest.Type == "Main")
-            {
-                // 여기에 다음 메인퀘스트 활성화 로직 추가
-            }
+            //if (quest != null && quest.Type == "Main")
+            //{
+            //    // 여기에 다음 메인퀘스트 활성화 로직 추가
+            //}
         }
     }
 
     /// <summary>
     /// UI에서 사용할 진행중 퀘스트 정보를 반환합니다.
     /// </summary>
-    public List<ActiveQuestInfo> GetActiveQuests()
-    {
-        var result = new List<ActiveQuestInfo>();
-        foreach (var id in activeQuestIDs)
-        {
-            var quest = GetQuestData(id);
-            if (quest != null)
-            {
-                result.Add(new ActiveQuestInfo
-                {
-                    Title = quest.Title,
-                    GiverNPC = quest.Type == "Main" ? "" : quest.GiverNPC,
-                    StoryDesc = quest.StoryDesc,
-                    QuestContent = quest.QuestContent,
-                    RewardItemID = quest.Type == "Main" ? "" : quest.RewardItemID
-                });
-            }
-        }
-        return result;
-    }
+    //public List<ActiveQuestInfo> GetActiveQuests()
+    //{
+    //    var result = new List<ActiveQuestInfo>();
+    //    foreach (var id in activeQuestIDs)
+    //    {
+    //        var quest = GetQuestData(id);
+    //        if (quest != null)
+    //        {
+    //            result.Add(new ActiveQuestInfo
+    //            {
+    //                Title = quest.Title,
+    //                GiverNPC = quest.Type == "Main" ? "" : quest.GiverNPC,
+    //                StoryDesc = quest.StoryDesc,
+    //                QuestContent = quest.QuestContent,
+    //                RewardItemID = quest.Type == "Main" ? "" : quest.RewardItemID
+    //            });
+    //        }
+    //    }
+    //    return result;
+    //}
 
     /// <summary>
     /// UI에서 사용할 완료된 퀘스트 정보를 반환합니다.
@@ -107,12 +107,12 @@ public class QuestDataManager : MonoBehaviour
             var quest = GetQuestData(id);
             if (quest != null)
             {
-                result.Add(new CompletedQuestInfo
-                {
-                    Title = quest.Title,
-                    GiverNPC = quest.Type == "Main" ? "" : quest.GiverNPC,
-                    CompletionStory = quest.CompletionStory
-                });
+                //result.Add(new CompletedQuestInfo
+                //{
+                //    Title = quest.Title,
+                //    GiverNPC = quest.Type == "Main" ? "" : quest.GiverNPC,
+                //    CompletionStory = quest.CompletionStory
+                //});
             }
         }
         return result;

@@ -17,7 +17,7 @@ public class UIInventory : BaseWindow
 {
     Inventory inventory;
     ItemFactory itemFactory;
-    public override UIType UIType => UIType.Inventroy;
+    public override UIType UIType => UIType.ParentWindow;
     public int slotCount = 20;
     private bool isInitialized = false;
 
@@ -41,16 +41,16 @@ public class UIInventory : BaseWindow
     public GameObject destroyItemWindow;
     [SerializeField] private Tooltip toolTip;
 
-    public override void OpenInventroy()
+    public override void OpenParentWindow()
     {
-        base.OpenInventroy();
+        base.OpenParentWindow();
         Init();
         transform.SetAsLastSibling();
     }
-    public override void CloseInventroy()
+    public override void CloseParentWindow()
     {
         toolTip.CloseUI();
-        base.CloseInventroy();
+        base.CloseParentWindow();
     }
     /// <summary>
     /// 닫기 버튼 이벤트 연결
@@ -131,7 +131,25 @@ public class UIInventory : BaseWindow
                 AddItemInInventory(inventory.items, true); // 정렬 풀기
                 break;
             case "등급별":
-                AddItemInInventory(itemSort.SortByItemGrade(inventory.items), false);
+
+                // 장비 아이템만 뽑기
+                List<Item> equipmentItems = inventory.items
+                .Where(item => item.Type == ItemType.Equip)
+                .ToList();
+
+                // 장비 아이템이 아닌 아이템만 뽑기
+                List<Item> nonEquipItems = inventory.items
+                .Where(item => item.Type != ItemType.Equip)
+                .ToList();
+
+                // 장비 아이템만 등급별로 정렬하기
+                List<Item> result = new List<Item>();
+                List<EquipItem> equipmentList = equipmentItems.OfType<EquipItem>().ToList();
+                result.AddRange(itemSort.SortByItemGrade(equipmentList));
+                result.AddRange(nonEquipItems);
+
+                AddItemInInventory(result, false);
+
                 break;
             case "이름순":
                 AddItemInInventory(itemSort.SortByItemName(inventory.items), false);

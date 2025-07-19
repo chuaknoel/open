@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// UI를 이동시킬 수 있게 하는 스크립트입니다.
+/// </summary>
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector2 startPos; // 시작 위치
@@ -10,6 +11,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Vector2 movePos; // 움직일 위치
 
     private CursorLockMode startLockMode; // 이동 시작시 커서 모드
+
    /// <summary>
    /// 드래그 시작
    /// </summary>
@@ -27,6 +29,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         // 캔버스 가장 위로 지정
         transform.SetAsLastSibling();
     }
+
     /// <summary>
     /// 드래그 중
     /// </summary>
@@ -38,6 +41,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         // 드래그 이동
         transform.position = startPos + movePos;
     }
+
     /// <summary>
     /// 드래그 끝
     /// </summary>

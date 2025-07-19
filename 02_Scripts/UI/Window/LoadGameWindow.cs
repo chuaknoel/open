@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class LoadGameWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     [SerializeField] private UnityEngine.UI.Button removeButton;
     [SerializeField] private UnityEngine.UI.Button loadButton;

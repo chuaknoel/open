@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
+using Unity.VisualScripting;
 
 /// <summary>
 /// 게임씬을 로드하는 스크립트입니다.
@@ -13,12 +14,13 @@ public class LoadingManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Slider loadingSlider;
-   
+    SceneLoader SceneLoader;
     private float time = 0;
 
     private void Start()
     {
-        StartCoroutine(LoadSceneRoutine("TutorialScene"));
+        SceneLoader = GameObject.FindGameObjectWithTag("SceneLoader").GetComponent<SceneLoader>();
+        StartCoroutine(LoadSceneRoutine(SceneLoader.ReturnSceneName()));
     }
 
     /// <summary>

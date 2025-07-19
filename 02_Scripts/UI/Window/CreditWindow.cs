@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class CreditWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     public RectTransform scrollView;
     public RectTransform content; // ScrollRect 안의 Content

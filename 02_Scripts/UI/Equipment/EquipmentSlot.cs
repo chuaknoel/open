@@ -33,13 +33,10 @@ public class EquipmentSlot : Slot
     {
         if (item == null) { return; }
 
-        equipmentManager.equippedItems.Remove(equipSlotType);
-        equipmentManager.unequipEvent?.Invoke(item as EquipItem);
-      
-        inventory.AddItem(item, false);
-        equipmentManager.ShowEquipItems();
-        uiInventory.UpdateSlot(inventory.slots[inventory.FindItemPos(item)]);
-        Logger.Log("장착 해제");
+
+        equipmentManager.UnEquip(item, equipSlotType);
+
+       
         ClearSlot();
     }
     // 슬롯 정보 업데이트

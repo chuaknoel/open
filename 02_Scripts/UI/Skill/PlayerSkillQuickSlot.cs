@@ -6,11 +6,14 @@ using static Constants.AnimatorHash;
 public class PlayerSkillQuickSlot : SkillQuickSlot
 {
     private Player player;
-
-    public override void Init(int slotNum)
+    public override void OnEnable()
     {
-        base.Init(slotNum);
-        this.slotNum = slotNum;
+
+    }
+    public override void Init(int slotIndex)
+    {
+        base.Init(slotIndex);
+        this.slotIndex = slotIndex;
         executor = GetComponent<SkillExecutor>();
         player = PlayManager.instance.player;
     }
@@ -32,7 +35,7 @@ public class PlayerSkillQuickSlot : SkillQuickSlot
     public override void ExcuteSkill()
     {
         base.ExcuteSkill();
-        player.ChangeAnimation(SkillButtonHash, slotNum);
+        player.ChangeAnimation(SkillButtonHash, slotIndex);
         player.ChangeState(StateEnum.Skill);
         executor.UseSkill();
     }

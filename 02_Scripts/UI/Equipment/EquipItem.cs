@@ -22,9 +22,10 @@ public class EquipItem : Item
 {
     [Header("EquipInfo")]
     [SerializeField] private EquipType equipType;
+    [SerializeField] protected ItemGrade itemGrade;
     [SerializeField] protected int attackPower;
     [SerializeField] protected Vector2 attackArea;
-
+    
     [Header("EquipAbilityData")]
     [SerializeField] private int attackBonus;
     [SerializeField] private int defenseBonus;
@@ -35,6 +36,7 @@ public class EquipItem : Item
 
 
     public EquipType EquipType => equipType;
+    public ItemGrade ItemGrade => itemGrade;
     public int AttackPower => attackPower;
     public Vector2 AttackArea => attackArea;
     public int AttackBonus => attackBonus;
@@ -61,7 +63,7 @@ public class EquipItem : Item
        int hpBonus,
        int mpBonus,
        int evasionRate
-   ) : base(itemName, type, itemGrade, itemDescription, image, inventoryIndex, count, maxCount)
+   ) : base(itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
     {
         this.equipType = equipType;
         this.itemGrade = itemGrade;

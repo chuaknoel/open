@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 using UnityEngine.UI;
 public class ExitWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     [SerializeField] private Button okButton;
 

@@ -14,13 +14,16 @@ public class PlayManager : MonoBehaviour
     public InputManager inputmanager;
     public Player player;
     public EquipmentManager equipmentManager;
+    public UIManager uiManager;
 
     public void Init()
     {
         inputmanager ??= InputManager.Instance;
+        uiManager = UIManager.Instance;
         player = FindObjectOfType<Player>();
-        
+      
         inputmanager.Init();
+        uiManager.Init();
         player.Init();
     }
 

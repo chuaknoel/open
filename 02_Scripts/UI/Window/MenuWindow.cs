@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -17,7 +15,7 @@ public class MenuWindow : BaseWindow
     [SerializeField] private Button settingButton;
     public BaseWindow settingWindow;
 
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     /// <summary>
     /// 화면을 활성화하는 스크립트입니다.
@@ -35,6 +33,7 @@ public class MenuWindow : BaseWindow
     {
         base.CloseUI();
     }
+
     /// <summary>
     /// 테스트 DB입니다.
     /// </summary>
@@ -47,6 +46,7 @@ public class MenuWindow : BaseWindow
         RecentDataParam recentDataParam = new RecentDataParam(testa, testb, testLevel);
         return recentDataParam;
     }
+
     /// <summary>
     /// DB를 화면에 표시해주는 기능입니다.
     /// </summary>
@@ -62,6 +62,7 @@ public class MenuWindow : BaseWindow
             levelText.text = $"현재 레벨 : {p.level}";
         }
     }
+
     /// <summary>
     /// 버튼에 Method를 연결해주는 기능입니다.
     /// </summary>

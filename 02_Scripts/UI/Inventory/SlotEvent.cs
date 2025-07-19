@@ -160,4 +160,17 @@ public class SlotEvent : MonoBehaviour, IDropHandler
         );
         toolTip.rect.anchoredPosition = new Vector2(localPos.x + 198f, localPos.y - 53f);
     }
+
+    protected void Swap<T>(T slot01, T slot02) where T : Component, ISkillSlot
+    {
+        // 드래그한 아이템 정보 임시 저장
+        SkillData temp = slot01.GetSkill();
+
+        // 서로 Swap
+        slot01.SetSkill(slot02.GetSkill());
+        slot01.UpdateSkill();
+
+        slot02.SetSkill(temp);
+        slot02.UpdateSkill();
+    }
 }

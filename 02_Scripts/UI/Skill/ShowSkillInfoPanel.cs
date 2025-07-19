@@ -38,7 +38,7 @@ public class ShowSkillInfoPanel : MonoBehaviour, IPointerEnterHandler, IPointerE
 
         // 내용 전달
         SkillInfoPanel _skillInfoPanel = skillInfoPanel.GetComponent<SkillInfoPanel>();
-        _skillInfoPanel.ShowText(slot.skill);
+        _skillInfoPanel.ShowText(slot.GetSkill());
 
         // 스킬 정보창 위치 변경
         ChangeTooltipPos();

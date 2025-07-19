@@ -43,7 +43,7 @@ public class DataManager : MonoBehaviour
         CompanionDB = CSVConverter.LoadCompanions(LoadCsvFile("Companions"));
         EnemyDB = CSVConverter.LoadEnemies(LoadCsvFile("Enemy"));
         ArmorDB = CSVConverter.LoadArmors(LoadCsvFile("Armors"));
-        QuestDB = CSVConverter.LoadQuests(LoadCsvFile("Quests"));
+       
         NPCDB = CSVConverter.LoadNPCs(LoadCsvFile("NPCs"));
     }
 

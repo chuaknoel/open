@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SkillQuickSlotEvent : SlotEvent, IDropHandler
+public class SkillQuickSlotEvent : SlotEvent, IDropHandler, ITempSkillSlotUpdater
 {
+    [SerializeField] private SkillTempSlotManager skillTempSlotManager;
+    private TempSkillQuickSlotManager tempSkillQuickSlotManager;
     public SkillQuickSlotManager skillQuickSlotManager;
     private SkillQuickSlot skillQuickSlot;
+
     private void OnEnable()
     {
         dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
@@ -31,35 +34,39 @@ public class SkillQuickSlotEvent : SlotEvent, IDropHandler
     {
         if (dragitemImage != null && DragData<Slot, SkillData>.DraggedData != null)
         {
-            ISkillSlot currentSlot = GetComponent<ISkillSlot>();
-       
-            // 드래그한 아이템 정보 임시 저장
-            SkillData temp = currentSlot.GetSkill();
-         
-            // 드래그 받은 슬롯의 정보를 변경
-            currentSlot.SetSkill(DragData<Slot, SkillData>.DraggedData);
-            (currentSlot as SkillQuickSlot)?.UpdateSkill();
-
-
             Slot originSlot = DragData<Slot, SkillData>.OriginSlot;
 
             // 드래그한 슬롯이 스킬 퀵 슬롯이라면
-            if (originSlot is SkillQuickSlot originQuickSlot)
+            if (originSlot is PlayerSkillQuickSlot originQuickSlot)
             {
-                // 드래그한 슬롯의 정보를 변경
-                originQuickSlot.SetSkill(temp);
-                originQuickSlot.UpdateSkill();
-
-                skillQuickSlotManager.skillSlots[originQuickSlot.slotNum].SetSkill(originQuickSlot.GetSkill());
-                skillQuickSlotManager.skillSlots[originQuickSlot.slotNum].UpdateSkill();
+                PlayerSkillQuickSlot currentSlot = GetComponent<PlayerSkillQuickSlot>();
+                base.Swap(currentSlot, originQuickSlot);
             }
+            //드래그한 슬롯이 스킬 슬롯이라면
+            if (originSlot is SkillSlot originSkillSlot)
+            {
+                PlayerSkillQuickSlot currentSlot = GetComponent<PlayerSkillQuickSlot>();
+               
+                // 드래그 받은 슬롯의 정보를 변경
+                currentSlot.SetSkill(DragData<Slot, SkillData>.DraggedData);
+                currentSlot.UpdateSkill();
 
-            skillQuickSlot = GetComponent<SkillQuickSlot>();
+                UpdateTempSkillQuickSlot();
+            }
+        }
+    }
 
-            // 진짜 스킬 퀵슬롯에도 스킬을 넣어준다.
-            // 진짜 스킬 퀵슬롯에 해당 문자의 슬롯이 있다면
-            skillQuickSlotManager.skillSlots[skillQuickSlot.slotNum].SetSkill(skillQuickSlot.GetSkill());
-            skillQuickSlotManager.skillSlots[skillQuickSlot.slotNum].UpdateSkill();
+    /// <summary>
+    /// 임시 스킬 슬롯을 업데이트 해주는 함수입니다.
+    /// </summary>
+    public void UpdateTempSkillQuickSlot()
+    {
+        // 임시 스킬 슬롯이 켜져있다면
+        if (skillTempSlotManager.tempSkillQuickSlotManager != null)
+        {
+            // 임시 스킬 슬롯 업데이트
+            tempSkillQuickSlotManager = skillTempSlotManager.tempSkillQuickSlotManager;
+            tempSkillQuickSlotManager.SetTempSkillQuickSlot();
         }
     }
 }

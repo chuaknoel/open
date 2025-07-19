@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0871b2eddac52a941b650f0444d5d29e, type: 3}
+  m_Name: MainQuestData 1
+  m_EditorClassIdentifier: 
+  questType: 2
+  questId: 1
+  prerequisiteQuestId: 0
+  title: "\uC601\uC9C4\uC5D0\uAC8C \uAC00\uC11C \uB9D0\uC744 \uAC78\uAE30"
+  description: "\uC601\uC9C4\uC5D0\uAC8C \uB9D0\uC744 \uAC78\uC5B4\uBCF4\uC790"
+  targetId: YoungJin
+  amount: 0
+  startNpcID: Jiho
+  clearNpcID: YoungJin
+  dialogueList:
+  - "\uC606\uC5D0 \uC788\uB294 \uC601\uC9C4\uC5D0\uAC8C \uAC00\uC11C \uB9D0\uC744
+    \uAC78\uC5B4\uBD10\uBC14"
+  - "\uC601\uC9C4\uC740 \uB108\uB97C \uB3C4\uC640\uC904\uAC70\uC57C"
+  clearDialogue:
+  - "\uB108\uAC00 \uBAA8\uD5D8\uAC00\uAD6C\uB098 "
+  - "\uB9CC\uB098\uC11C \uBC18\uAC00\uC6CC"
+  refusalDialogue: 
+  rewardItemId: 
+  rewardAmount: 0

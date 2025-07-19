@@ -11,24 +11,30 @@ public class SkillSlot :Slot , ISkillSlot
 
     private Image dragImage;
 
-    public SkillData skill;
-    public SkillData GetSkill() => skill;
-    public void SetSkill(SkillData s) => skill = s;
+    protected SkillData skill;
+    public virtual SkillData GetSkill() => skill;
+    public virtual void SetSkill(SkillData s) => skill = s;
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
-        skillManager = SkillManager.instance;
-      
+        skillManager = SkillManager.instance;   
         skill = skillManager.skillDatas[0];
 
         SkillDrag skillDrag = GetComponent<SkillDrag>();
         dragImage = skillDrag.dragItemImage;
-        //UpdateSlot();
     }
 
     public override void UseItem()
     {
-        Logger.Log("스킬 슬롯 클릭");
         tempSlotManager.CreateSkillTempSlot(this);
+    }
+
+    public virtual void UpdateSkill()
+    {
+        if (GetSkill() != null)
+        {
+            itemImage.enabled = true;
+            itemImage.sprite = skill.skillImage;
+        }
     }
 }

@@ -1,28 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
+using Enums;
 
+/// <summary>
+/// 설정창을 관리하는 스크립트입니다.
+/// </summary>
 public class SettingWindow : BaseWindow
 {
-    private enum SettingTab
-    {
-        Sound,
-        Key,
-        Interface
-    }
     [SerializeField] private Button[] settingButtons; // 세팅 버튼들
-
     [SerializeField] private GameObject soundPanel; // 사운드 패널
     [SerializeField] private GameObject keyPanel; // 키 패널
     [SerializeField] private GameObject interfacePanel; // 인터페이스 패널
-
+   
+    public override UIType UIType => UIType.SelfWindow;
     private GameObject currentActivePanel;
 
-    public override UIType UIType => UIType.Window;
-
+    /// <summary>
+    /// 설정창이 활성화될 때 실행됩니다.
+    /// </summary>
     public override void OpenUI()
     {
         base.OpenUI();
@@ -33,11 +28,19 @@ public class SettingWindow : BaseWindow
 
         ShowPanel(soundPanel); // 시작시 사운드 패널 열기
     }
+
+    /// <summary>
+    /// 설정창이 비활성화될 때 실행됩니다.
+    /// </summary>
     public override void CloseUI()
     {
         base.CloseUI();
     }
-    // 패널 활성화
+
+    /// <summary>
+    /// 패널이 활성화될 때 실행됩니다.
+    /// </summary>
+    /// <param name="panelToShow">열려 있는 패널</param>
     private void ShowPanel(GameObject panelToShow)
     {
         // 열려 있는 패널 닫고

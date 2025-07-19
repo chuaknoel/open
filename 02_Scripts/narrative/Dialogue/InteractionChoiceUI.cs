@@ -20,44 +20,44 @@ public class InteractionChoiceUI : MonoBehaviour
         choicePanel?.SetActive(false);
     }
 
-    public void ShowChoices(NPC npc)
-    {
-        foreach (var button in currentButtons) Destroy(button);
-        currentButtons.Clear();
+    //public void ShowChoices(NPC npc)
+    //{
+    //    foreach (var button in currentButtons) Destroy(button);
+    //    currentButtons.Clear();
 
-        // 상점 버튼
-        if (npc.IsMerchant)
-        {
-            CreateButton("상점", () => {
-                CloseUI();
-                DialogueManager.Instance.StartDialogue(npc.PostShopDialogue, () => {
-                    Debug.Log("실제 상점 UI를 여기서 엽니다.");
-                });
-            });
-        }
+    //    // 상점 버튼
+    //    if (npc.IsMerchant)
+    //    {
+    //        CreateButton("상점", () => {
+    //            CloseUI();
+    //            DialogueManager.Instance.StartDialogue(npc.PostShopDialogue, () => {
+    //                Debug.Log("실제 상점 UI를 여기서 엽니다.");
+    //            });
+    //        });
+    //    }
 
-        // 퀘스트 버튼
-        if (npc.HasQuest)
-        {
-            CreateButton("퀘스트", () => {
-                CloseUI();
-                // 1. 퀘스트를 먼저 지급
-                QuestDataManager.Instance.AcceptQuest(npc.QuestIDToGive);
-                // 2. 퀘스트 수락 후 대화 시작
-                DialogueManager.Instance.StartDialogue(npc.PostQuestAcceptDialogue);
-            });
-        }
+    //    // 퀘스트 버튼
+    //    if (npc.HasQuest)
+    //    {
+    //        CreateButton("퀘스트", () => {
+    //            CloseUI();
+    //            // 1. 퀘스트를 먼저 지급
+    //            QuestDataManager.Instance.AcceptQuest(npc.QuestIDToGive);
+    //            // 2. 퀘스트 수락 후 대화 시작
+    //            DialogueManager.Instance.StartDialogue(npc.PostQuestAcceptDialogue);
+    //        });
+    //    }
 
-        // 일반 대화 버튼
-        CreateButton("대화하기", () => {
-            CloseUI();
-            DialogueManager.Instance.StartDialogue(npc.GeneralDialogue);
-        });
+    //    // 일반 대화 버튼
+    //    CreateButton("대화하기", () => {
+    //        CloseUI();
+    //        DialogueManager.Instance.StartDialogue(npc.GeneralDialogue);
+    //    });
 
-        CreateButton("떠나기", CloseUI);
+    //    CreateButton("떠나기", CloseUI);
 
-        choicePanel.SetActive(true);
-    }
+    //    choicePanel.SetActive(true);
+    //}
 
     private void CreateButton(string text, UnityEngine.Events.UnityAction action)
     {

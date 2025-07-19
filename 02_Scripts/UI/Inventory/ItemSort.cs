@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 public class ItemSort
 {
     // 등급 내림차순 정렬
-    public List<Item> SortByItemGrade(List<Item> items) =>
+    public List<EquipItem> SortByItemGrade(List<EquipItem> items) =>
         BubbleSort(items, (a, b) => a.ItemGrade < b.ItemGrade);
 
     // 이름 오름차순 정렬
@@ -17,9 +17,9 @@ public class ItemSort
             string.Compare(a.ItemName, b.ItemName, CultureInfo.CurrentCulture, CompareOptions.None) > 0);
 
     // 버블 정렬
-    private List<Item> BubbleSort(List<Item> items, Func<Item, Item, bool> compare )
+    private List<T> BubbleSort<T>(List<T> items, Func<T, T, bool> compare)
     {
-        List<Item> sortedItems = new List<Item>(items);
+        List<T> sortedItems = new List<T>(items);
 
         // 버블 정렬
         for (int i = 0; i < sortedItems.Count - 1; i++)
@@ -28,7 +28,7 @@ public class ItemSort
             {
                 if (compare(sortedItems[j], sortedItems[j+1]))
                 {
-                    Item temp = sortedItems[j];
+                    T temp = sortedItems[j];
                     sortedItems[j] = sortedItems[j + 1];
                     sortedItems[j + 1] = temp;
                 }

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BookWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     [SerializeField] private SkillTempSlotManager skillTempSlotManager;
     [SerializeField] private BookAnimation bookAnimation;

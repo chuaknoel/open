@@ -36,7 +36,7 @@ public class NPCRegistry : MonoBehaviour
     /// <summary>
     /// NPC가 파괴될 때 등록소에서 제거합니다.
     /// </summary>
-    public void Unregister(string id)
+  //  public void Unregister(string id)
     //{
     //    if (registeredNPCs.ContainsKey(id))
     //    {

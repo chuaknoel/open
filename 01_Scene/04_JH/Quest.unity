@@ -1163,7 +1163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7642a6ca0bbdd941a63422cf1aadb55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeSubQuests: []
+  activeSubQuests:
+  - questData: {fileID: 0}
+    progressState: 0
+    currentAmount: 0
   completedSubQuests: []
   questLocationZonePrefab: {fileID: 1348015748157459492, guid: ce13c2f7f429081479d6977ae58e6f6a, type: 3}
   conditionChecker: {fileID: 464790225}

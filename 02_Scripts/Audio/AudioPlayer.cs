@@ -1,20 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// 오디오 타입을 정의하는 열거형
-/// </summary>
-public enum AudioType
-{
-    Static,
-    Dynamic
-}
+using Enums;
 /// <summary>
 /// 실재 재생을 담당하는 클래스
 /// </summary>
 public class AudioPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioType audioType;
+    [SerializeField] private Enums.AudioType audioType;
 
     [Header("Audio Source")]
     private Dictionary<SoundType, AudioSource> audioSources;
@@ -29,7 +21,7 @@ public class AudioPlayer : MonoBehaviour
     /// </summary>
     private void MakeAudioSource()
     {
-        if (audioType == AudioType.Dynamic)
+        if (audioType == Enums.AudioType.Dynamic)
         {
             CreateAudioSource(SoundType.SFX, is3D: true);
             CreateAudioSource(SoundType.Ambient, is3D: true, isLoop: true);

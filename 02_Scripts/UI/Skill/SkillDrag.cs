@@ -1,16 +1,18 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SkillDrag : BaseDrag<Slot, SkillData>
 {
-    [SerializeField] private SkillTempSlotManager tempSlotManager;
-    [SerializeField] private PlayerSkillQuickSlot playerSkillQuickSlot;
+    [SerializeField] private SkillQuickSlotManager skillQuickSlotManager;
+    [SerializeField] private SkillTempSlotManager skillTempSlotManager;
+  
+    private SkillSlot currentSlot;
 
-    private SkillQuickSlotManager skillQuickSlotManager;
-    private SkillQuickSlot skillQuickSlot;
-   
+
     protected override SkillData GetData()
     {
         ISkillSlot skillSlot = slot as ISkillSlot;
@@ -23,7 +25,7 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
 
     protected override Sprite GetSprite(SkillData data) => data.skillImage;
 
-    public void Init(Canvas _canvas, Image _dragImage)
+    public virtual void Init(Canvas _canvas, Image _dragImage)
     {
         canvas  = _canvas;
         dragItemImage= _dragImage;
@@ -44,94 +46,33 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
         base.OnEndDrag(eventData);     
     }
     protected override void OnDropCompleted(SkillData droppedSkill, Slot originSlot)
-    {
-        // 마우스가 스킬 큇슬롯밖인지 검사
-        if (SlotIsOut())
+    {      
+        // 마우스가 플레이어 스킬 슬롯이라면
+        if (CheckMousePointerSlot<PlayerSkillQuickSlot>())
         {
-            SkillQuickSlotEvent skillQuickSlotEvent = GetComponent<SkillQuickSlotEvent>();
-            skillQuickSlotManager = skillQuickSlotEvent.skillQuickSlotManager;
-
-            // 진짜 퀵슬롯의 스킬도 같이 해제
-            skillQuickSlot = GetComponent<SkillQuickSlot>();
-
-            // 진짜 스킬 퀵슬롯에도 스킬을 넣어준다.
-            // 진짜 스킬 퀵슬롯에 해당 문자의 슬롯이 있다면
-            skillQuickSlotManager.skillSlots[skillQuickSlot.slotNum].SetSkill(skillQuickSlot.GetSkill());
-            skillQuickSlotManager.skillSlots[skillQuickSlot.slotNum].UpdateSkill();
-
-            // 스킬 슬롯이 플레이어 스킬 퀵 슬롯이라면
-            if(tempSlotManager._tempSkillSlot != null && playerSkillQuickSlot != null)
+            // 임시 스킬 슬롯에 넣어줌
+            int count = 0;
+            foreach (Transform child in skillTempSlotManager._tempSkillSlot.transform)
             {
-                int count = 0;
-                foreach (Transform child in tempSlotManager._tempSkillSlot.transform)               
-                {               
-                    SkillQuickSlot slot = child.gameObject.GetComponent<SkillQuickSlot>();
-                    
-                    if (playerSkillQuickSlot.slotNum == count)
-                    {
-                        slot.SetSkill(playerSkillQuickSlot.GetSkill());
-                        slot.UpdateSkill();
-                    }
-                    count++;
-                }
-            }
-            return;
-        }
-        else
-        {
-            // 스킬 Swap
-            SkillData temp = ((ISkillSlot)slot).GetSkill();
-            ((ISkillSlot)slot).SetSkill(droppedSkill);
+                SkillTempSlot slot = child.gameObject.GetComponent<SkillTempSlot>();
 
-            if (originSlot is SkillQuickSlot quickSlot)
-            {
-                SkillData tempOriginSkill = quickSlot.GetSkill();
-                quickSlot.SetSkill(temp);
-                quickSlot.UpdateSkill();
-            }
-        }
-    }
-
-    /// <summary>
-    /// 마우스가 스킬 큇슬롯밖인지 검사
-    /// </summary>
-    /// <returns></returns>
-    private bool SlotIsOut()
-    {
-        bool _result = false;
-
-        // 내가 스킬 퀵슬롯이고, 마우스 위치의 오브젝트가 스킬 큇슬롯이 아니라면 스킬 장착 해제.
-        if (TryGetComponent<SkillQuickSlot>(out var mySlot))
-        {
-            // 마우스 위치에서 Raycast
-            PointerEventData pointerData = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-
-            List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-            bool isOverSkillQuickSlot = false;
-
-            foreach (var result in raycastResults)
-            {
-                if (result.gameObject.TryGetComponent<SkillQuickSlot>(out _))
+                if (slot.slotIndex == count)
                 {
-                    isOverSkillQuickSlot = true;
-                    break;
+                    slot.SetSkill(slot.GetSkill());
+                    slot.UpdateSlot();
                 }
-            }
-
-            // 마우스 위치가 SkillQuickSlot이 아니면 해제
-            if (!isOverSkillQuickSlot)
-            {
-                mySlot.ClearSlot(); 
-                Logger.Log("스킬 장착 해제됨");
-                _result = true;
-                return _result;
+                count++;
             }
         }
-        return _result;
+        else if(CheckMousePointerSlot<SkillTempSlot>())
+        {
+            // 진짜 스킬 퀵슬롯에도 스킬을 넣어준다.
+            currentSlot = GetComponent<SkillSlot>();
+           
+            int count = draggedSlot.GetComponent<SkillTempSlot>().slotIndex;
+
+            skillQuickSlotManager.skillSlots[count].SetSkill(currentSlot.GetSkill());
+            skillQuickSlotManager.skillSlots[count].UpdateSkill();
+        }    
     }
 }

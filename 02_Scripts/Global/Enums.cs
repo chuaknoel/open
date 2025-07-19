@@ -88,4 +88,26 @@ namespace Enums
     {
 
     }
+
+    public enum SoundType
+    {
+        BGM,
+        SFX,
+        Voice,
+        Ambient,
+        None
+    }
+
+    public enum AudioType
+    {
+        Static,
+        Dynamic
+    }
+
+    public enum SettingTab
+    {
+        Sound,
+        Key,
+        Interface
+    }
 }

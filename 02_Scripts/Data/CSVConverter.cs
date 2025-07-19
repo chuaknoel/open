@@ -83,18 +83,18 @@ public class CompanionData : IGetCSVData
     public string SkillDescKey;
 }
 
-[Serializable]
-public class QuestData : IGetCSVData
-{
-    public string ID { get; set; }
-    public string Type;           // "Main" 또는 "Sub"
-    public string Title;          // 퀘스트 제목
-    public string GiverNPC;       // 퀘스트를 준 NPC (메인퀘스트는 빈 값)
-    public string StoryDesc;      // 스토리적 설명
-    public string QuestContent;   // 실제 퀘스트 내용 (목표)
-    public string RewardItemID;   // 보상 아이템 ID (메인퀘스트는 빈 값)
-    public string CompletionStory; // 완료 후 짧은 이야기
-}
+//[Serializable]
+//public class QuestData : IGetCSVData
+//{
+//    public string ID { get; set; }
+//    public string Type;           // "Main" 또는 "Sub"
+//    public string Title;          // 퀘스트 제목
+//    public string GiverNPC;       // 퀘스트를 준 NPC (메인퀘스트는 빈 값)
+//    public string StoryDesc;      // 스토리적 설명
+//    public string QuestContent;   // 실제 퀘스트 내용 (목표)
+//    public string RewardItemID;   // 보상 아이템 ID (메인퀘스트는 빈 값)
+//    public string CompletionStory; // 완료 후 짧은 이야기
+//}
 
 
 [Serializable]
@@ -221,33 +221,33 @@ public static class CSVConverter
         return db;
     }
 
-    public static Dictionary<string, QuestData> LoadQuests(string csvText)
-    {
-        var db = new Dictionary<string, QuestData>();
-        foreach (var values in Parse(csvText))
-        {
-            // 열 개수가 8개가 아닐 경우 데이터 오류로 보고 건너뜁니다.
-            if (values.Length < 8) continue;
+    //public static Dictionary<string, QuestData> LoadQuests(string csvText)
+    //{
+    //    var db = new Dictionary<string, QuestData>();
+    //    foreach (var values in Parse(csvText))
+    //    {
+    //        // 열 개수가 8개가 아닐 경우 데이터 오류로 보고 건너뜁니다.
+    //        if (values.Length < 8) continue;
 
-            try
-            {
-                var data = new QuestData
-                {
-                    ID = values[0],
-                    Type = values[1],
-                    Title = values[2],
-                    GiverNPC = values[3],
-                    StoryDesc = values[4],
-                    QuestContent = values[5],
-                    RewardItemID = values[6],
-                    CompletionStory = values[7]
-                };
-                db[data.ID] = data;
-            }
-            catch { /* 데이터 형식 오류 시 해당 줄은 건너뜁니다. */ }
-        }
-        return db;
-    }
+    //        try
+    //        {
+    //            var data = new QuestData
+    //            {
+    //                ID = values[0],
+    //                Type = values[1],
+    //                Title = values[2],
+    //                GiverNPC = values[3],
+    //                StoryDesc = values[4],
+    //                QuestContent = values[5],
+    //                RewardItemID = values[6],
+    //                CompletionStory = values[7]
+    //            };
+    //            db[data.ID] = data;
+    //        }
+    //        catch { /* 데이터 형식 오류 시 해당 줄은 건너뜁니다. */ }
+    //    }
+    //    return db;
+    //}
 
     public static Dictionary<string, CharacterData> LoadCharacters(string csvText)
     {

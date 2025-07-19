@@ -9,7 +9,7 @@ public static class Constants
 
     public static class SFX
     {
-        //public static readonly string Jump = "Ambient/Jump";
+        public static readonly string Jump = "SFX/Jump";
     }
 
     public static class Voice
@@ -18,6 +18,22 @@ public static class Constants
     }
 
     public static class Ambient
+    {
+        public static readonly string Boom = "Ambient/Boom";
+    }
+
+    // 주소 예시: "GameObject/Enemy/Slime", "GameObject/UI/HealthBar"
+    public static class GameObject
+    {
+
+    }
+    // 예시: "Sprite/Icon/Sword", "Sprite/UI/InventorySlot"
+    public static class Sprites
+    {
+
+    }
+    // 예시: "Anim/Enemy/SlimeIdle", "Animation/Effects/Explosion"
+    public static class Animation
     {
 
     }

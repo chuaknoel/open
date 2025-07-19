@@ -1,30 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 스킬 퀵 슬롯 들을 관리하는 매니저 스크립트입니다.
+/// </summary>
 public class SkillQuickSlotManager : MonoBehaviour
 {
-    public string actionName = "SkillButton";
     private PlayerInputs inputActions;
-    private InputAction action;
 
-    private int inputIndex;
-   
+    public string actionName = "SkillButton";
+   [SerializeField] private InputAction action;
+    private int inputIndex;   
     public SkillQuickSlot[] skillSlots = new SkillQuickSlot[8];
 
-    private void Start()
-    {
-        Init();    
-    }
-
+    /// <summary>
+    /// 초기화 함수입니다.
+    /// </summary>
     public void Init()
     {
         inputActions = InputManager.Instance.inputActions;
         action = inputActions.asset.FindAction(actionName);
-
         action.started += OnSkillQuickSlotPressed;
 
         for (int i = 0; i < skillSlots.Length; i++)
@@ -33,6 +28,10 @@ public class SkillQuickSlotManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 스킬 퀵 슬롯들을 키보드로 작동할 시 발생하는 함수입니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnSkillQuickSlotPressed(InputAction.CallbackContext context)
     {
         //현재 Skills 액션 바인딩:
@@ -57,28 +56,4 @@ public class SkillQuickSlotManager : MonoBehaviour
             skillSlots[inputIndex]?.UseSkill();
         }
     }
-
-    //public Dictionary<string, int> keyToSlotIndex = new()
-    //{   
-    //    { "q", 0 },
-    //    { "w", 1 },
-    //    { "e", 2 },
-    //    { "r", 3 },
-    //    { "a", 4 },
-    //    { "s", 5 },
-    //    { "d", 6 },
-    //    { "f", 7 },
-    //};
-    //public void OnSkillQuickSlotPressed(InputAction.CallbackContext context)
-    //{
-    //    string key = context.control.name.ToLower();
-
-    //    if (keyToSlotIndex.TryGetValue(key, out int slotIndex))
-    //    {
-    //        if (context.performed && skillSlots[slotIndex] != null)
-    //        {
-    //            skillSlots[slotIndex].UseSkill();
-    //        }
-    //    }   
-    //}
 }

@@ -9,8 +9,8 @@ using UnityEngine.InputSystem.UI;
 public enum UIType
 {
     None,
-    Window,
-    Inventroy,
+    SelfWindow, // 자기 자신을 켜거나 끄는 단순한 창
+    ParentWindow, // 자식 윈도우들을 제어하는 상위 창
     ToastMessage
 }
 /// <summary>

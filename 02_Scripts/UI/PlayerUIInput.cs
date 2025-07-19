@@ -49,13 +49,13 @@ public class PlayerUIInput : MonoBehaviour
         {
             BaseWindow window = uiStack.GetUI();
 
-            if(window.UIType == UIType.Window)
+            if(window.UIType == UIType.SelfWindow)
             {
                 window.CloseUI();
             }
-            else if (window.UIType == UIType.Inventroy)
+            else if (window.UIType == UIType.ParentWindow)
             {
-                window.CloseInventroy();
+                window.CloseParentWindow();
             }
             return;
         }
@@ -73,7 +73,7 @@ public class PlayerUIInput : MonoBehaviour
     /// Book Window 활성화
     /// </summary>
     public void OnOpenBookWindow()
-    {
-        uiManager.OpenWindow(bookWindow);
+    { 
+        uiManager.OpenWindow(bookWindow);  
     }
 }

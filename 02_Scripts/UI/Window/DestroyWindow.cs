@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class DestroyWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
     public UIInventory uiInventory;
 
     [SerializeField] private Button okButton;

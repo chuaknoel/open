@@ -1,12 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  아이템을 임시로 생성하는 스크립트입니다.
+/// </summary>
 public class ItemFactory : MonoBehaviour
 {
     Inventory inventory;
     public List<Item> itemDatas = new List<Item>();
 
+    /// <summary>
+    /// 데이터를 넣습니다.
+    /// </summary>
     public void AddItemData()
     {     
         inventory = GetComponent<Inventory>();

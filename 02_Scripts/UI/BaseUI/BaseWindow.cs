@@ -12,7 +12,7 @@ public abstract class BaseWindow : BaseUI
     [SerializeField] protected Button closeButton;
 
     /// <summary>
-    /// UI 활성화시 호출
+    /// SelfWindow 활성화시 호출
     /// </summary>
     public override void OpenUI()
     {
@@ -21,20 +21,20 @@ public abstract class BaseWindow : BaseUI
     }
 
     /// <summary>
-    /// 인벤토리 활성화시 호출
+    /// 부모 Window 활성화시 호출
     /// </summary>
-    public virtual void OpenInventroy()
+    public virtual void OpenParentWindow()
     {
-        GameObject inventroy = transform.GetChild(0).gameObject;
+        GameObject child = transform.GetChild(0).gameObject;
 
-        inventroy.SetActive(!inventroy.activeSelf);
-        inventroy.transform.SetAsLastSibling();
+        child.SetActive(!child.activeSelf);
+        child.transform.SetAsLastSibling();
 
-        AddCloseButtonListener(CloseInventroy);
+        AddCloseButtonListener(CloseParentWindow);
     }
 
     /// <summary>
-    /// UI 비활성화시 호출
+    /// SelfWindow 비활성화시 호출
     /// </summary>
     public override void CloseUI()
     {
@@ -43,14 +43,14 @@ public abstract class BaseWindow : BaseUI
     }
 
     /// <summary>
-    /// 인벤토리 비활성화시 호출
+    /// 부모 Window 비활성화시 호출
     /// </summary>
-    public virtual void CloseInventroy()
+    public virtual void CloseParentWindow()
     {
-        GameObject inventroy = transform.GetChild(0).gameObject;
-        inventroy.SetActive(false);
+        GameObject child = transform.GetChild(0).gameObject;
+        child.SetActive(false);
 
-        RemoveCloseButtonListener(CloseInventroy);
+        RemoveCloseButtonListener(CloseParentWindow);
     }
 
     /// <summary>

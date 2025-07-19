@@ -1,25 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using static UnityEditor.Progress;
-
 using UnityEngine.UI;
-using Unity.Services.Analytics;
+
+/// <summary>
+/// 인벤토리ㅣ 스크립트입니다.
+/// </summary>
 public class Inventory : MonoBehaviour
 {
     public Canvas canvas;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private EquipmentManager equipmentManager;
     [SerializeField] private QuickSlotManager quickSlotManager;
-
-    protected UIInventory uiInventory;
-    private ItemColorHelper itemColorHelper;
     [SerializeField] private GameObject quickSlots;
 
-     public  List<Slot> slots = new List<Slot>();
+    protected UIInventory uiInventory;
+
+    public List<Slot> slots = new List<Slot>();
     public List<Item> items = new List<Item>();
 
     public int slotCount = 20;
@@ -28,12 +24,14 @@ public class Inventory : MonoBehaviour
     public Image draggedImage;
     public Tooltip toolTip;
 
-    private void OnEnable()
+    public void Init()
     {
         uiInventory = GetComponent<UIInventory>();
-        itemColorHelper = GetComponent<ItemColorHelper>();
     }
-    // 슬롯 동적 생성
+    
+    /// <summary>
+    /// 슬롯을 동적으로 생성합니다.
+    /// </summary>
     public virtual void CreateSlots()
     {
         // 초기화
@@ -53,7 +51,10 @@ public class Inventory : MonoBehaviour
             slotEvent.Init(canvas, uiManager, this.gameObject, draggedImage);
         }
     }
-    // 인벤토리 초기 설정
+  
+    /// <summary>
+    /// 인벤토리 초기 설정입니다.
+    /// </summary>
     public void SetInventory()
     {
         for (int i = 0; i < items.Count; i++)
@@ -66,16 +67,20 @@ public class Inventory : MonoBehaviour
             uiInventory.UpdateSlot(slots[i]);// 나머지 슬롯은 비우기
         }
     } 
-    // 아이템 넣기
+    
+    /// <summary>
+    /// 아이템을 넣습니다.
+    /// </summary>
+    /// <param name="item">아이템</param>
+    /// <param name="useInventoryIndex">아이템 인덱스</param>
     public void AddItem(Item item, bool useInventoryIndex = false)
     {
          // 인덱스가 유효하면 해당 슬롯에 넣기
         if (useInventoryIndex  && item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
         {
             Slot slot = slots[item.InventoryIndex];
-            // items.Add(item);
             slot.SetItem(item);
-           // slot.AddCount(1);
+
             uiInventory.UpdateSlot(slot);
             return;
         }
@@ -109,14 +114,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 슬롯 비우기
+   /// <summary>
+   /// 슬롯 비우기
+   /// </summary>
+   /// <param name="item">아이템</param>
     public void RemoveItem(Item item)
     {
         Slot slot = slots[FindItemPos(item)];
         slot.ClearSlot();
     }
     
-    // 인벤토리 비우기
+   /// <summary>
+   /// 인벤토리 전체 비우기
+   /// </summary>
     public void ClearInventory()
     {
         for (int i =0 ; i < slots.Count; i++)
@@ -124,7 +134,11 @@ public class Inventory : MonoBehaviour
             slots[i].ClearSlot();
         }
     }
-    // 빈 슬롯 찾기
+    
+    /// <summary>
+    /// 빈 슬롯 찾기
+    /// </summary>
+    /// <returns></returns>
     private Slot FindEmptySlot()
     {
         Slot emptySlot = null;
@@ -138,7 +152,12 @@ public class Inventory : MonoBehaviour
         }
         return emptySlot;
     }
-    // 해당 아이템의 위치 찾기
+    
+    /// <summary>
+    /// 아이템 위치 찾기
+    /// </summary>
+    /// <param name="item">아이템</param>
+    /// <returns></returns>
     public int FindItemPos(Item item)
     {
         int index = -1;
@@ -152,30 +171,4 @@ public class Inventory : MonoBehaviour
         }
         return index;
     }
-    // 장착 중인 아이템 해제
-    //public void SetEquipItemSlot(EquipItem equipItem)
-    //{
-    //    for (int i = 0; i < items.Count; i++)
-    //    {
-    //        if (items[i] == null)
-    //        {
-    //            continue;
-    //        }
-    //        if (items[i] is EquipItem equippedItem)
-    //        {
-    //            // 이미 같은 타입의 아이템을 착용중이라면 교채
-    //            if (equipItem.EquipType == equippedItem.EquipType
-    //              && equipItem != equippedItem && equippedItem.Equipped)
-    //            {
-    //                Slot slot = slots[FindItemPos(equippedItem)];
-    //                UISlot uiSlot = slot.GetComponent<UISlot>();
-
-    //                uiInventory.UpdateSlot(slot);
-    //                equippedItem.UnEquip(); // 장착 해제
-    //                uiSlot.SlotOutline(equippedItem.Equipped);
-    //                return;
-    //            }
-    //        }
-    //    }
-    //}
 }

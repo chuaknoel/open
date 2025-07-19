@@ -103,9 +103,10 @@ public class Slot : MonoBehaviour
         itemImage.sprite = item.Image;
         itemText.text = item.Count.ToString();
 
-        if (item.Type == ItemType.Equip)
+        if (item is EquipItem equipItem)
         {
-            backGround.color = itemColorHelper.GetColor(item.ItemGrade);
+
+            backGround.color = itemColorHelper.GetColor(equipItem.ItemGrade);
         }
         else
         {

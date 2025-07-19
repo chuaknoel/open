@@ -11,7 +11,7 @@ using UnityEngine.Analytics;
 /// </summary>
 public class NewGameWindow : BaseWindow
 {
-    public override UIType UIType => UIType.Window;
+    public override UIType UIType => UIType.SelfWindow;
 
     [SerializeField] private UnityEngine.UI.Button startButton;
     

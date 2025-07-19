@@ -38,8 +38,8 @@ public class InputManager : MonoBehaviour
 
     public void Init()
     {
-
         inputActions = new PlayerInputs();
+
         inputActions.Enable();
 
         string bindJson = PlayerPrefs.GetString("bindData", "");       //플레이어 프리팹에 저장되어 있는 바인드 정보 불러오기

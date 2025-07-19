@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillQuickSlot : Slot, ISkillSlot
+public class SkillQuickSlot : SkillSlot, ISkillSlot
 {
-    protected SkillData skill;
-    public int slotNum;
-
     protected SkillExecutor executor;
 
     [SerializeField] protected Image skillImage;
     [SerializeField] private Image skillCoolTimeImage; 
     public string key;
-
-    public SkillData GetSkill() => skill;
-
-    public virtual void Init(int slotNum)
+    public override void OnEnable()
     {
-        this.slotNum = slotNum;
+
+    }
+    public virtual void Init(int slotIndex)
+    {
+        this.slotIndex = slotIndex;
         executor = GetComponent<SkillExecutor>();
         skillCoolTimeImage = transform.GetChild(1).GetComponent<Image>();   
     }
 
-    public virtual void SetSkill(SkillData s)
+    public override void SetSkill(SkillData s)
     {
         if(s == null)
         {
@@ -42,7 +40,7 @@ public class SkillQuickSlot : Slot, ISkillSlot
 
     public virtual void SetAnime(List<AnimationClip> skillAnime) { }
     
-    public void UpdateSkill()
+    public override void UpdateSkill()
     {
         if (GetSkill() != null)
         {
@@ -66,7 +64,7 @@ public class SkillQuickSlot : Slot, ISkillSlot
     {
         if (GetSkill() == null)
         {
-            Logger.Log($"Slot {slotNum} : 스킬이 없음");
+            Logger.Log($"Slot {slotIndex} : 스킬이 없음");
             return;
         }
         if (executor.IsUseAble())
