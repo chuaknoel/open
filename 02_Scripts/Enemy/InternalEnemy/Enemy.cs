@@ -1,6 +1,8 @@
 using Enums;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class Enemy : BaseCreature
@@ -30,13 +32,7 @@ public class Enemy : BaseCreature
     public Seeker seeker;
     public AIPath aiPath;
 
-    private void Start()
-    {
-        Logger.Log("Start 진입");
-        Init();
-
-        attackCoolDownTimer = attackCoolDown;
-    }
+    public IObjectPool<Enemy> connectPool;
 
     private void Update()
     {   
@@ -58,12 +54,15 @@ public class Enemy : BaseCreature
     {
         base.Init();
 
+        attackCoolDownTimer = attackCoolDown;
+
         stat = GetComponent<EnemyStat>();
+
         searchTarget ??= GetComponentInChildren<SearchTarget>();
+        searchTarget?.Init(targetMask);
+
         seeker = GetComponent<Seeker>();
         aiPath = GetComponent<AIPath>();
-
-        InvokeRepeating("FindTarget", 0f, 0.2f);
 
         RegisterState();
         stat.Init(this);
@@ -82,8 +81,7 @@ public class Enemy : BaseCreature
     public override void RegisterState()
     {
         controller = new EnemyController(this);
-
-        Logger.Log("에너미 생성");
+        //Logger.Log("에너미 생성");
         controller.SetInitState(new EnemyIdleState());
         controller.RegisterState(new EnemyMoveState());
         controller.RegisterState(new EnemyDamagedState());
@@ -99,11 +97,6 @@ public class Enemy : BaseCreature
     public EnemyStat GetStat()
     {
         return stat as EnemyStat;
-    }
-
-    public void FindTarget()
-    {
-        target = searchTarget.GetCurrentTarget();
     }
 
     private void OnDrawGizmos()
@@ -125,12 +118,21 @@ public class Enemy : BaseCreature
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-
-
-    public void DestroySelf(Enemy enemy)
+    public void SetBattle(Vector2 lookDir)
     {
-        enemy.gameObject.SetActive(false);
-        EnemyManager.Instance.ExitBattleScene();
+        GetStat().ResetStat();
+        controller.ChangeLookRotate(lookDir);
+    }
+
+    public void EndBattle()
+    {
+        if (gameObject.activeSelf) { Release(); return; }
+    }
+
+    public void Release()
+    {
+        connectPool.Release(this);
+        controller.ResetState();
     }
 }
 

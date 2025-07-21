@@ -20,7 +20,7 @@ public class EnemyAttackState : BaseState<Enemy>
     {
         base.OnEnter();
 
-        Logger.Log("Attack Enter 진입");
+        //Logger.Log("Attack Enter 진입");
         owner.canAttack = true;
         controller.saveOriginState = stateType;
 
@@ -63,7 +63,7 @@ public class EnemyAttackState : BaseState<Enemy>
         // 회전 각도
         Quaternion rotation = Quaternion.Euler(0, 0, controller.CheckLookDirection().Item2);
 
-        Logger.Log(controller.CheckLookDirection().Item2);
+        //Logger.Log(controller.CheckLookDirection().Item2);
         // 적용
         owner.AttackAreaTransform.position = origin;
         owner.AttackAreaTransform.rotation = rotation;

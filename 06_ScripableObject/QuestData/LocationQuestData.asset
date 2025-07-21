@@ -16,13 +16,13 @@ MonoBehaviour:
   questId: 3
   title: "\uC7A5\uC18C \uB3C4\uCC29\uD558\uAE30"
   description: "\uC9C0\uC815\uB41C \uC7A5\uC18C \uB3C4\uB2EC\uD558\uAE30"
-  targetId: 
-  amount: 0
+  targetId: 5.7.0
+  amount: 3
   clearNpcID: YoungJin
   dialogueList:
-  - "\uC9C0\uC815\uB41C \uC7A5\uC18C\uC5D0 \uAC14\uB2E4\uC640"
+  - "\uC606\uC5D0 \uC788\uB294 \uC131 \uC55E\uC5D0 \uAC14\uB2E4\uC640"
   clearDialogue:
-  - "\uC544\uC8FC \uB098\uC774\uC2A4"
+  - "\uB9D0\uC744 \uCC38 \uC798\uB4E3\uB124"
   inprogressDialogue: 
   refusalDialogue: "\uC544\uC27D\uAC8C \uB410\uAD70"
   rewardItemId: 

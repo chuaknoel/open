@@ -14,13 +14,18 @@ public class EquipmentWindow : MonoBehaviour
     [SerializeField] private Button[] increaseButtons = new Button[3]; // 힘,민첩,지능 증가량 버튼
     private bool needToCheckLevelUp = false;
 
+
    private void OnEnable()
     {
         UpdateEquipSlot();
-        playerStat = PlayManager.instance.player.GetStat();
        //CheckLevelUp();
     }
+    public void Init()
+    {
+        playerStat = PlayManager.Instance.player.GetStat();
 
+        Logger.Log("장비창 초기화");
+    }
     public void UpdateEquipSlot()
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
@@ -47,7 +52,7 @@ public class EquipmentWindow : MonoBehaviour
         equipInfoTexts[1].text = playerStat.GetTotalDefence().ToString();
         equipInfoTexts[2].text = playerStat.GetTotalMoveSpeed().ToString();
         equipInfoTexts[3].text = playerStat.GetMaxHealth().ToString();
-        equipInfoTexts[4].text = playerStat.GetManMana().ToString();
+        equipInfoTexts[4].text = playerStat.GetMaxMana().ToString();
         equipInfoTexts[5].text = playerStat.GetTotalEvasion().ToString();
     }
     // 레벨업시 힘,민첩,마력 증가 버튼 활성화

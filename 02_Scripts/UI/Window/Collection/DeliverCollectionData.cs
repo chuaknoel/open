@@ -9,7 +9,7 @@ public class DeliverCollectionData : MonoBehaviour
 
     [SerializeField] private Button[] ItemInfoButton = new Button[5];
 
-    private void OnEnable()
+    public void Init()
     {
         showCollectionInfo = GetComponent<ShowCollectionInfo>();
         ShowData();

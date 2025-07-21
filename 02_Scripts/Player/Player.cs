@@ -65,7 +65,7 @@ public class Player : BaseCreature, IParty
         stat = GetComponent<PlayerStat>();
         stat.Init(this);
 
-        equipmentManager ??= PlayManager.instance.equipmentManager;
+        equipmentManager ??= UIManager.Instance.equipmentManager;
 
         equipmentManager.equipEvent += GetStat().EquipItem;
         equipmentManager.unequipEvent += GetStat().UnequipItem;
@@ -85,18 +85,20 @@ public class Player : BaseCreature, IParty
         skillTree ??= GetComponent<SkillTree>();
         skillTree.Init();
         SetSkillData();
+
+        PartyManager.Instance.Init(this);
     }
 
     public void SetSkillData()
     {
         poolingManager = PoolingManager.Instance;
 
-        Logger.Log(skillTree.skillTree.Count);
+        //Logger.Log(skillTree.skillTree.Count);
 
         foreach (var skillData in skillTree.skillTree)
         {
             int key = skillData.Key;
-            Logger.Log(key);
+            //Logger.Log(key);
             //발사체 프리팹 정보를 이용하여 오브젝트 풀에 등록
             poolingManager.RegisterPoolObject(skillData.Value.skillData.skillName,
 
@@ -122,7 +124,7 @@ public class Player : BaseCreature, IParty
     public Skill CreateSkill(int skillCode)
     {
         //Logger.Log(skillCode);
-        Skill skillPool = Instantiate(skillTree.skillTree[skillCode], SkillManager.instance.playerSkill);
+        Skill skillPool = Instantiate(skillTree.skillTree[skillCode], SkillManager.Instance.playerSkill);
         skillPool.Init(skillTree.skillTree[skillCode].skillData, this, skillPoolDictionary[skillCode]);
         return skillPool;
     }
@@ -145,25 +147,7 @@ public class Player : BaseCreature, IParty
         controller.ChangeState(state);
     }
 
-    private void OnDestroy()
-    {
-        controller.OnDestroy();
-        controller = null;   //new 생성자로 만든 객체는 오브젝트가 파괴되어도 살아있을 수 있음. 해제 해주도록 하자.      
-        equipmentManager.equipEvent -= GetStat().EquipItem;
-        equipmentManager.unequipEvent -= GetStat().UnequipItem;
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying) return;
-
-        Vector3 origin = rb.position + Controller.LookDir().Item1 * weaponArea.x/2f;
-        Quaternion rotation = Quaternion.Euler(0, 0, Controller.LookDir().Item2); // 회전 각도
-
-        Gizmos.color = Color.red;
-        Gizmos.matrix = Matrix4x4.TRS(origin, rotation, weaponArea);
-        Gizmos.DrawWireCube(Vector3.zero, Vector2.one);
-    }
+    
 
     public PlayerStat GetStat()
     {
@@ -173,6 +157,33 @@ public class Player : BaseCreature, IParty
     public void ConnectParty(PartySystem partySystem)
     {
         myParty = partySystem;
+    }
+
+    public void UnLoad()
+    {
+        playerInputs = null;
+
+        interaction = null;
+
+        controller.OnDestroy();
+        controller = null;   //new 생성자로 만든 객체는 오브젝트가 파괴되어도 살아있을 수 있음. 해제 해주도록 하자.      
+      
+        equipmentManager.equipEvent -= GetStat().EquipItem;
+        equipmentManager.unequipEvent -= GetStat().UnequipItem;
+
+        equipmentManager = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+
+        Vector3 origin = rb.position + Controller.LookDir().Item1 * weaponArea.x / 2f;
+        Quaternion rotation = Quaternion.Euler(0, 0, Controller.LookDir().Item2); // 회전 각도
+
+        Gizmos.color = Color.red;
+        Gizmos.matrix = Matrix4x4.TRS(origin, rotation, weaponArea);
+        Gizmos.DrawWireCube(Vector3.zero, Vector2.one);
     }
 }
 

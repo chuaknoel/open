@@ -7,15 +7,14 @@ public class CompanionDamagedAnimeState : StateMachineBehaviour
 {
     private Companion companion;
 
-    public void Init(Companion companion)
-    {
-        this.companion = companion;
-    }
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (companion == null)
+        {
+            if (animator.TryGetComponent<Companion>(out companion)) { }
+        }
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

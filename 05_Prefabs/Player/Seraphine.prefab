@@ -138,12 +138,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6e02bc64620bc41b88a2f3e5c99f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overrideController: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
+  ID: COMPANION_002
   partyRole: 1
   searchTarget: {fileID: 0}
   seeker: {fileID: 6819333106154781973}
+  aiPath: {fileID: 0}
   poolingManager: {fileID: 0}
   projectilePrefab: {fileID: 6091485530438804000, guid: 89f30a8d1195f1c469068b435f53c25a, type: 3}
   projectilePivot: {fileID: 1039347414898249040}
@@ -162,6 +165,8 @@ MonoBehaviour:
   attackRange: 4
   baseHealth: 50
   currentHealth: 50
+  baseMana: 0
+  currentMana: 0
   isDeath: 0
   isInvincible: 0
 --- !u!95 &2513327604900960979
@@ -291,7 +296,7 @@ MonoBehaviour:
   radius: 0.65
   height: 2
   canMove: 1
-  maxSpeed: 4
+  maxSpeed: 8
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2

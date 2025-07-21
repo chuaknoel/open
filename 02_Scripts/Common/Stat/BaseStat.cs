@@ -28,7 +28,7 @@ public class BaseStat : MonoBehaviour
     [SerializeField] protected float baseMana;
     [SerializeField] protected float currentMana;
     protected float addMana;
-    protected float maxMana => GetManMana();
+    protected float maxMana => GetMaxMana();
 
     [Header("Move Stat")]
     protected float baseMoveSpeed;
@@ -75,7 +75,7 @@ public class BaseStat : MonoBehaviour
         return currentHealth;
     }
 
-    public virtual float GetManMana()
+    public virtual float GetMaxMana()
     {
         return baseMana + addMana;
     }

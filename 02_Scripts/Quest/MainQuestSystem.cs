@@ -13,14 +13,13 @@ public class MainQuestSystem : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
     }
     /// <summary>
     /// 주어진 NPC ID와 일치하는 시작 조건의 메인 퀘스트가 존재하고, 해당 퀘스트가 시작 가능한 상태일 경우 시작
@@ -83,5 +82,26 @@ public class MainQuestSystem : MonoBehaviour
     public List<MainQuestData> GetMainQuestList()
     {
         return mainQuestList;
+    }
+
+    public void UnLoad()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        UnLoad();
     }
 }

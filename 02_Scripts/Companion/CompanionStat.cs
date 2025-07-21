@@ -11,6 +11,19 @@ public class CompanionStat : BaseStat, IDamageable
     {
         base.Init(companion);
         this.companion = companion as Companion;
+        CompanionData data = this.companion.GetData();
+        baseAttack = data.AttackPower;
+        baseDefence = data.DefensePower;
+
+        baseEvasionRate = data.EvasionRate;
+
+        baseHealth = data.Hp;
+        currentHealth = baseHealth;
+
+        baseMana = data.Mp;
+        currentMana = baseMana;
+
+        baseMoveSpeed = data.MoveSpeed;
     }
 
     public void TakeDamage(float damage)

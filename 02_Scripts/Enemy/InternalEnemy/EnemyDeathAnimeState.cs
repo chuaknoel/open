@@ -11,14 +11,22 @@ public class EnemyDeathAnimeState : StateMachineBehaviour
     public void Init(Enemy enemy)
     {
         this.enemy = enemy;
-        enemyDeathState = enemy.Controller.registedState[Enums.StateEnum.Death] as EnemyDeathState;
+        enemyDeathState = enemy.Controller.registedState[StateEnum.Death] as EnemyDeathState;
+    }
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(animator.TryGetComponent<Enemy>(out enemy))
+        {
+            enemyDeathState = enemy.Controller.registedState[StateEnum.Death] as EnemyDeathState;
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (stateInfo.normalizedTime >= exitDeathStateTime)
         {
-            enemy.DestroySelf(enemy);
+            enemy.Release();
         }
     }
 }

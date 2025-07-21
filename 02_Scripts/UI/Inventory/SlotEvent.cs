@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class SlotEvent : MonoBehaviour, IDropHandler
 {
-    [SerializeField] protected Canvas canvas;
     protected UIManager uiManager;
     protected Inventory inventory;
     protected UIInventory uiInventory;
@@ -26,11 +25,9 @@ public class SlotEvent : MonoBehaviour, IDropHandler
         slot = GetComponent<Slot>();
         uiSlot = GetComponent<UISlot>();
     }
-    public virtual void Init(Canvas _canvas,UIManager _uiManager, GameObject _inventory, Image _dragitemImage)
+    public virtual void Init(UIManager _uiManager, GameObject _inventory, Image _dragitemImage)
     {
-        this.canvas = _canvas;
         uiManager = _uiManager;
-
         dragitemImage = _dragitemImage;
         inventory = _inventory.GetComponent<Inventory>();
         toolTip = inventory.toolTip;
@@ -153,7 +150,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
         Vector2 mouseScreenPos = slot.GetComponent<RectTransform>().position;
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform,
+            uiManager.rect,
             mouseScreenPos,
             null,
             out Vector2 localPos
@@ -161,7 +158,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
         toolTip.rect.anchoredPosition = new Vector2(localPos.x + 198f, localPos.y - 53f);
     }
 
-    protected void Swap<T>(T slot01, T slot02) where T : Component, ISkillSlot
+    protected virtual void Swap<T>(T slot01, T slot02) where T : Component, ISkillSlot
     {
         // 드래그한 아이템 정보 임시 저장
         SkillData temp = slot01.GetSkill();

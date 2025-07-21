@@ -22,7 +22,7 @@ public class EnemyDamagedState : BaseState<Enemy>
     {
         base.OnEnter();
 
-        Logger.Log("Damaged Enter 진입");
+        //Logger.Log("Damaged Enter 진입");
 
         owner.ChangeAnimation(EnemyDamagedStateHash, true);
     }

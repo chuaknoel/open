@@ -15,13 +15,16 @@ public class CompanionIdleState : CompanionState
     {
         base.OnEnter();
         //Logger.Log(stateType);
+     
         ownerPos = owner.GetPosition();
         GetMovePoint();
+        owner.aiPath.canMove = false;
         owner.ChangeAnimation(IdleStateHash, true);
     }
 
     public override void OnUpdate(float deltaTime)
     {
+        if (owner.MyParty == null) return;
         base.OnUpdate(deltaTime);
         if (leaderDis > searchRange)                         //리더와 너무 멀어졌다면 리더에게 돌아감.
         {
@@ -44,7 +47,8 @@ public class CompanionIdleState : CompanionState
             }
         }
 
-        lookDir = MyLeader ? MyLeader.Controller.LookDir().Item1 : Vector2.zero;
+        //lookDir = MyLeader ? MyLeader.Controller.LookDir().Item1 : Vector2.zero;
+        lookDir = owner.GetLeader().Controller.LookDir().Item1;
     }
 
     public override void OnFixedUpdate()
@@ -56,24 +60,25 @@ public class CompanionIdleState : CompanionState
 
     protected override Vector2 GetMovePoint()
     {
-        if (MyLeader == null)
+        if (owner.GetLeader() == null)
         {
             movePoint = ownerPos;
             return movePoint;
         }
-        Vector2 leaderPos = ((Vector2)MyLeader.transform.position); //플레이어의 위치 구하기
-        movePoint = leaderPos + GetRolePosition();                  //자신이 위치할 자리 구하기
+        Vector2 leaderPos = ((Vector2)owner.GetLeader().transform.position); //플레이어의 위치 구하기
+        movePoint = leaderPos + GetRolePosition();                           //자신이 위치할 자리 구하기
         return movePoint;
     }
 
     public override void OnExit()
     {
+        owner.aiPath.canMove = true;
         owner.ChangeAnimation(IdleStateHash, false);
     }
 
     private void InRangeTarget()
     {
-        Vector2 leaderPos = ((Vector2)MyLeader.transform.position);               //리더 위치 구하기
+        Vector2 leaderPos = owner.GetLeader() ? ((Vector2)owner.GetLeader().transform.position) : Vector2.zero;  //리더 위치 구하기
 
         float moveDis = (leaderPos - searchTarget.CurrentTargetPos()).magnitude;  //추적할 타겟의 위치
         //Logger.Log(moveDis);
@@ -85,7 +90,7 @@ public class CompanionIdleState : CompanionState
             }
             else
             {
-                lookDir = MyLeader ? MyLeader.Controller.LookDir().Item1 : Vector2.zero;
+                lookDir = owner.GetLeader() ? owner.GetLeader().Controller.LookDir().Item1 : Vector2.zero;
             }
         }
         else                                                                      //타겟을 추적했을때 범위 안에 플레이어가 있다면 타격 추적 실행

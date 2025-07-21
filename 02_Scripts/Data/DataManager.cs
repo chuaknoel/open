@@ -18,18 +18,24 @@ public class DataManager : MonoBehaviour
     public Dictionary<string, QuestData> QuestDB { get; private set; }
     public Dictionary<string, NPCData> NPCDB { get; private set; }
 
+    private bool isLoad;
+
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadAllData();
-        }
-        else
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+    }
+
+    public void Init()
+    {
+        if (isLoad) return;
+        isLoad = true;
+        LoadAllData();
     }
 
     /// <summary>
@@ -52,6 +58,7 @@ public class DataManager : MonoBehaviour
     /// </summary>
     private string LoadCsvFile(string fileName)
     {
+        
         TextAsset textAsset = Resources.Load<TextAsset>($"CSV/{fileName}");
         if (textAsset == null) return "";
         return textAsset.text;

@@ -6,15 +6,17 @@ using UnityEngine.UI;
 
 public class SkillTap : MonoBehaviour
 {
-    private SkillTempSlotManager skillTempSlotManager;
-    [SerializeField] BookAnimation bookAnimation;
     [SerializeField] private List<GameObject> pages = new List<GameObject>();
+    [SerializeField] private SkillSlot[] skillSlots;
+
+    [SerializeField] BookAnimation bookAnimation;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button prevButton;
 
-    private int currentPage = 0;
+    private SkillTempSlotManager skillTempSlotManager;
+    [SerializeField] private int currentPage = 0;
 
-    private void OnEnable()
+    public void Init()
     {
         skillTempSlotManager = GetComponent<SkillTempSlotManager>();
 
@@ -23,6 +25,8 @@ public class SkillTap : MonoBehaviour
 
         nextButton.onClick.AddListener(NextPage);
         prevButton.onClick.AddListener(PrevPage);
+
+        SlotInit();
     }
     private void NextPage()
     {     
@@ -39,7 +43,6 @@ public class SkillTap : MonoBehaviour
             }
 
             StartCoroutine(ShowPage(currentPage));
-
         }
     }
     private void PrevPage()
@@ -58,12 +61,11 @@ public class SkillTap : MonoBehaviour
             StartCoroutine(ShowPage(currentPage));
         }
     }
-
     private IEnumerator ShowPage(int index)
     {
         ClearPage();
         yield return new WaitForSeconds(0.5f);
-        pages[index].SetActive(true);
+        pages[index].SetActive(true);      
     }
     private void ClearPage()
     {
@@ -76,5 +78,15 @@ public class SkillTap : MonoBehaviour
     {
         nextButton.onClick.RemoveAllListeners();
         prevButton.onClick.RemoveAllListeners();
+    }
+    private void SlotInit()
+    {
+        // 나중에 수정
+        skillSlots = GetComponentsInChildren<SkillSlot>(includeInactive:true);
+
+        for (int i =0; skillSlots.Length > i; i++)
+        {
+           skillSlots[i].Init(skillTempSlotManager);         
+        }
     }
 }

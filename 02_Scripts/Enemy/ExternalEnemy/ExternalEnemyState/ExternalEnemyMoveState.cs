@@ -31,7 +31,7 @@ public class ExternalEnemyMoveState : BaseState<ExternalEnemy>
     {
         base.OnEnter();
 
-        Logger.Log("ExternalMoveState 진입");
+        //Logger.Log("ExternalMoveState 진입");
         owner.ChangeAnimation(EnemyMoveStateHash, true);
         isSuccessSetTargetPosition = false;
 

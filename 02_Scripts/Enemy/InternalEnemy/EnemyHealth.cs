@@ -10,12 +10,20 @@ public class EnemyHealth : MonoBehaviour
     private Slider healthSlider;
     [SerializeField] private Image fillImage;
 
-    private void Start()
+   
+    public void Init()
     {
         currentHealth = maxHealth;
 
         healthSlider = GetComponent<Slider>();
         UpdateHealthBar();
+    }
+
+    public void ResetHealthBar()
+    {
+        healthSlider.value = 1;
+        Color newColor = Color.Lerp(Color.red, Color.green, 1);
+        fillImage.color = newColor;
     }
 
     public void DamagedEffect(float currentHP, float maxHP)

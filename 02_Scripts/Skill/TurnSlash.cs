@@ -54,6 +54,7 @@ public class TurnSlash : Skill
             if (!inRangeTargets.Contains(target))
             {
                 inRangeTargets.Add(target);
+                Logger.Log($"{skillData.amount} {owner.GetStat<BaseStat>().GetTotalAttack()}");
                 target.TakeDamage(skillData.amount + owner.GetStat<BaseStat>().GetTotalAttack());
             }
         }

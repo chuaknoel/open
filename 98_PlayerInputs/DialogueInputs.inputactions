@@ -1,0 +1,34 @@
+{
+    "name": "Dialogue",
+    "maps": [
+        {
+            "name": "Dialogue",
+            "id": "35610f92-47d1-4603-b213-1d6597927302",
+            "actions": [
+                {
+                    "name": "Next Page",
+                    "type": "Button",
+                    "id": "c684f328-1755-4a6a-9d0e-6797c67d52df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e500cbd9-98e1-4f0e-a4ee-65ddddaa4522",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -81,6 +81,14 @@ public class CompanionData : IGetCSVData
 
     public string SkillNameKey;
     public string SkillDescKey;
+
+    public float AttackPower;
+    public float DefensePower;
+    public float MoveSpeed;
+    public float Hp;
+    public float Mp;
+    public float EvasionRate; // 회피율
+    public string CompanionPrefabAddress;
 }
 
 //[Serializable]
@@ -107,6 +115,8 @@ public class EnemyData : IGetCSVData
     public int ATK;
     public int DEF;
     public string DropItemID;
+
+    public string enemyPrefabAddress;
 }
 
 
@@ -278,7 +288,7 @@ public static class CSVConverter
                 var data = new CompanionData
                 {
                     // Companions.csv의 첫 번째 열을 ID로 가정합니다.
-                    ID = values[0],
+                    ID = values[0],                 
                     NameKey = values[1],
                     // IsJoined는 true/false 문자열을 bool 타입으로 변환합니다.
                     IsJoined = bool.Parse(values[2]),
@@ -287,11 +297,19 @@ public static class CSVConverter
                     // SpecDescKey 열의 값을 DescKey 프로퍼티에 할당합니다.
                     DescKey = values[5],
                     SkillNameKey = values[6],
-                    SkillDescKey = values[7]
+                    SkillDescKey = values[7],
+
+                    AttackPower = float.Parse(values[8]),
+                    DefensePower = float.Parse(values[9]),
+                    MoveSpeed = float.Parse(values[10]),
+                    Hp = float.Parse(values[11]),
+                    Mp = float.Parse(values[12]),
+                    EvasionRate = float.Parse(values[13]),
+                    CompanionPrefabAddress = values[14]
                 };
                 db[data.ID] = data;
             }
-            catch { /* 데이터 형식 오류 시 해당 줄은 건너뜁니다. */ }
+            catch { Logger.Log("데이터 형식 오류 시 해당 줄은 건너뜁니다"); /* 데이터 형식 오류 시 해당 줄은 건너뜁니다. */ }
         }
         return db;
     }

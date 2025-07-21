@@ -5,20 +5,20 @@ using TMPro;
 
 public class InteractionChoiceUI : MonoBehaviour
 {
-    public static InteractionChoiceUI Instance { get; private set; }
+    //public static InteractionChoiceUI Instance { get; private set; }
 
-    [SerializeField] private GameObject choicePanel;
-    [SerializeField] private GameObject choiceButtonPrefab;
-    [SerializeField] private Transform buttonsParent;
+    //[SerializeField] private GameObject choicePanel;
+    //[SerializeField] private GameObject choiceButtonPrefab;
+    //[SerializeField] private Transform buttonsParent;
 
-    private List<GameObject> currentButtons = new List<GameObject>();
+    //private List<GameObject> currentButtons = new List<GameObject>();
 
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-        choicePanel?.SetActive(false);
-    }
+    //private void Awake()
+    //{
+    //    if (Instance == null) Instance = this;
+    //    else Destroy(gameObject);
+    //    choicePanel?.SetActive(false);
+    //}
 
     //public void ShowChoices(NPC npc)
     //{
@@ -59,16 +59,16 @@ public class InteractionChoiceUI : MonoBehaviour
     //    choicePanel.SetActive(true);
     //}
 
-    private void CreateButton(string text, UnityEngine.Events.UnityAction action)
-    {
-        GameObject buttonObj = Instantiate(choiceButtonPrefab, buttonsParent);
-        buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        buttonObj.GetComponent<Button>().onClick.AddListener(action);
-        currentButtons.Add(buttonObj);
-    }
+    //private void CreateButton(string text, UnityEngine.Events.UnityAction action)
+    //{
+    //    GameObject buttonObj = Instantiate(choiceButtonPrefab, buttonsParent);
+    //    buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
+    //    buttonObj.GetComponent<Button>().onClick.AddListener(action);
+    //    currentButtons.Add(buttonObj);
+    //}
 
-    public void CloseUI()
-    {
-        choicePanel.SetActive(false);
-    }
+    //public void CloseUI()
+    //{
+    //    choicePanel.SetActive(false);
+    //}
 }

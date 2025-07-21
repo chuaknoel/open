@@ -12,7 +12,7 @@ public class DeliverQuestsData : MonoBehaviour
 
     [SerializeField] private Button[] questInfoButton = new Button[5];
 
-    private void OnEnable()
+    public void Init()
     {
         showQuestInfo = GetComponent<ShowQuestInfo>();  
         ShowData();

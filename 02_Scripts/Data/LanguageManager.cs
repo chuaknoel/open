@@ -38,31 +38,31 @@ public class LanguageManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            // 기기의 시스템 언어를 확인하여 초기 언어를 설정합니다.
-            switch (Application.systemLanguage)
-            {
-                case SystemLanguage.Korean:
-                    CurrentLanguage = "ko";
-                    break;
-                case SystemLanguage.English:
-                    CurrentLanguage = "en";
-                    break;
-                default:
-                    CurrentLanguage = "en"; // 지원하지 않는 언어일 경우 기본값
-                    break;
-            }
-
-            LoadLanguageData();
-        }
-        else
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        // 기기의 시스템 언어를 확인하여 초기 언어를 설정합니다.
+        switch (Application.systemLanguage)
+        {
+            case SystemLanguage.Korean:
+                CurrentLanguage = "ko";
+                break;
+            case SystemLanguage.English:
+                CurrentLanguage = "en";
+                break;
+            default:
+                CurrentLanguage = "en"; // 지원하지 않는 언어일 경우 기본값
+                break;
+        }
+    }
+
+    public void Init()
+    {
+        LoadLanguageData();
     }
 
     /// <summary>
@@ -108,5 +108,21 @@ public class LanguageManager : MonoBehaviour
         CurrentLanguage = langCode;
         IsReady = false; // 새로운 언어 로딩 시작
         LoadLanguageData(); // 이 함수 마지막에서 OnLanguageChanged가 다시 호출됩니다.
+    }
+
+    public void UnLoad()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
     }
 }

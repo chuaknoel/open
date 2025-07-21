@@ -10,15 +10,13 @@ public class SceneLoader : MonoBehaviour
   
     public void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 넘어가도 유지
-        }
-        else
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
     }
 
     /// <summary>

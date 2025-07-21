@@ -41,10 +41,36 @@ public class UIInventory : BaseWindow
     public GameObject destroyItemWindow;
     [SerializeField] private Tooltip toolTip;
 
+    public void Init()
+    {
+        if (!isInitialized)
+        {
+            itemFactory = GetComponent<ItemFactory>();
+            inventory = GetComponent<Inventory>();
+
+            //레벨업 시 슬롯 동적으로 생성하는 코드는 추후에 레벨업 기능 완성되면 이벤트로 처리하기
+            inventory.CreateSlots();  // 슬롯 동적 생성
+            itemFactory.AddItemData();
+            inventory.SetInventory(); // 인벤토리 초기 설정
+
+            searchInput.onValueChanged.AddListener(OnSearch);
+            sortDropdown.onValueChanged.AddListener(SortItem);
+
+            OnCategorySelected(); // 카테고리별 아이템 분류 버튼 연결
+            isInitialized = true;
+
+            InputManager.Instance.inputActions.Player.Inventory.started += OpenInventory;
+        }
+    }
+
+    public void OpenInventory(InputAction.CallbackContext context)
+    {
+        OpenParentWindow();
+    }
+
     public override void OpenParentWindow()
     {
         base.OpenParentWindow();
-        Init();
         transform.SetAsLastSibling();
     }
     public override void CloseParentWindow()
@@ -70,24 +96,7 @@ public class UIInventory : BaseWindow
     {
         slot.UpdateSlot();
     }
-    private void Init()
-    {
-        if (!isInitialized)
-        {
-            itemFactory = GetComponent<ItemFactory>();
-            inventory = GetComponent<Inventory>();
-
-            inventory.CreateSlots();  // 슬롯 동적 생성
-            itemFactory.AddItemData();
-            inventory.SetInventory(); // 인벤토리 초기 설정
-
-            searchInput.onValueChanged.AddListener(OnSearch);
-            sortDropdown.onValueChanged.AddListener(SortItem);
-
-            OnCategorySelected(); // 카테고리별 아이템 분류 버튼 연결
-            isInitialized = true;
-        }
-    }
+   
     // 검색
     public void OnSearch(string keyword)
     {
@@ -111,7 +120,6 @@ public class UIInventory : BaseWindow
                 }
                 else
                 {
-                    Debug.Log("필터");
                     List<Item> searchItems = itemFilter.FilterByCategory(inventory.items, categoryTypes[index]);
                     inventory.ClearInventory();
                     AddItemInInventory(searchItems, false);

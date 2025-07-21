@@ -14,13 +14,12 @@ public class CompanionInfo
     private string skillDescKey;
 
     [Header("AbilityData")]
-     private int attackPower;
-     private int defensePower;
-     private int moveSpeed;
-     private int hp;
-     private int mp;
-     private float evasionRate; // 회피율
-
+    private int attackPower;
+    private int defensePower;
+    private int moveSpeed;
+    private int hp;
+    private int mp;
+    private float evasionRate; // 회피율
 
     public string CompanionName => companionName;
     public bool Joining => joining;

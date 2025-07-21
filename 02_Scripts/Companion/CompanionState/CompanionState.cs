@@ -20,21 +20,6 @@ public class CompanionState : BaseState<Companion>
     }
     private PartySystem myParty;
 
-    protected Player MyLeader 
-    {
-        get 
-        { 
-            if(myLeader == null && myParty !=null)
-            {
-                myLeader = myParty.leader as Player;
-            }
-
-            return myLeader; 
-        }      
-    }
-
-    private Player myLeader;
-
     protected Vector2 moveDir;        //목표지점 방향
     protected Vector2 movePoint;      //목표 지점
     protected Vector2 positionPoint;  //역할에 따라 플레이어를 기준으로 위치해야할 위치값
@@ -58,11 +43,7 @@ public class CompanionState : BaseState<Companion>
 
         searchTarget = owner.searchTarget;
         myParty = owner.MyParty;
-        if (myParty != null)
-        {
-            myLeader = myParty.leader as Player;
-        }
-
+       
         searchRange = searchTarget.searchRange;
 
         stopDis = Mathf.Pow(owner.GetHitBox().bounds.extents.x + 0.1f, 2);
@@ -74,9 +55,9 @@ public class CompanionState : BaseState<Companion>
 
         if (MyParty != null)
         {
-            Vector3 dir = (MyLeader.transform.position - owner.transform.position).normalized;
-            float leaderBounds = (float)MyLeader.GetHitBox()?.bounds.extents.x;
-            Vector3 leaderPos = MyLeader.transform.position - (dir * leaderBounds);
+            Vector3 dir = (owner.GetLeader().transform.position - owner.transform.position).normalized;
+            float leaderBounds = (float)owner.GetLeader().GetHitBox()?.bounds.extents.x;
+            Vector3 leaderPos = owner.GetLeader().transform.position - (dir * leaderBounds);
             leaderDis = (owner.transform.position - leaderPos).magnitude; //플레이어와 자신의 거리를 계산
         }
 
@@ -90,7 +71,7 @@ public class CompanionState : BaseState<Companion>
 
     protected Vector2 GetRolePosition() //역할에 따라 플레이어를 기준으로 자리해야 할 위치 구하기
     {
-        Vector2 leaderDir = (MyLeader.Controller.LookDir().Item1);
+        Vector2 leaderDir = (owner.GetLeader().Controller.LookDir().Item1);
 
         switch (owner.PartyRole)
         {
@@ -134,6 +115,6 @@ public class CompanionState : BaseState<Companion>
 
     protected float UpdateMoveSpeed()
     {
-        return 8f;
+        return owner.GetStat().GetTotalMoveSpeed();
     }
 }

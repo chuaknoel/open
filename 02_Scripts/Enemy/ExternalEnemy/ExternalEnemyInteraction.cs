@@ -15,9 +15,9 @@ public class ExternalEnemyInteraction : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & externalEnemy.targetMask) != 0)
         {
-            enemyManager.currentPlayerPosition = collision.transform.position;
+            //enemyManager.currentPlayerPosition = collision.transform.position;
 
-            enemyManager.StartBattleScene();
+            //enemyManager.StartBattleScene();
         }
     }
 }

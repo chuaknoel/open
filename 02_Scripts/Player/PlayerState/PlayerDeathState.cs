@@ -19,6 +19,7 @@ public class PlayerDeathState : BaseState<Player>
         owner.ChangeAnimation(DeathTriggerHash);
         owner.ChangeAnimation(DeathStateHash, true);
         owner.playerActions.Disable();
+        BattleManager.Instance.PlayerDeath();
         //loader.MoveScene("GameOverScene");
     }
 }

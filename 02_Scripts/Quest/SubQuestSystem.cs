@@ -1,31 +1,64 @@
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
+using UnityEngine.Pool;
+using static Constants;
 
 public class SubQuestSystem : MonoBehaviour
 {
+    [SerializeField] private QuestConditionChecker conditionChecker;
     [Header("SubQuest List")]
-    [SerializeField] private List<Quest> activeSubQuests = new();
-    [SerializeField] private List<Quest> completedSubQuests = new();
-    [Header("Prefabs")]
-    [SerializeField] private GameObject questLocationZonePrefab;
+    private List<Quest> activeSubQuests = new();
+    private List<Quest> completedSubQuests = new();
+    [Header("Addressable")]
+    private Dictionary<string, GameObject> gameObjects = new();
+    private List<string> addressList = new List<string>()
+    {
+        GameObjects.QuestLocationZonePrefab,
+    };
 
     private Dictionary<int, Quest> subQuestStates = new();
 
-    [SerializeField] private QuestConditionChecker conditionChecker;
+    private IObjectPool<LocationTrigger> locationTriggerPool;
 
     public static SubQuestSystem Instance { get; private set; }
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+    }
+
+    private async void Start()
+    {
+        foreach (var address in addressList)
+        {
+            var obj = await AddressableManager.Instance.LoadAsset<GameObject>(address);
+            if (obj != null && !gameObjects.ContainsKey(address))
+            {
+                gameObjects[address] = obj;
+                var trigger = obj.GetComponent<LocationTrigger>();
+                locationTriggerPool = PoolingManager.Instance.CreatePool<LocationTrigger>(GameObjects.QuestLocationZonePrefab, CreateLocationTrigger, 3);
+                for (int i = 0; i < 3; i++)
+                {
+                    var locationTrigger = CreateLocationTrigger();
+                    locationTriggerPool.Release(locationTrigger); // 미리 만들어 놓은 오브젝트이기 때문에 회수하여 저장
+                }
+            }
+        }
+    }
+
+    public LocationTrigger CreateLocationTrigger()
+    {
+        GameObject zone = Instantiate(gameObjects[GameObjects.QuestLocationZonePrefab]);
+        var trigger = zone.GetComponent<LocationTrigger>();
+        trigger.Init(locationTriggerPool);
+        return trigger;
     }
 
     public void AcceptSubQuest(Quest quest)
@@ -48,11 +81,19 @@ public class SubQuestSystem : MonoBehaviour
 
         if (quest.questData.QuestType == QuestType.Location)
         {
-            GameObject zone = Instantiate(questLocationZonePrefab);
-            var trigger = zone.GetComponent<LocationTrigger>();
-            if (trigger != null)
+            var trigger = locationTriggerPool.Get();
+            trigger.questId = quest.questData.QuestId;
+            var parts = quest.questData.TargetId.Split('.');
+            if (parts.Length == 3&& float.TryParse(parts[0], out var px) && float.TryParse(parts[1], out var py) && float.TryParse(parts[2], out var pz))
             {
-                trigger.questId = quest.questData.QuestId;
+                trigger.transform.position = new Vector3(px, py, pz);
+            }
+
+            var collider = trigger.GetComponent<BoxCollider2D>();
+            if (collider != null)
+            {
+                float size = Mathf.Max(1f, quest.questData.Amount);
+                collider.size = new Vector2(size, size);
             }
         }
     }
@@ -68,6 +109,7 @@ public class SubQuestSystem : MonoBehaviour
                 quest.questData.ClearNpcID == npcId)
             {
                 quest.CompleteQuest();
+                conditionChecker.Unregister(quest.questData.QuestId);
                 activeSubQuests.Remove(quest);
                 completedSubQuests.Add(quest);
                 Logger.Log($"[SubQuest] 완료: {quest.questData.Title}");
@@ -84,7 +126,9 @@ public class SubQuestSystem : MonoBehaviour
         {
             quest.UpdateProgress(amount);
             if (quest.progressState == QuestProgressState.CanComplete)
+            {
                 Logger.Log($"[SubQuest] 완료 조건 달성: {quest.questData.Title}");
+            }
         }
         else
         {
@@ -107,4 +151,25 @@ public class SubQuestSystem : MonoBehaviour
     /// 지금까지 완료된 서브 퀘스트 상태들의 리스트 (읽기 전용)
     /// </summary>
     public IReadOnlyList<Quest> CompletedSubQuests => completedSubQuests;
+
+    public void UnLoad()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        UnLoad();
+    }
 }

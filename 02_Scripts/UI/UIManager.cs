@@ -9,30 +9,60 @@ using UnityEngine;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private UIInventory uiInventory;
-    [SerializeField] private QuickSlotManager quickSlotManager;
-    [SerializeField] private SkillQuickSlotManager skillQuickSlotManager;
-    [SerializeField] private ShowBook showBook;
+    public ShowStatus showStatus { get; private set; }
+    public Inventory inventory { get; private set; }
+    public UIInventory uiInventory { get; private set; }
+    public EquipmentManager equipmentManager { get; private set; }
+    public QuickSlotManager quickSlotManager { get; private set; }
+    public SkillQuickSlotManager skillQuickSlotManager { get; private set; }
+    public SkillTempSlotManager skillTempSlotManager { get; private set; }
+    public MenuWindow menuWindow { get; private set; }
+    public ShowBook showBook { get; private set; }
+    public BookWindow bookWindow { get; private set; }
 
     public static UIManager Instance;
-    public Canvas canvas;
+    public DestroyWindow destroyItemWindow;
+    [HideInInspector] public RectTransform rect;
     private UIStack uiStack;
-
-    public BaseWindow destroyItemWindow;
 
     private void Awake()
     {
+        //인스턴스가 null이 아니라면 중복된 인스턴스가 있거나, 메모리가 제대로 해제되지 않았음을 뜻함
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
 
         Resources.Load<TMP_FontAsset>("Fonts/NEXON_Warhaven_Regular SDF");
-        uiStack = GetComponent<UIStack>();
     }
+
     public void Init()
     {
+        rect = GetComponent<RectTransform>();
+        uiStack = GetComponent<UIStack>();
+
+        showStatus = GetComponentInChildren<ShowStatus>(true);
+        inventory = GetComponentInChildren<Inventory>(true);
+        uiInventory = GetComponentInChildren<UIInventory>(true);
+        equipmentManager = GetComponentInChildren<EquipmentManager>(true);
+        quickSlotManager = GetComponentInChildren<QuickSlotManager>(true);
+        skillQuickSlotManager = GetComponentInChildren<SkillQuickSlotManager>(true);
+        skillTempSlotManager = GetComponentInChildren<SkillTempSlotManager>(true);
+        menuWindow = GetComponentInChildren<MenuWindow>(true);
+        showBook = GetComponentInChildren<ShowBook>(true);
+        bookWindow = GetComponentInChildren<BookWindow>(true);
+        inventory = GetComponentInChildren<Inventory>(true);
+        destroyItemWindow = GetComponentInChildren<DestroyWindow>(true);
+
         quickSlotManager.Init(inventory, uiInventory);
-        skillQuickSlotManager.Init();
+        skillTempSlotManager.Init(skillQuickSlotManager);
+        skillQuickSlotManager.Init(skillTempSlotManager);
+        menuWindow.Init();
         showBook.Init();
+        bookWindow.Init(skillTempSlotManager);
         inventory.Init();
     }
     /// <summary>
@@ -67,8 +97,20 @@ public class UIManager : MonoBehaviour
         }       
         uiStack.GetUI();
     }
-    private void OnDestroy()
+
+    public void UnLoad()
     {
-        Instance = null;
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
     }
 }

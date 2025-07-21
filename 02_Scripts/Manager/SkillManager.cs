@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public static SkillManager instance;
+    public static SkillManager Instance { get; private set; }
 
     public List<SkillData> skillDatas = new List<SkillData>();
     public Dictionary<int, Skill> allSkillDictionary = new Dictionary<int, Skill>();
@@ -21,8 +21,31 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        Init();
+        if (Instance != null)
+        {
+            Logger.LogError($"[YourManager] Duplicate instance detected on '{gameObject.name}'. " +
+                        $"This may indicate a missing unload or unintended duplicate. Destroying this instance.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        if (Instance == this)
+        {
+            return;
+        }
+        else if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] Duplicate instance detected on '{gameObject.name}'");
+        }
     }
 
     public void Init()
@@ -55,9 +78,20 @@ public class SkillManager : MonoBehaviour
         return allSkillDictionary[skillCode];
     }
 
-    private void OnDestroy()
+    public void UnLoad()
     {
-        instance = null;
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
     }
 }
 

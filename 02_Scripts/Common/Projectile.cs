@@ -19,10 +19,26 @@ public class Projectile : MonoBehaviour
 
     private IObjectPool<Projectile> connectedPool;
 
+    [SerializeField] private ParticleSystem projectileParticle;
+    [SerializeField] private ParticleSystem hitParticle;
+
+    [SerializeField] private float projectileLife;
+    private float releaseDelay;
+
+    private WaitForSeconds projectileDelay;
+    private WaitForSeconds releaseTime;
+
+    private HashSet<IDamageable> targetHash = new(); 
+
     public void Init(IObjectPool<Projectile> objectPool, LayerMask targetMask)
     {
         this.connectedPool = objectPool;
         this.targetMask = targetMask;
+
+        projectileDelay = new WaitForSeconds(projectileLife);
+
+        releaseDelay = hitParticle.main.duration - projectileLife;
+        releaseTime = new WaitForSeconds(releaseDelay);
 
         isActive = false;
     }
@@ -37,9 +53,13 @@ public class Projectile : MonoBehaviour
         float angle = Mathf.Atan2(targetDir.y , targetDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        attackDamage = damage;
+        projectileParticle.gameObject.SetActive(true);
+        projectileParticle.Simulate(0, true, true);
+        projectileParticle.Play();
 
+        attackDamage = damage;
         currentDuration = 0;
+
         isActive = true;
     }
 
@@ -61,7 +81,26 @@ public class Projectile : MonoBehaviour
 
     private void ReleaseProjectile()
     {
+        targetHash.Clear();
         connectedPool.Release(this);
+    }
+
+    private IEnumerator ReleaseDelay()
+    {
+        //Logger.Log("Hit Enemy");
+        yield return projectileDelay;
+
+        projectileParticle.gameObject.SetActive(false);
+
+        hitParticle.gameObject.SetActive(true);
+        hitParticle.Simulate(0);
+        hitParticle.Play();
+
+        yield return releaseTime;
+
+        hitParticle.Stop();
+        hitParticle.gameObject.SetActive(false);
+        ReleaseProjectile();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,9 +109,13 @@ public class Projectile : MonoBehaviour
         {
             if (collision.transform.TryGetComponent<IDamageable>(out IDamageable target))
             {
-                //target.TakeDamage(attackDamage);
+                if (targetHash.Count == 0)
+                {
+                    targetHash.Add(target);
+                    target.TakeDamage(attackDamage);
+                }
             }
-            //ReleaseProjectile();
+            StartCoroutine(ReleaseDelay());
         }
     }
 }

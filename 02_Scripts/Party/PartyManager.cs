@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
-    public static PartyManager Instance;
+    public static PartyManager Instance { get; private set; }
     public PartySystem playerParty;
 
     public List<PartySystem> enemySquads = new List<PartySystem>();
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance != null)
         {
-            Instance = this;
+            Logger.LogError($"[YourManager] Duplicate instance detected on '{gameObject.name}'. " +
+                        $"This may indicate a missing unload or unintended duplicate. Destroying this instance.");
+            Destroy(gameObject);
+            return;
         }
-    }
 
-    private void Start()
+        Instance = this;
+    }
+    
+    public void Init(Player player)
     {
-        Player player = FindObjectOfType<Player>();
         CreatePlayerParty(player);
     }
 
@@ -39,9 +43,21 @@ public class PartyManager : MonoBehaviour
         enemySquads.Add(enemySquad);
     }
 
-    private void OnDestroy()
+    public void UnLoad()
     {
-        Instance = null;
-        playerParty = null;
+        if (Instance == this)
+        {
+            //playerParty는 게임 전체에서 유지되는 데이터이므로 해제하지 않음
+            enemySquads.Clear();
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
     }
 }

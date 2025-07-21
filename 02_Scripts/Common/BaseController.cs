@@ -52,6 +52,14 @@ public abstract class BaseController<T> where T : BaseCreature
         currentState.OnEnter();                             //현재 스테이트 진입
     }
 
+    public virtual void ResetState()
+    {
+        previousState = currentState;
+        currentState = registedState[StateEnum.Idle];
+        previousState?.OnExit();                           
+        currentState.OnEnter();
+    }
+
     public virtual BaseState<T> GetCurrentState()
     {
         return currentState;

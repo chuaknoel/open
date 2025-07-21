@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class CompanionSkillSlot : SkillQuickSlot
 {
-    public override void OnEnable()
-    {
 
-    }
     // 스킬 사용
     public override void UseSkill()
     {

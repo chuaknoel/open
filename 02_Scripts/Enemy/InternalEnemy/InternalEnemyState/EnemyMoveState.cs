@@ -21,7 +21,7 @@ public class EnemyMoveState : BaseState<Enemy>
     {
         base.OnEnter();
 
-        Logger.Log("Move Enter 진입");
+        //Logger.Log("Move Enter 진입");
 
         controller.saveOriginState = stateType;
 
@@ -36,7 +36,7 @@ public class EnemyMoveState : BaseState<Enemy>
         {
             if (controller.detectionLostTimer < controller.moveToIdleDelay)
             {
-                Logger.Log("적이 움직임을 멈추는 중...");
+                //Logger.Log("적이 움직임을 멈추는 중...");
             }
 
             controller.detectionLostTimer += Time.deltaTime;

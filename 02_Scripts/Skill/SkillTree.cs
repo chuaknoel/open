@@ -12,7 +12,7 @@ public class SkillTree : MonoBehaviour
     {
         foreach (int tree in treeData)
         {
-            skillTree[tree] = SkillManager.instance.FindSkill(tree);
+            skillTree[tree] = SkillManager.Instance.FindSkill(tree);
         }
     }
 

@@ -1,5 +1,6 @@
 using Enums;
 using UnityEngine;
+using static Constants.AnimatorHash;
 
 public class EnemyController : BaseController<Enemy>
 {
@@ -23,7 +24,7 @@ public class EnemyController : BaseController<Enemy>
 
     public EnemyController(Enemy owner) : base(owner)
     {
-        Logger.Log("생성자");
+       //Logger.Log("생성자");
 
         rigid = owner.GetComponent<Rigidbody2D>();
         enemyInteraction = owner.GetComponentInChildren<EnemyInteraction>();
@@ -32,6 +33,8 @@ public class EnemyController : BaseController<Enemy>
     public override void OnUpdate(float deltaTime)
     {
         base.OnUpdate(deltaTime);
+
+        //owner.target = owner.searchTarget.GetCurrentTarget();
 
         if (owner.target == null) return;
 
@@ -93,7 +96,7 @@ public class EnemyController : BaseController<Enemy>
                 LookDir = LookDirection.South;
             }
         }
-        owner.ChangeAnimation(Constants.AnimatorHash.LookDirHash, (float)LookDir);
+        owner.ChangeAnimation(LookDirHash, (float)LookDir);
     }   
 
     public (Vector2, float) CheckLookDirection()
@@ -105,4 +108,14 @@ public class EnemyController : BaseController<Enemy>
 
         return (Vector2.zero, 0);
     }
-}               
+
+    public void ChangeLookRotate(Vector2 lookDir)
+    {
+        if (lookDir == Vector2.right) { LookDir = LookDirection.East; }
+        if (lookDir == Vector2.up) { LookDir = LookDirection.North; }
+        if (lookDir == Vector2.left) { LookDir = LookDirection.West; }
+        if (lookDir == Vector2.down) { LookDir = LookDirection.South; }
+
+        owner.ChangeAnimation(LookDirHash, (float)LookDir);
+    }
+}

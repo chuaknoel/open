@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Jiho
   m_EditorClassIdentifier: 
   npcId: Jiho
-  npcName: Jiho
+  npcName: "\uC9C0\uD638"
   npcType: 1
   greeting: "\uC548\uB155 \uB098\uB294 \uC9C0\uD638\uC57C"
   dialogueList:
   - "\uC548\uB155"
   - "2001\uB1449\uC6D425\uC77C"
-  subQuest: {fileID: 11400000, guid: f8ac0d30892c66c409dd2ca8f3bdaf5b, type: 2}

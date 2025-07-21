@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     public void Init()
     {
         uiInventory = GetComponent<UIInventory>();
+        uiInventory.Init();
     }
     
     /// <summary>
@@ -48,7 +49,7 @@ public class Inventory : MonoBehaviour
             itemDrag.Init(canvas, uiManager, this.gameObject, quickSlots, draggedImage);
 
             SlotEvent slotEvent = slot.GetComponent<SlotEvent>();
-            slotEvent.Init(canvas, uiManager, this.gameObject, draggedImage);
+            slotEvent.Init(uiManager, this.gameObject, draggedImage);
         }
     }
   

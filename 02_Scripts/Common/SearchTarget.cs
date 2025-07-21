@@ -13,15 +13,11 @@ public class SearchTarget : MonoBehaviour
 
     public BaseCreature currentTarget;
 
-    private void Start()
-    {
-        Init();
-    }
-
-    public void Init()
+    public void Init(LayerMask targetMask)
     {
         detectedCollider ??= GetComponent<CircleCollider2D>();
         detectedCollider.radius = searchRange;
+        this.targetMask = targetMask;
     }
 
     public BaseCreature FindTarget()

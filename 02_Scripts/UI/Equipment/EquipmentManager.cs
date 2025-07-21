@@ -54,7 +54,8 @@ public class EquipmentManager : MonoBehaviour
     }
     public void ShowEquipItems()
     {
-        if (equipWindow.activeSelf)
+        Logger.Log("장비창 활성화"+ equipWindow.activeSelf);
+        if (equipWindow.activeInHierarchy)
         {
             EquipmentWindow equipmentWindow = equipWindow.GetComponent<EquipmentWindow>();
             equipmentWindow.UpdateEquipSlot();

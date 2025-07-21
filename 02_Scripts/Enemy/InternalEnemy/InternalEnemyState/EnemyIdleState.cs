@@ -12,10 +12,10 @@ public class EnemyIdleState : BaseState<Enemy>
     public override void Init(Enemy owner)
     {
         base.Init(owner);
-        Logger.Log("Idle : Init 타이밍");
+        //Logger.Log("Idle : Init 타이밍");
         controller = owner.Controller;
 
-        Logger.Log("IdleState : " + owner.Controller);
+        //Logger.Log("IdleState : " + owner.Controller);
 
     }
 
@@ -23,7 +23,7 @@ public class EnemyIdleState : BaseState<Enemy>
     {
         base.OnEnter();
 
-        Logger.Log("Idle Enter 진입");
+        //Logger.Log("Idle Enter 진입");
 
         controller.saveOriginState = stateType;
 

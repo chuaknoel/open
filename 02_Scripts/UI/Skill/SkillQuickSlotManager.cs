@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using System;
 
 /// <summary>
 /// 스킬 퀵 슬롯 들을 관리하는 매니저 스크립트입니다.
@@ -9,25 +11,44 @@ public class SkillQuickSlotManager : MonoBehaviour
     private PlayerInputs inputActions;
 
     public string actionName = "SkillButton";
-   [SerializeField] private InputAction action;
-    private int inputIndex;   
+    [SerializeField] private InputAction action;
+    [SerializeField] private KeyBinder[] keyBinder = new KeyBinder[4];
+   
     public SkillQuickSlot[] skillSlots = new SkillQuickSlot[8];
+    public TextMeshProUGUI[] playerSkillSlotText = new TextMeshProUGUI[4];
+
+    private SkillTempSlotManager skillTempSlotManager;
+    private int inputIndex;
 
     /// <summary>
     /// 초기화 함수입니다.
     /// </summary>
-    public void Init()
+    public void Init(SkillTempSlotManager _skillTempSlotManager)
     {
         inputActions = InputManager.Instance.inputActions;
         action = inputActions.asset.FindAction(actionName);
         action.started += OnSkillQuickSlotPressed;
 
+        skillTempSlotManager = _skillTempSlotManager;
+
         for (int i = 0; i < skillSlots.Length; i++)
         {
             skillSlots[i].Init(i);
         }
-    }
 
+        for (int i = 0; i < keyBinder.Length; i++)
+        {
+            keyBinder[i].OnCompleteRebind += ChangeSkillText;
+        }
+    }
+    private void ChangeSkillText( )
+    {
+        for (int i = 0; i < keyBinder.Length; i++)
+        {
+            playerSkillSlotText[i].text = keyBinder[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
+        }
+        skillTempSlotManager.ChangeTempSkillSlotText();
+    }
     /// <summary>
     /// 스킬 퀵 슬롯들을 키보드로 작동할 시 발생하는 함수입니다.
     /// </summary>

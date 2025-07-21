@@ -18,6 +18,8 @@ public class ExternalEnemyDeathState : BaseState<ExternalEnemy>
     public override void OnEnter()
     {
         base.OnEnter();
+        //owner.isDeath = true;
+        //owner.ChangeAnimation(EnemyDeathStateHash, true);
     }
 
     public override void OnUpdate(float deltaTime)
@@ -33,5 +35,6 @@ public class ExternalEnemyDeathState : BaseState<ExternalEnemy>
     public override void OnExit()
     {
         base.OnExit();
+        //owner.ChangeAnimation(EnemyIdleStateHash, false);
     }
 }

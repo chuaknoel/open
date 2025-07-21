@@ -8,19 +8,18 @@ using UnityEngine.UI;
 public class BookWindow : BaseWindow
 {
     public override UIType UIType => UIType.SelfWindow;
-
-    [SerializeField] private SkillTempSlotManager skillTempSlotManager;
+   
     [SerializeField] private BookAnimation bookAnimation;
     [SerializeField] private SkillManager skillManager;
-
     [SerializeField] private GameObject[] windows = new GameObject[5];
     [SerializeField] private Button[] buttons = new Button[5];
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private string[] contents = new string[5]; // 버튼별 텍스트 내용
-    public bool[] isTextVisible = new bool[5];                     // 글자 보임 여부 저장
     [SerializeField] private Tooltip toolTip;
-    private Coroutine currentTapCoroutine;
+    [SerializeField] private bool[] isTextVisible = new bool[5];                     // 글자 보임 여부 저장
 
+    private SkillTempSlotManager skillTempSlotManager;
+    private Coroutine currentTapCoroutine;
     private int currentTapIndex = 0;
 
     /// <summary>
@@ -29,14 +28,16 @@ public class BookWindow : BaseWindow
     public override void OpenUI()
     {
         base.OpenUI();
-        Init();
+        ShowTap(0);
     }
 
     /// <summary>
     /// 초기화 함수입니다.
     /// </summary>
-    private void Init()
-    {
+    public void Init(SkillTempSlotManager _skillTempSlotManager)
+    { 
+         skillTempSlotManager = _skillTempSlotManager;
+
         // 버튼 연결
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -50,7 +51,13 @@ public class BookWindow : BaseWindow
         }
 
         isTextVisible[0] = true;
-        ShowTap(0);
+
+        windows[0].GetComponent<EquipmentWindow>().Init(); // 장비창 초기화
+        windows[1].GetComponent<SkillTap>().Init(); // Skill창 초기화            
+        windows[2].GetComponent<DeliverQuestsData>().Init(); // 퀘스트창 초기화   
+        windows[3].GetComponent<DeliverCompanionsData>().Init(); // 동료창 초기화
+        windows[4].GetComponent<DeliverCollectionData>().Init(); // 도감창 초기화
+        
     }
     /// <summary>
     /// 화면을 비활성화하는 함수입니다.
@@ -90,7 +97,9 @@ public class BookWindow : BaseWindow
         }
         currentTapCoroutine = StartCoroutine(ClickTapButton(index));
 
-        skillTempSlotManager.DestroySkillTempSlot(); 
+        skillTempSlotManager.DestroySkillTempSlot();
+
+        Logger.Log($"{index}번째 창 활성화");
     }
 
     /// <summary>

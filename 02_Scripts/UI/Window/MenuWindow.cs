@@ -1,13 +1,14 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 매인 메뉴를 구성하는 스크립트입니다.
 /// </summary>
 public class MenuWindow : BaseWindow
 {
-   public UIManager uIManager;
+    public UIManager uIManager;
 
     [SerializeField] private TMP_Text recentItemText;
     [SerializeField] private TMP_Text recentQuestText;
@@ -16,6 +17,16 @@ public class MenuWindow : BaseWindow
     public BaseWindow settingWindow;
 
     public override UIType UIType => UIType.SelfWindow;
+
+    public void Init() 
+    {
+        InputManager.Instance.inputActions.Player.Menu.started += MenuOpen;
+    }
+
+    public void MenuOpen(InputAction.CallbackContext context)
+    {
+        OpenUI();
+    }
 
     /// <summary>
     /// 화면을 활성화하는 스크립트입니다.

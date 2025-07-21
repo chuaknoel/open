@@ -15,6 +15,17 @@ public class EnemyStat : BaseStat, IDamageable
         enemy = owner as Enemy; // =(Enemy)owner
 
         enemyHealth = GetComponentInChildren<EnemyHealth>();
+        enemyHealth.Init();
+        OnDeath += BattleManager.Instance.EnemyDeath;
+    }
+
+    public void ResetStat()
+    {
+        isDeath = false;
+        currentHealth = GetMaxHealth();
+        currentMana = GetMaxMana();
+        enemy.GetHitBox().enabled = true;
+        enemyHealth.ResetHealthBar();
     }
 
     public void TakeDamage(float damage)

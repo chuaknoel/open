@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,41 @@ using UnityEngine.Pool;
 
 public class PoolingManager : MonoBehaviour
 {
-    public static PoolingManager Instance;
+    public static PoolingManager Instance { get; private set; }
 
     public Dictionary<string, object> poolingDictionary = new Dictionary<string, object>();
 
+    public Transform projectilePool;
+
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Logger.LogError($"[YourManager] Duplicate instance detected on '{gameObject.name}'. " +
+                        $"This may indicate a missing unload or unintended duplicate. Destroying this instance.");
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+    }
+
+    public IObjectPool<T> CreatePool<T>(string address, Func<T> create, int _maxSize = 1) where T : MonoBehaviour
+    {
+        RegisterPoolObject(address,
+
+           new ObjectPool<T>
+           (
+               create,           //발사체 오브젝트 생성 로직
+               OnGet,            //생성된 오브젝트를 소환
+               OnRelease,        //생성된 오브젝트 회수
+               OnDes,            //생성된 오브젝트 파괴
+               maxSize: _maxSize //한번에 관리될 오브젝트 갯수
+           ));
+
+        IObjectPool<T> pool = FindPool<T>(address);
+
+        return pool;
     }
 
     public void RegisterPoolObject<T>(string poolName, IObjectPool<T> objectPrefab) where T : class
@@ -50,8 +79,20 @@ public class PoolingManager : MonoBehaviour
         Destroy(_poolObj.gameObject);
     }
 
-    private void OnDestroy()
+    public void UnLoad()
     {
-        Instance = null;
+        if (Instance == this)
+        {
+            poolingDictionary.Clear();
+            Instance = null;
+        }
+        else if (Instance == null)
+        {
+            Logger.LogError($"[YourManager] UnLoad called, but Instance was already null. Possible duplicate unload or uninitialized state.");
+        }
+        else
+        {
+            Logger.LogError($"[YourManager] UnLoad called by a non-instance object: {gameObject.name}. Current Instance is on {Instance.gameObject.name}");
+        }
     }
 }

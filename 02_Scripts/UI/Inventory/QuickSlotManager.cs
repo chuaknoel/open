@@ -19,6 +19,8 @@ public class QuickSlotManager : MonoBehaviour
         {
             slot.Init(inventory, uiInventory);
         }
+
+        InputManager.Instance.inputActions.Player.QuickSlot.started += OnQuickSlotPressed;
     }
 
     /// <summary>
@@ -39,12 +41,9 @@ public class QuickSlotManager : MonoBehaviour
     /// </summary>
     /// <param name="context"></param>
     public void OnQuickSlotPressed(InputAction.CallbackContext context)
-    {   
-        if(context.performed)
-        {
-            string keyName = context.control.name;
-            UseSlot(int.Parse(keyName) - 1);
-        }
+    {
+        string keyName = context.control.name;
+        UseSlot(int.Parse(keyName) - 1);
     }
 
     /// <summary>

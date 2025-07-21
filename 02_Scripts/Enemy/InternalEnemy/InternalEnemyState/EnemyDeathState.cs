@@ -19,10 +19,10 @@ public class EnemyDeathState : BaseState<Enemy>
     {
         base.OnEnter();
 
-        Logger.Log("Death Enter 진입");
+        //Logger.Log("Death Enter 진입");
         controller.saveOriginState = stateType;
 
-        owner.GetComponent<CircleCollider2D>().enabled = false;
+        owner.GetHitBox().enabled = false;
         owner.ChangeAnimation(EnemyDeathStateHash, true);
     }
 

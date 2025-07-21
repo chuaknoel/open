@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,8 @@ public class SkillQuickSlot : SkillSlot, ISkillSlot
     [SerializeField] protected Image skillImage;
     [SerializeField] private Image skillCoolTimeImage; 
     public string key;
-    public override void OnEnable()
-    {
+    private Coroutine coroutine;
 
-    }
     public virtual void Init(int slotIndex)
     {
         this.slotIndex = slotIndex;
@@ -26,6 +25,7 @@ public class SkillQuickSlot : SkillSlot, ISkillSlot
         if(s == null)
         {
             skill = null;
+            Logger.Log(this.gameObject.name);
             return;
         }
 
@@ -35,7 +35,7 @@ public class SkillQuickSlot : SkillSlot, ISkillSlot
     public virtual void SetSkillData(SkillData s)
     {
         skill = s;
-        SetAnime(SkillManager.instance.FindSkill(skill.skillCode).skillAnimeClips);
+        SetAnime(SkillManager.Instance.FindSkill(skill.skillCode).skillAnimeClips);
     }
 
     public virtual void SetAnime(List<AnimationClip> skillAnime) { }
@@ -58,6 +58,7 @@ public class SkillQuickSlot : SkillSlot, ISkillSlot
         this.skill = null;
         skillImage.sprite = null;
         skillImage.enabled = false;
+        StopSkillCoolTime();
     }
     // 스킬 사용
     public virtual void UseSkill()
@@ -69,23 +70,48 @@ public class SkillQuickSlot : SkillSlot, ISkillSlot
         }
         if (executor.IsUseAble())
         {
+            executor.remainingTime = executor.skill.coolTime;
             ExcuteSkill();
-            StartCoroutine("SkillCoolTime");
+            ShowSkillCoolTime();
+
             Logger.Log($"{skill.skillName} 스킬을 사용했습니다.");
         }
     }
 
+    public void ShowSkillCoolTime()
+    {
+        StopSkillCoolTime();
+
+        // 새로 코루틴 실행
+        coroutine = StartCoroutine(SkillCoolTime());
+    }
     public virtual void ExcuteSkill() { }
 
     IEnumerator SkillCoolTime()
     {
-        skillCoolTimeImage.gameObject.SetActive(true);
-        skillCoolTimeImage.fillAmount = 1f;
-
-        while (executor.remainingTime > 0)
+        if (executor.remainingTime > 0)
         {
-            skillCoolTimeImage.fillAmount = Mathf.Clamp01(executor.remainingTime / executor.skill.coolTime);
-            yield return null;
+            skillCoolTimeImage.gameObject.SetActive(true);
+
+            while (executor.remainingTime > 0)
+            {
+                skillCoolTimeImage.fillAmount = executor.remainingTime / executor.skill.coolTime;
+                yield return null;
+            }
+        }
+
+        skillCoolTimeImage.fillAmount = 0f;
+        skillCoolTimeImage.gameObject.SetActive(false);
+    }
+    public void StopSkillCoolTime()
+    {
+        // 이미 실행 중이면 먼저 멈춤
+        if (coroutine != null)
+        {
+            skillCoolTimeImage.fillAmount = 0f;
+            skillCoolTimeImage.gameObject.SetActive(false);
+            StopCoroutine(coroutine);
+            coroutine = null;
         }
     }
 }

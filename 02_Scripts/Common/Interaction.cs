@@ -58,7 +58,7 @@ public class Interaction : MonoBehaviour
             currentInteraction = newInteraction;
             currentInteraction.SetInterface(true);
 
-            Logger.Log(((MonoBehaviour)currentInteraction).gameObject.name);
+            //Logger.Log(((MonoBehaviour)currentInteraction).gameObject.name);
         }
     }
 

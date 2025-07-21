@@ -6,16 +6,20 @@ using static Constants.AnimatorHash;
 public class PlayerSkillQuickSlot : SkillQuickSlot
 {
     private Player player;
-    public override void OnEnable()
-    {
+    protected Dictionary<int, string> nodeNames = new Dictionary<int, string>();
 
-    }
     public override void Init(int slotIndex)
     {
         base.Init(slotIndex);
         this.slotIndex = slotIndex;
+
+        nodeNames[0] = $"SkillButton{slotIndex}_E";
+        nodeNames[1] = $"SkillButton{slotIndex}_N";
+        nodeNames[2] = $"SkillButton{slotIndex}_S";
+        nodeNames[3] = $"SkillButton{slotIndex}_W";
+
         executor = GetComponent<SkillExecutor>();
-        player = PlayManager.instance.player;
+        player = PlayManager.Instance.player;
     }
 
     public override void SetSkillData(SkillData s)
@@ -26,10 +30,10 @@ public class PlayerSkillQuickSlot : SkillQuickSlot
 
     public override void SetAnime(List<AnimationClip> skillAnime)
     {
-        player.overrideController["SkillButton0_E"] = skillAnime[0];
-        player.overrideController["SkillButton0_N"] = skillAnime[1];
-        player.overrideController["SkillButton0_S"] = skillAnime[2];
-        player.overrideController["SkillButton0_W"] = skillAnime[3];
+        for (int i = 0; i < nodeNames.Count; i++)
+        {
+            player.overrideController[nodeNames[i]] = skillAnime[0];
+        }
     }
 
     public override void ExcuteSkill()

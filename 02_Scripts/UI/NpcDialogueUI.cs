@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class NpcDialogueUI : MonoBehaviour
 {
@@ -15,10 +16,17 @@ public class NpcDialogueUI : MonoBehaviour
     [SerializeField] private GameObject choiceContainer;
     [SerializeField] private GameObject buttonPrefab;
 
+    [SerializeField] private PlayerInputs playerInput;
+    [SerializeField] private DialogueInputs dialogueInput;
     private UnityAction _onContinue;
 
     private void Awake()
     {
+        playerInput = new PlayerInputs();
+        if (dialogueInput != null)
+        {
+            dialogueInput.enabled = false;
+        }
         dialoguePanel.SetActive(false);
         choiceContainer.SetActive(false);
     }
@@ -29,7 +37,7 @@ public class NpcDialogueUI : MonoBehaviour
         choiceContainer.SetActive(false);
         speakerNameText.text = speakerName;
         dialogueContentText.text = text;
-        SetupContinue(onContinue, "계속");
+        SetupContinue(onContinue, "다음");
     }
 
     public void ShowChoices(string speakerName,UnityAction onTalk,UnityAction onShop,UnityAction onEnhance,UnityAction onMainQuest,UnityAction onSubQuest)
@@ -68,6 +76,11 @@ public class NpcDialogueUI : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         choiceContainer.SetActive(false);
+        InputManager.Instance.inputActions.Enable(); // InputActions 활성화
+        if (dialogueInput != null)
+        {
+            dialogueInput.enabled = false;
+        }
     }
 
     public void CreateButtonNoClose(string label, UnityAction callback)
@@ -95,6 +108,11 @@ public class NpcDialogueUI : MonoBehaviour
 
         CreateButton("수락하기", onAccept);
         CreateButtonNoClose("거절하기", onRefuse);
+    }
+
+    public void OnClickContinue()
+    {
+        _onContinue?.Invoke();
     }
 
     private void SetupDialoguePanel()

@@ -21,7 +21,6 @@ public class KeyBinder : MonoBehaviour
     public InputAction action;         // PlayerInputs에서 actionName을 통해 찾은 Action
                                        //public InputBinding bind;        // Actino내부의 바인딩 정보 : 구조체라 자동 갱신이 안되서 주석처리
                                        // ex) PlayerInputs(inputActions) -> Player -> Move(action) -> Up(bind)
-    //private Button keyBindButton;
     private Image keyBindImage;
 
     [SerializeField] private TextMeshProUGUI disPlayName;
@@ -31,17 +30,16 @@ public class KeyBinder : MonoBehaviour
 
     public UnityAction<KeyBinder> OnSelectHandler;
     public UnityAction<KeyBinder> DeSelectHandler;
+    public UnityAction OnCompleteRebind;
 
-    public void Init(PlayerInputs inputActions, string bindJson)
+    public UnityAction<KeyBinder> OnCheckHandler;
+
+    public void Init(PlayerInputs inputActions, string bindJson , KeySetting keySetting)
     {
         this.inputActions = inputActions;
         action = inputActions.asset.FindAction(actionName); //PlayerInputs 내부에 actionName으로 처리된 InputAction을 찾아서 할당
 
         LoadBind(bindJson);                                 //저장 정보 적용
-
-        //keyBindButton ??= GetComponent<Button>();
-        //keyBindButton.onClick.AddListener(StartRebind);
-        //keyBindButton.onClick.AddListener(OnSelect);
 
         keyBindImage ??= GetComponent<Image>();
         EventTrigger trigger = keyBindImage.GetComponent<EventTrigger>();
@@ -57,10 +55,12 @@ public class KeyBinder : MonoBehaviour
             StartRebind();
             Toggle();
         });
-        //entry.callback.AddListener((eventData) => { StartRebind(); });
-        //trigger.triggers.Add(entry);
-        //entry.callback.AddListener((eventData) => { OnSelect(); });
+
         trigger.triggers.Add(entry);
+
+        OnSelectHandler += keySetting.BinderSelectEvent;
+        DeSelectHandler += keySetting.BinderDeselectEvent;
+        OnCheckHandler += keySetting.CheckBind;
 
         disPlayName.text = action.bindings[bindingIndex].ToDisplayString();
 
@@ -125,11 +125,17 @@ public class KeyBinder : MonoBehaviour
             {
                 bindStart = false;
                 var selectedControl = operation.selectedControl;                //취소없이 바인딩 성공시 바인딩 한 키를 찾는다.
-                InputManager.Instance.CheckBind(this);                          //자신이 새로 할당키에 중복 및 충돌처리를 위한 CheckBind를 실행한다.
+                OnCheckHandler?.Invoke(this);                                   //자신이 새로 할당키에 중복 및 충돌처리를 위한 CheckBind를 실행한다.
                 rebindingOperation.Dispose();                                   //바인딩이 끝나면 rebindingOperation을 해제하여 메모리 누수를 관리한다.
                 UpdateDisPlayName(action.bindings[bindingIndex].ToDisplayString());                 //
                 DeSelectHandler?.Invoke(this);
                 inputActions.Enable();                                          //Disable된 인풋을 다시 활성화해준다.
+              
+                if(actionName == "SkillButton")
+                {
+                    OnCompleteRebind?.Invoke();
+                }
+             
             })
             .Start();
     }

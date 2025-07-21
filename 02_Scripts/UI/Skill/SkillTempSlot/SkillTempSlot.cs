@@ -9,10 +9,7 @@ public class SkillTempSlot : SkillSlot, ISkillSlot
     {
         this.slotIndex = slotIndex;
     }
-    public override void OnEnable()
-    {
 
-    }
     public override void SetSkill(SkillData s)
     {
         if (s == null)

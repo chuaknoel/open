@@ -17,14 +17,16 @@ public class DeliverCompanionsData : MonoBehaviour
     [SerializeField] private int slotsPerPage = 4; // 한 페이지에 4개
     private int currentPage = 0;
     private ShowCompanionInfo showCompanionInfo;
-    // Start is called before the first frame update
-    void OnEnable()
+
+   private void OnEnable()
     {
-        showCompanionInfo = GetComponent<ShowCompanionInfo>();
         DeliverData();
         ShowData();
     }
-
+    public void Init()
+    {
+        showCompanionInfo = GetComponent<ShowCompanionInfo>();
+    }
     private CompanionData GetData(string key)
     {
         return DataManager.Instance.CompanionDB[key];

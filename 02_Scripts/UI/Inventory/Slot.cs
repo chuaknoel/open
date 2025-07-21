@@ -40,7 +40,6 @@ public class Slot : MonoBehaviour
         uiInventory = inventory.gameObject.GetComponent<UIInventory>();
         itemColorHelper = inventory.gameObject.GetComponent<ItemColorHelper>();
         quickSlotManager = _quickSlotManager;
-        Logger.Log("슬롯 초기화");
     }
     public virtual void SetItem(Item _item)
     {
@@ -105,7 +104,6 @@ public class Slot : MonoBehaviour
 
         if (item is EquipItem equipItem)
         {
-
             backGround.color = itemColorHelper.GetColor(equipItem.ItemGrade);
         }
         else

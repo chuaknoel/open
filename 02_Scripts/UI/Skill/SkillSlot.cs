@@ -5,23 +5,22 @@ using UnityEngine.UI;
 
 public class SkillSlot :Slot , ISkillSlot
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private SkillManager skillManager;
-    [SerializeField] private SkillTempSlotManager tempSlotManager;
-
-    private Image dragImage;
-
+    private SkillManager skillManager;
+    private SkillTempSlotManager tempSlotManager;
+   // private Image dragImage;
+    
     protected SkillData skill;
     public virtual SkillData GetSkill() => skill;
     public virtual void SetSkill(SkillData s) => skill = s;
 
-    public virtual void OnEnable()
+    public virtual void Init( SkillTempSlotManager _tempSlotManager)
     {
-        skillManager = SkillManager.instance;   
+        skillManager = SkillManager.Instance;   
         skill = skillManager.skillDatas[0];
 
-        SkillDrag skillDrag = GetComponent<SkillDrag>();
-        dragImage = skillDrag.dragItemImage;
+        //dragImage = GetComponent<SkillDrag>().dragItemImage;
+
+        tempSlotManager = _tempSlotManager;
     }
 
     public override void UseItem()

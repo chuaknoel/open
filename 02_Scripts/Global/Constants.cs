@@ -23,9 +23,9 @@ public static class Constants
     }
 
     // 주소 예시: "GameObject/Enemy/Slime", "GameObject/UI/HealthBar"
-    public static class GameObject
+    public static class GameObjects
     {
-
+        public static readonly string QuestLocationZonePrefab = "GameObject/Quest/QuestLocationZone";
     }
     // 예시: "Sprite/Icon/Sword", "Sprite/UI/InventorySlot"
     public static class Sprites

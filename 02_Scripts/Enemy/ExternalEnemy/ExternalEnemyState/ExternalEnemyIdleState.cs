@@ -19,7 +19,7 @@ public class ExternalEnemyIdleState : BaseState<ExternalEnemy>
     {
         base.OnEnter();
 
-        Logger.Log("ExternalIdleState 진입");
+        //Logger.Log("ExternalIdleState 진입");
         externalController.idleDuration = 0.0f;
         externalController.randomDurationTime = Random.Range(externalController.minDurationTime, externalController.maxDurationTime);
 

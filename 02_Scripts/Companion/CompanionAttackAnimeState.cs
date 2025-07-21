@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class CompanionAttackAnimeState : StateMachineBehaviour
 {
-    private Companion companion;
-    private CompanionAttackState companionAttackState;
+    public Companion companion;
+    public CompanionAttackState companionAttackState;
 
-    public void Init(Companion companion)
-    {
-        this.companion = companion;
-        companionAttackState = companion.Controller.registedState[StateEnum.Attack] as CompanionAttackState;
-    }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (companion == null)
+        {
+            if(animator.TryGetComponent<Companion>(out companion))
+            {
+                companionAttackState = companion.Controller.registedState[StateEnum.Attack] as CompanionAttackState;
+            }
+        }
         companionAttackState.Attack();
     }
 

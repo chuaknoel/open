@@ -6,26 +6,25 @@ using static Constants.AnimatorHash;
 public class PlayerSkillState : BaseState<Player>
 {
     protected override StateEnum stateType => StateEnum.Skill;
-    protected StringBuilder animeName = new StringBuilder();
+    protected string animeName;
 
     public override void Init(Player owner)
     {
         base.Init(owner);
-        animeName.Clear();
     }
 
     public override void OnEnter()
     {
         base.OnEnter();
         owner.ChangeAnimation(SkillStateHash, true);
-        animeName.Append($"SkillButton{ReadSkillButtonNum()}_{ReadDirString()}");
+        animeName = $"SkillButton{ReadSkillButtonNum()}_{ReadDirString()}";
     }
 
     public override void OnUpdate(float deltaTime)
     {
         base.OnUpdate(deltaTime);
         AnimatorStateInfo info = owner.Animator.GetCurrentAnimatorStateInfo(0);
-        if (info.IsName(animeName.ToString()) && info.normalizedTime >= 1f)
+        if (info.IsName(animeName) && info.normalizedTime >= 1f)
         {
             owner.Controller.ChangeState(StateEnum.Idle);
         }
@@ -70,7 +69,6 @@ public class PlayerSkillState : BaseState<Player>
     {
         base.OnExit();
         owner.ChangeAnimation(SkillStateHash, false);
-        animeName.Clear();
     }
 
     public override void OnDestory()

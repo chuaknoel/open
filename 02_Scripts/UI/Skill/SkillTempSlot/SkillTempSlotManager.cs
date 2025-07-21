@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,17 @@ public class SkillTempSlotManager : MonoBehaviour
     public GameObject tempSkillSlot;
 
     [HideInInspector] public TempSkillQuickSlotManager tempSkillQuickSlotManager;
-  [HideInInspector] public GameObject _tempSkillSlot;
+    [HideInInspector] public GameObject _tempSkillSlot;
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject bookWindow;
     [SerializeField] private Image dragImage;
-    [SerializeField] private SkillManager skillManager;
-    [SerializeField] SkillQuickSlotManager skillQuickSlotManager;
+    [SerializeField] private SkillQuickSlotManager skillQuickSlotManager;
+
+    public void Init(SkillQuickSlotManager skillQuickSlotManager)
+    {
+        this.skillQuickSlotManager = skillQuickSlotManager;
+    }
 
     public void CreateSkillTempSlot(Slot slot)
     {
@@ -33,20 +38,32 @@ public class SkillTempSlotManager : MonoBehaviour
 
                SkillTempSlotEvent skillSlotEvent = child.gameObject.GetComponent<SkillTempSlotEvent>();
                 skillSlotEvent.Init(skillQuickSlotManager);
-                // skillSlotEvent.skillQuickSlotManager = skillQuickSlotManager;
             }
             _tempSkillSlot.transform.SetParent(slot.transform);
             _tempSkillSlot.GetComponent<RectTransform>().localPosition = new Vector3(0, -85f, 0);
 
             _tempSkillSlot.transform.SetParent(bookWindow.transform);
             _tempSkillSlot.transform.SetAsLastSibling();
+
+            ChangeTempSkillSlotText();
         }
         else
         {
             Destroy(_tempSkillSlot);
         }
     }
-
+    public void ChangeTempSkillSlotText()
+    {
+        if (_tempSkillSlot != null)
+        {
+            tempSkillQuickSlotManager = _tempSkillSlot.GetComponent<TempSkillQuickSlotManager>();
+            for (int i = 0; i < tempSkillQuickSlotManager.skillTempSlots.Length; i++)
+            {
+                tempSkillQuickSlotManager.skillTempSlots[i].gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text
+                    = skillQuickSlotManager.playerSkillSlotText[i].text;
+            }
+        }
+    }
     /// <summary>
     /// 스킬 퀵슬롯을 삭제합니다.
     /// </summary>

@@ -18,21 +18,18 @@ public class SoundManager : MonoBehaviour
     private List<string> soundData;
     private Dictionary<string, Sound> soundClips;
 
-    private static SoundManager _instance;
-    public static SoundManager Instance => _instance;
+    public static SoundManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            soundClips = new Dictionary<string, Sound>();
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (_instance != this)
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        soundClips = new Dictionary<string, Sound>();
     }
     /// <summary>
     /// 클립 불러오기

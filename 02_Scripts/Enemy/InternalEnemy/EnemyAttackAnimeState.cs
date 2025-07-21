@@ -15,7 +15,15 @@ public class EnemyAttackAnimeState : StateMachineBehaviour
     public void Init(Enemy enemy)
     {
         this.enemy = enemy;
-        enemyAttackState = enemy.Controller.registedState[Enums.StateEnum.Attack] as EnemyAttackState;
+        enemyAttackState = enemy.Controller.registedState[StateEnum.Attack] as EnemyAttackState;
+    }
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(animator.TryGetComponent<Enemy>(out enemy))
+        {
+            enemyAttackState = enemy.Controller.registedState[StateEnum.Attack] as EnemyAttackState;
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,7 +31,7 @@ public class EnemyAttackAnimeState : StateMachineBehaviour
         if (stateInfo.normalizedTime >= exitAttackStateTime)
         {
             enemy.Controller.enemyInteraction.isHItInMotion = false;
-            enemy.Controller.ChangeState(Enums.StateEnum.Idle);
+            enemy.Controller.ChangeState(StateEnum.Idle);
         }
 
         if (stateInfo.normalizedTime >= takeDamageTime) // 피격 타이밍 딜레이

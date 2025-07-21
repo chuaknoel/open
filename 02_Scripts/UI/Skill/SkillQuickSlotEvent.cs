@@ -40,7 +40,19 @@ public class SkillQuickSlotEvent : SlotEvent, IDropHandler, ITempSkillSlotUpdate
             if (originSlot is PlayerSkillQuickSlot originQuickSlot)
             {
                 PlayerSkillQuickSlot currentSlot = GetComponent<PlayerSkillQuickSlot>();
+
+                // 스킬 쿨타임 멈춤
+                var executor1 = currentSlot.GetComponent<SkillExecutor>();
+                var executor2 = originQuickSlot.GetComponent<SkillExecutor>();
+
+                currentSlot.StopSkillCoolTime();
+                originQuickSlot.StopSkillCoolTime();
+
+                SwapSkill(executor1, executor2);
                 base.Swap(currentSlot, originQuickSlot);
+                 
+                currentSlot.ShowSkillCoolTime();
+                originQuickSlot.ShowSkillCoolTime();
             }
             //드래그한 슬롯이 스킬 슬롯이라면
             if (originSlot is SkillSlot originSkillSlot)
@@ -68,5 +80,15 @@ public class SkillQuickSlotEvent : SlotEvent, IDropHandler, ITempSkillSlotUpdate
             tempSkillQuickSlotManager = skillTempSlotManager.tempSkillQuickSlotManager;
             tempSkillQuickSlotManager.SetTempSkillQuickSlot();
         }
+    }
+
+    private void SwapSkill(SkillExecutor executor01, SkillExecutor executor02)
+    {
+        // 드래그한 아이템 정보 임시 저장
+        float temp = executor01.remainingTime;
+
+        // 서로 Swap
+        executor01.remainingTime = executor02.remainingTime;
+        executor02.remainingTime = temp;    
     }
 }
