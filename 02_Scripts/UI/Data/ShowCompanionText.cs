@@ -25,24 +25,13 @@ public class ShowCompanionText : MonoBehaviour
     /// <param name="_joining">합류 여부</param>
     /// <param name="trustLevel">신뢰도 레벨</param>
     /// <param name="_dialogue">대화문</param>
-    public void ShowText(CompanionInfo companion)
+    public void ShowText(CompanionData companion)
     {
-        this.companionName.text = companion.CompanionName;
-
-        if(companion.Joining == false)
-        {
-            joining.text = "[합류전]";
-        }
-        else
-        {
-            joining.text = "[합류중]";
-        }
-    
+        this.companionName.text = companion.NameKey;
+        this.joining.text = "[합류중]";
         this.trustLevel.text = companion.TrustLevel.ToString();
-
         float trustLevel = (float)(companion.TrustLevel);
         this.percentText.text = "(" + ((int)Mathf.Round(companion.TrustLevel * 100f)).ToString() + "%)";
-
         trustLevelSlider.value = trustLevel / 100f;
         this.dialogue.text = companion.DialogueKey;
     }

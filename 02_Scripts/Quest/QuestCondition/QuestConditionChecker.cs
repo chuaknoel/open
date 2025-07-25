@@ -21,7 +21,7 @@ public static class QuestEvents
 
 public class QuestConditionChecker : MonoBehaviour
 {
-    private Dictionary<int, IQuestCondition> activeConditions = new();
+    private readonly Dictionary<int, IQuestCondition> activeConditions = new();
 
     public void Register(Quest questState)
     {
@@ -30,28 +30,19 @@ public class QuestConditionChecker : MonoBehaviour
         activeConditions[questState.questData.QuestId] = condition;
     }
 
-    public void TriggerEvent(int questId, object data)
+    public void Unregister(int questId)
     {
-        if (activeConditions.TryGetValue(questId, out var condition))
+        if (activeConditions.TryGetValue(questId, out var cond))
         {
-            condition.OnEventTriggered(data);
+            activeConditions.Remove(questId);
         }
     }
 
-    public bool IsMet(int questId)
+    public void TriggerEvent(object data)
     {
-        return activeConditions.TryGetValue(questId, out var condition) && condition.IsConditionMet();
-    }
-
-    public void Unregister(int questId)
-    {
-        if (activeConditions.TryGetValue(questId, out var condition))
+        foreach (var condition in activeConditions.Values)
         {
-            if (condition is IDisposable dispose)
-            {
-                dispose.Dispose();
-            }
-            activeConditions.Remove(questId);
+            condition.OnEventTriggered(data);
         }
     }
 }

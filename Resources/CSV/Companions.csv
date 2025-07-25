@@ -1,5 +1,5 @@
 ID,NameKey,IsJoined,TrustLevel,DialogueKey,SpecDescKey,SkillNameKey,SkillDescKey,AttackPower,DefensePower,MoveSpeed,Hp,Mp,EvasionRate,CompanionPrefabAddress
-COMPANION_001,¸®¿Â,FALSE,0,¸®¿Â ±âº» ´ëÈ­,¿ÂµÎ¶ó½º °¡¹® »êÇÏ ¼Ó±â»ç °¡¹®ÀÇ »ýÁ¸ÀÚ. ÀÒ¾î¹ö¸° °¡¹®ÀÇ ¸í¿¹¸¦ µÇÃ£±â À§ÇØ Á¦±¹À» ¿©ÇàÇÏ°í ÀÖ´Ù.,¿ëÀÇ Æ÷È¿,Àü¹æÀÇ Àûµé¿¡°Ô °­·ÂÇÑ ÇÇÇØ¸¦ ÀÔÈ÷°í °øÆ÷¿¡ ºü¶ß¸³´Ï´Ù.,10,10,8,50,50,0,Lion
-COMPANION_002,¼¼¶óÇÉ,FALSE,0,¼¼¶óÇÉ ±âº» ´ëÈ­,·ç¹Ì³ª Å¾ÀÇ ÀþÀº »çÁ¦. 'Á×À½ÀÇ ÀúÁÖ'¸¦ Á¤È­ÇÒ ¹æ¹ýÀ» Ã£±â À§ÇØ ¼ºÁö¸¦ ¶°³ª¿Ô´Ù.,½Å¼ºÀÇ ±âµµ,¸ðµç ¾Æ±ºÀÇ Ã¼·ÂÀ» È¸º¹½ÃÅ°°í ÂªÀº ½Ã°£ µ¿¾È ¹æ¾î·ÂÀ» Áõ°¡½ÃÅµ´Ï´Ù.,10,10,8,50,50,0,Seraphine
-COMPANION_003,¿¤¶ó¶ó,FALSE,0,¿¤¶ó¶ó ±âº» ´ëÈ­,¾ËÄÉ¹Ì¾ÆÀÇ ±ÞÁøÀûÀÎ ¿¬±Ý¼ú»ç Á¶Á÷ '±×¶ó¿îµå ¼­Å¬'ÀÇ ÀÏ¿ø. ½º½ÂÀÎ º¼Å×¸£ÀÇ Çà¹æÀ» ÂÑ°í ÀÖ´Ù.,Æ¯Á¦ ÆøÅº ÅõÃ´,ÁöÁ¤ÇÑ À§Ä¡¿¡ °­·ÂÇÑ Æø¹ßÀ» ÀÏÀ¸Å°´Â Æ¯Á¦ ÆøÅºÀ» ´øÁý´Ï´Ù.,10,10,8,50,50,0,Elara
-COMPANION_004,°¡·¿,FALSE,0,°¡·¿ ±âº» ´ëÈ­,±×¸²ÀÚ »óÈ¸ ¼Ò¼ÓÀÇ Á¤º¸»ó. µ·ÀÌ µÇ´Â ÀÏÀÌ¶ó¸é ¹«¾ùÀÌµç ÇÏÁö¸¸ ³ª¸§ÀÇ ½ÅÁ¶¸¦ °¡Áö°í ÀÖ´Ù.,±×¸²ÀÚ ±â½À,ÀûÀÇ ¹èÈÄ·Î ¼ø°£ÀÌµ¿ÇÏ¿© Ä¡¸íÀûÀÎ ÀÏ°ÝÀ» °¡ÇÕ´Ï´Ù.,10,10,8,50,50,0,Gerrett
+COMPANION_001,ë¦¬ì˜¨,FALSE,0,ë¦¬ì˜¨ ê¸°ë³¸ ëŒ€í™”,ì˜¨ë‘ë¼ìŠ¤ ê°€ë¬¸ ì‚°í•˜ ì†ê¸°ì‚¬ ê°€ë¬¸ì˜ ìƒì¡´ìž. ìžƒì–´ë²„ë¦° ê°€ë¬¸ì˜ ëª…ì˜ˆë¥¼ ë˜ì°¾ê¸° ìœ„í•´ ì œêµ­ì„ ì—¬í–‰í•˜ê³  ìžˆë‹¤.,ìš©ì˜ í¬íš¨,ì „ë°©ì˜ ì ë“¤ì—ê²Œ ê°•ë ¥í•œ í”¼í•´ë¥¼ ìž…ížˆê³  ê³µí¬ì— ë¹ ëœ¨ë¦½ë‹ˆë‹¤.,10,10,8,50,50,0,Lion
+COMPANION_002,ì„¸ë¼í•€,FALSE,0,ì„¸ë¼í•€ ê¸°ë³¸ ëŒ€í™”,ë£¨ë¯¸ë‚˜ íƒ‘ì˜ ì Šì€ ì‚¬ì œ. 'ì£½ìŒì˜ ì €ì£¼'ë¥¼ ì •í™”í•  ë°©ë²•ì„ ì°¾ê¸° ìœ„í•´ ì„±ì§€ë¥¼ ë– ë‚˜ì™”ë‹¤.,ì‹ ì„±ì˜ ê¸°ë„,ëª¨ë“  ì•„êµ°ì˜ ì²´ë ¥ì„ íšŒë³µì‹œí‚¤ê³  ì§§ì€ ì‹œê°„ ë™ì•ˆ ë°©ì–´ë ¥ì„ ì¦ê°€ì‹œí‚µë‹ˆë‹¤.,10,10,8,50,50,0,Seraphine
+COMPANION_003,ì—˜ë¼ë¼,FALSE,0,ì—˜ë¼ë¼ ê¸°ë³¸ ëŒ€í™”,ì•Œì¼€ë¯¸ì•„ì˜ ê¸‰ì§„ì ì¸ ì—°ê¸ˆìˆ ì‚¬ ì¡°ì§ 'ê·¸ë¼ìš´ë“œ ì„œí´'ì˜ ì¼ì›. ìŠ¤ìŠ¹ì¸ ë³¼í…Œë¥´ì˜ í–‰ë°©ì„ ì«“ê³  ìžˆë‹¤.,íŠ¹ì œ í­íƒ„ íˆ¬ì²™,ì§€ì •í•œ ìœ„ì¹˜ì— ê°•ë ¥í•œ í­ë°œì„ ì¼ìœ¼í‚¤ëŠ” íŠ¹ì œ í­íƒ„ì„ ë˜ì§‘ë‹ˆë‹¤.,10,10,8,50,50,0,Elara
+COMPANION_004,ê°€ë ›,FALSE,0,ê°€ë › ê¸°ë³¸ ëŒ€í™”,ê·¸ë¦¼ìž ìƒíšŒ ì†Œì†ì˜ ì •ë³´ìƒ. ëˆì´ ë˜ëŠ” ì¼ì´ë¼ë©´ ë¬´ì—‡ì´ë“  í•˜ì§€ë§Œ ë‚˜ë¦„ì˜ ì‹ ì¡°ë¥¼ ê°€ì§€ê³  ìžˆë‹¤.,ê·¸ë¦¼ìž ê¸°ìŠµ,ì ì˜ ë°°í›„ë¡œ ìˆœê°„ì´ë™í•˜ì—¬ ì¹˜ëª…ì ì¸ ì¼ê²©ì„ ê°€í•©ë‹ˆë‹¤.,10,10,8,50,50,0,Gerrett

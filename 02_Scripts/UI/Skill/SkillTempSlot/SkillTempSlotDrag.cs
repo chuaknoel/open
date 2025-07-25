@@ -23,6 +23,7 @@ public class SkillTempSlotDrag : BaseDrag<Slot, SkillData>
 
     public  void Init(Canvas _canvas, Image _dragImage, SkillQuickSlotManager _skillQuickSlotManager)
     {
+        base.Init();
         canvas = _canvas;
         dragItemImage = _dragImage;
         skillQuickSlotManager = _skillQuickSlotManager;
@@ -46,7 +47,7 @@ public class SkillTempSlotDrag : BaseDrag<Slot, SkillData>
     {
         SkillTempSlot currentSlot = GetComponent<SkillTempSlot>();
         
-        if(!CheckMousePointerSlot<SkillTempSlot>()) // 스킬 해제
+        if(SlotIsOut()) // 스킬 해제
         {
             currentSlot.ClearSlot();
             currentSlot.UpdateSkill();
@@ -55,5 +56,29 @@ public class SkillTempSlotDrag : BaseDrag<Slot, SkillData>
             skillQuickSlotManager.skillSlots[count].ClearSlot();
             skillQuickSlotManager.skillSlots[count].UpdateSkill();
         }
-    }   
+    }
+
+    /// <summary>
+    /// 마우스 포인터의 슬롯이 무엇인지 반환합니다.
+    /// </summary>
+    protected override bool SlotIsOut() 
+    {
+        // 마우스 위치에서 Raycast
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach (var result in results)
+        {
+            // 마우스 위치의 오브젝트가 스킬 임시 슬롯이 아니라면 스킬 장착 해제.
+            // Inventory 스크립트가 붙은 오브젝트 감지
+            if (result.gameObject.GetComponentInParent<SkillTempSlot>() != null)
+                return false;
+        }
+        return true;
+    }
 }

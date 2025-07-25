@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CompanionAttackAnimeState : StateMachineBehaviour
 {
-    public Companion companion;
-    public CompanionAttackState companionAttackState;
+    private Companion companion;
+    private CompanionAttackState companionAttackState;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

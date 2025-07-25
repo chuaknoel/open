@@ -1,0 +1,106 @@
+{
+  "KaelData": {
+    "baseAttack ": 10.0,
+    "baseDefence": 5.0,
+
+    "baseMoveSpeed": 8.0,
+
+    "baseHealth": 100.0,
+    "currentHealth": 100.0,
+
+    "baseMana": 50.0,
+    "currentMana": 50.0,
+
+    "baseEvasionRate": 0,
+
+    "baseStr": 10,
+    "baseDex": 5,
+    "baseInt": 2,
+    "baseSanctity": 10,
+
+    "level": 1,
+    "exp": 0,
+    "nextLevelExp": 10,
+
+    "skillTree": [
+      0,
+      1,
+      2,
+      3
+    ],
+
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "MirielData": {
+    "baseAttack ": 10.0,
+    "baseDefence": 5.0,
+
+    "baseMoveSpeed": 8.0,
+
+    "baseHealth": 50.0,
+    "currentHealth": 50.0,
+
+    "baseMana": 100.0,
+    "currentMana": 100.0,
+
+    "baseEvasionRate": 0,
+
+    "baseStr": 2,
+    "baseDex": 5,
+    "baseInt": 10,
+    "baseSanctity": 10,
+
+    "level": 1,
+    "exp": 0,
+    "nextLevelExp": 10,
+
+    "skillTree": [
+      4,
+      5,
+      6,
+      7
+    ],
+
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+
+  "RexData": {
+    "baseAttack ": 10.0,
+    "baseDefence": 5.0,
+
+    "baseMoveSpeed": 8.0,
+
+    "baseHealth": 75.0,
+    "currentHealth": 75.0,
+
+    "baseMana": 75.0,
+    "currentMana": 75.0,
+
+    "baseEvasionRate": 0,
+
+    "baseStr": 7,
+    "baseDex": 10,
+    "baseInt": 5,
+    "baseSanctity": 10,
+
+    "level": 1,
+    "exp": 0,
+    "nextLevelExp": 10,
+
+    "skillTree": [
+      0,
+      1,
+      2,
+      3
+    ],
+
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  }
+}

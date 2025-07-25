@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,21 +13,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static Unity.Burst.Intrinsics.X86.Avx;
 using static UnityEditor.Progress;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : BaseWindow
-{
-    Inventory inventory;
-    ItemFactory itemFactory;
-    public override UIType UIType => UIType.ParentWindow;
-    public int slotCount = 20;
-    private bool isInitialized = false;
-
-    ItemFilter itemFilter = new ItemFilter();
-    ItemSort itemSort = new ItemSort();
-
-    public GameObject uiSlotPrefab;
-    public Transform slotsParent;
-
+{   
     // 검색
     [SerializeField] private TMP_InputField searchInput;
     [SerializeField] private List<ItemGradeColorPair> colorList;
@@ -38,17 +28,29 @@ public class UIInventory : BaseWindow
     // 필터
     [SerializeField] private TMP_Dropdown sortDropdown;
 
-    public GameObject destroyItemWindow;
     [SerializeField] private Tooltip toolTip;
 
-    public void Init()
+    public GameObject destroyItemWindow;
+    protected Inventory inventory;
+    private ItemFactory itemFactory;
+    public override UIType UIType => UIType.ParentWindow;
+    public int slotCount = 20;
+    private bool isInitialized = false;
+
+    private ItemFilter itemFilter = new ItemFilter();
+    private ItemSort itemSort = new ItemSort();
+
+    public GameObject uiSlotPrefab;
+    public Transform slotsParent;
+
+    public virtual void Init()
     {
         if (!isInitialized)
         {
             itemFactory = GetComponent<ItemFactory>();
             inventory = GetComponent<Inventory>();
 
-            //레벨업 시 슬롯 동적으로 생성하는 코드는 추후에 레벨업 기능 완성되면 이벤트로 처리하기
+            // 레벨업 시 슬롯 동적으로 생성하는 코드는 추후에 레벨업 기능 완성되면 이벤트로 처리하기
             inventory.CreateSlots();  // 슬롯 동적 생성
             itemFactory.AddItemData();
             inventory.SetInventory(); // 인벤토리 초기 설정
@@ -161,6 +163,7 @@ public class UIInventory : BaseWindow
                 break;
             case "이름순":
                 AddItemInInventory(itemSort.SortByItemName(inventory.items), false);
+             
                 break;
         }
     }
@@ -169,7 +172,15 @@ public class UIInventory : BaseWindow
     {
         foreach (Item item in searchItems)
         {
-            inventory.AddItem(item, useInventoryIndex);
+            if(useInventoryIndex)
+            {
+                inventory.AddItemAtIndex(item);
+            }
+            else
+            {
+                // inventory.AddItem(item, useInventoryIndex);
+                inventory.AddItem(item);
+            }
         }
     }
 }

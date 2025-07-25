@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba1f87e3a88f2f44b8ff18178e8606d, type: 3}
   m_Name: ItemQuestData
   m_EditorClassIdentifier: 
+  completeType: 1
   questType: 1
   questId: 123
   title: "\uD3EC\uC158 \uD68D\uB4DD\uD558\uAE30"
@@ -25,5 +26,6 @@ MonoBehaviour:
   - "\uAD7F"
   inprogressDialogue: 
   refusalDialogue: "\u3132\u3142"
+  rewardType: 0
   rewardItemId: 
   rewardAmount: 0

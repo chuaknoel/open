@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,25 +11,18 @@ using UnityEngine.TextCore.Text;
 using static UnityEditor.Progress;
 #endif
 
-public enum EquipType
-{
-    Helmet,
-    Armor,
-    Weapon,
-    Shoes
-}
 [CreateAssetMenu(fileName = "NewItem", menuName = "EquipItem")]
 public class EquipItem : Item
 {
     [Header("EquipInfo")]
     [SerializeField] private EquipType equipType;
     [SerializeField] protected ItemGrade itemGrade;
-    [SerializeField] protected int attackPower;
-    [SerializeField] protected Vector2 attackArea;
+    [SerializeField] private int attackPower;
+    [SerializeField] private Vector2 attackArea;
     
     [Header("EquipAbilityData")]
-    [SerializeField] private int attackBonus;
-    [SerializeField] private int defenseBonus;
+    [SerializeField] protected int attackBonus;
+    [SerializeField] protected int defenseBonus;
     [SerializeField] private int hpBonus;
     [SerializeField] private int mpBonus;
     [SerializeField] private int evasionRate; // 회피율
@@ -47,6 +41,7 @@ public class EquipItem : Item
     public bool Equipped => equipped;
 
     public EquipItem(
+        string itemId,
        string itemName,
        ItemType type,
        ItemGrade itemGrade,
@@ -63,7 +58,7 @@ public class EquipItem : Item
        int hpBonus,
        int mpBonus,
        int evasionRate
-   ) : base(itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
+   ) : base(itemId,itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
     {
         this.equipType = equipType;
         this.itemGrade = itemGrade;
@@ -75,6 +70,11 @@ public class EquipItem : Item
         this.mpBonus = mpBonus;
         this.evasionRate = evasionRate;
     }
+
+    public EquipItem(string itemId, string itemName, ItemType type, string itemDescription, Sprite image, int inventoryIndex, int count, int maxCount) : base(itemId,itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
+    {
+    }
+
     public override void Use()
     {  
         base.Use();

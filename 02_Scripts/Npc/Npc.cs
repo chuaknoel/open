@@ -17,21 +17,24 @@ public class Npc : MonoBehaviour, IInteractable
 
     public bool IsInteractable => true;
 
-    private void Start()
+    public void Init()
     {
         npcRenderer = GetComponent<Renderer>();
         normalMaterial = npcRenderer.material;
-        playerInput = new PlayerInputs();
+        playerInput = InputManager.Instance.inputActions; // PlayerInput 초기화
+        dialogueInput = InputManager.Instance.dialogueInputs; // DialogueInput 초기화
+    }
+
+    public void Unload()
+    {
+        OnNpcInteracted = null; // 이벤트 구독 해제
+        npcRenderer.material = normalMaterial; // NPC 재질 초기화
     }
 
     public void OnInteraction()
     {
-        InputManager.Instance.inputActions.Disable(); // InputActions 비활성화
-        if (dialogueInput != null)
-        {
-            dialogueInput.enabled = true; // DialogueInputs 활성화
-        }
-
+        playerInput.Disable(); // PlayerInput 비활성화
+        dialogueInput.Enable(); // DialogueInput 활성화
         OnNpcInteracted?.Invoke(this);
     }
 

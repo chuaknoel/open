@@ -26,30 +26,35 @@ public class Inventory : MonoBehaviour
 
     public void Init()
     {
+        uiManager = UIManager.Instance; 
         uiInventory = GetComponent<UIInventory>();
         uiInventory.Init();
     }
-    
     /// <summary>
     /// 슬롯을 동적으로 생성합니다.
     /// </summary>
-    public virtual void CreateSlots()
+    public void CreateSlots()
     {
         // 초기화
         for (int i = 0; i < slotCount; i++)
         {
             GameObject slot = Instantiate(uiSlotPrefab, slotsParent);
 
-            Slot _slot = slot.GetComponent<Slot>();
-            slots.Add(_slot);
-            slots[i].slotIndex = i;
-            slots[i].Init( this, equipmentManager, quickSlotManager);
+            if(slot.TryGetComponent<Slot>(out Slot _slot))
+            {
+                slots.Add(_slot);
+                slots[i].slotIndex = i;
+                slots[i].Init();
 
-            ItemDrag itemDrag = slot.GetComponent<ItemDrag>();
-            itemDrag.Init(canvas, uiManager, this.gameObject, quickSlots, draggedImage);
-
-            SlotEvent slotEvent = slot.GetComponent<SlotEvent>();
-            slotEvent.Init(uiManager, this.gameObject, draggedImage);
+                if (slot.TryGetComponent<ItemDrag>(out ItemDrag itemDrag))
+                {
+                    itemDrag.Init(canvas, quickSlots);
+                }
+                if (slot.TryGetComponent<SlotEvent>(out SlotEvent slotEvent))
+                {
+                    slotEvent.Init();
+                }             
+            }        
         }
     }
   
@@ -60,7 +65,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            AddItem(items[i],true); // 아이템 넣기
+            AddItemAtIndex(items[i]); // 아이템 넣기
         }
         for (int i = items.Count; i < slots.Count; i++)
         {
@@ -70,21 +75,11 @@ public class Inventory : MonoBehaviour
     } 
     
     /// <summary>
-    /// 아이템을 넣습니다.
+    /// 정해지지 않은 위치에 아이템을 넣습니다.
     /// </summary>
     /// <param name="item">아이템</param>
-    /// <param name="useInventoryIndex">아이템 인덱스</param>
-    public void AddItem(Item item, bool useInventoryIndex = false)
+    public void AddItem(Item item)
     {
-         // 인덱스가 유효하면 해당 슬롯에 넣기
-        if (useInventoryIndex  && item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
-        {
-            Slot slot = slots[item.InventoryIndex];
-            slot.SetItem(item);
-
-            uiInventory.UpdateSlot(slot);
-            return;
-        }
         Slot exitsSlot = null;
 
         foreach (var slot in slots)
@@ -98,7 +93,9 @@ public class Inventory : MonoBehaviour
         }
         if (exitsSlot != null)
         {
+            QuestEvents.ItemCollected(item.ItemId, 1);
             exitsSlot.AddCount(1);
+            uiInventory.UpdateSlot(exitsSlot);
         }
         // 동일한 아이템이 없다면 
         else
@@ -108,10 +105,30 @@ public class Inventory : MonoBehaviour
             if (emptySlot == null) { return; }
 
             // 아이템 넣어주기
+            QuestEvents.ItemCollected(item.ItemId, 1);
+
             items.Add(item);
             emptySlot.SetItem(item);
-            emptySlot.AddCount(1);
+            item.Add(1);
             uiInventory.UpdateSlot(emptySlot);
+        }
+    }
+
+    /// <summary>
+    /// 정해진 위치에 아이템을 넣습니다.
+    /// </summary>
+    /// <param name="item">아이템</param>
+    public void AddItemAtIndex(Item item)
+    {
+        // 아이템 위치 인덱스가 유효하고, 슬롯 리스트 안에 들어갈 수 있는 범위라면
+        if (item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
+        //  if (item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
+        {
+            Slot slot = slots[item.InventoryIndex];
+            slot.SetItem(item);
+
+            uiInventory.UpdateSlot(slot);
+            return;
         }
     }
 
@@ -123,6 +140,7 @@ public class Inventory : MonoBehaviour
     {
         Slot slot = slots[FindItemPos(item)];
         slot.ClearSlot();
+        slot.UpdateSlot();
     }
     
    /// <summary>
@@ -140,12 +158,13 @@ public class Inventory : MonoBehaviour
     /// 빈 슬롯 찾기
     /// </summary>
     /// <returns></returns>
-    private Slot FindEmptySlot()
+    public Slot FindEmptySlot()
     {
         Slot emptySlot = null;
+
         foreach (var slot in slots)
-        {
-            if (slot.Item == null)
+        {   
+            if (slot.Item == null || string.IsNullOrEmpty(slot.Item.ItemName))
             {
                 emptySlot = slot;
                 return emptySlot;

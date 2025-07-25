@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     public PlayerInputs inputActions;  //PlayerInput
+    public DialogueInputs dialogueInputs; //DialogueInput
 
     private void Awake()
     {
@@ -26,7 +27,9 @@ public class InputManager : MonoBehaviour
     public void Init()
     {
         inputActions ??= new PlayerInputs();
+        dialogueInputs ??= new DialogueInputs();
         inputActions.Enable();
+        dialogueInputs.Disable();
     }
 
     public void UnLoad()
@@ -37,6 +40,7 @@ public class InputManager : MonoBehaviour
         if (Instance == this) 
         {
             inputActions = null;
+            dialogueInputs = null;
             Instance = null;
         }
         //Instance 없음 : 초기화되지 않았거나, 다른곳이미 이미 해제되어 있는 상태. 확인 필요

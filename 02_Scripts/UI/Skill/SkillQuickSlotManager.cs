@@ -23,13 +23,14 @@ public class SkillQuickSlotManager : MonoBehaviour
     /// <summary>
     /// 초기화 함수입니다.
     /// </summary>
-    public void Init(SkillTempSlotManager _skillTempSlotManager)
+    public void Init()
     {
         inputActions = InputManager.Instance.inputActions;
         action = inputActions.asset.FindAction(actionName);
         action.started += OnSkillQuickSlotPressed;
 
-        skillTempSlotManager = _skillTempSlotManager;
+        UIManager uiManager = UIManager.Instance;
+        skillTempSlotManager = uiManager.skillTempSlotManager;
 
         for (int i = 0; i < skillSlots.Length; i++)
         {
@@ -41,8 +42,10 @@ public class SkillQuickSlotManager : MonoBehaviour
             keyBinder[i].OnCompleteRebind += ChangeSkillText;
         }
     }
-    private void ChangeSkillText( )
+    private void ChangeSkillText(KeyBinder _keyBinder)
     {
+        if (_keyBinder.actionName != "SkillButton") { return; }
+
         for (int i = 0; i < keyBinder.Length; i++)
         {
             playerSkillSlotText[i].text = keyBinder[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;

@@ -1,39 +1,81 @@
-ID,Name,Job,Type,Description,Cooldown
-00101,강타,공용,근접 무기술,"적에게 강력한 일격을 날려 기본 피해의 150%를 입힙니다.",5
-00201,견고한 방어,공용,방어술,"3초 동안 방패로 모든 공격을 막아내며, 받는 피해를 50% 감소시킵니다.",12
-00301,전력 질주,공용,전투 기술,"짧은 거리를 빠르게 질주하여 적에게 접근하거나 위험에서 벗어납니다.",8
-00401,정신 통일,공용,정신력,"패시브. 최대 마나가 10% 증가합니다.",0
-00501,원소 친화,공용,마법친화도,"패시브. 모든 원소 마법의 저항력이 약간 증가합니다.",0
-00601,격려,공용,리더십,"주변 아군들의 사기를 북돋아 10초간 방어력을 5% 증가시킵니다.",30
-10001,숙련된 베기,모험가,근접 무기술,"기본적인 베기 공격으로, 다음 연계 스킬의 시작이 됩니다.",3
-11001,연속 베기,모험가,근접 무기술,"빠르게 두 번 연속으로 베어 공격합니다. 기동성에 중점을 둔 라인입니다.",8
-12001,방어 격파,모험가,근접 무기술,"적의 방어 태세를 무너뜨리는 강력한 내려치기. 방어력을 잠시 감소시킵니다.",10
-13001,회전 베기,모험가,근접 무기술,"주변의 모든 적을 휩쓰는 원형 공격. 다수의 적을 상대할 때 유용합니다.",12
-10002,굳건한 자세,기사,방어술,"방패를 굳건히 들어, 일시적으로 방어력을 크게 상승시킵니다.",15
-11002,방패 가격,기사,방어술,"방패로 적을 가격하여 짧은 시간 기절시킵니다. 공격적인 방어 기술입니다.",10
-12002,철벽,기사,방어술,"모든 피해를 완전히 흡수하는 방어막을 짧은 시간 동안 생성합니다.",30
-13002,수호의 영역,기사,방어술,"자신과 주변 아군의 방어력을 높여주는 오라를 생성합니다.",25
-20001,마법 화살,마법사,원소마법,"작은 마력 덩어리를 날려 적에게 피해를 입히는 가장 기본적인 마법입니다.",2
-21001,화염구,마법사,원소마법,"강력한 화염구를 날려 폭발을 일으키며, 주변에 화상 피해를 입힙니다. (화염 라인)",5
-22001,얼음 송곳,마법사,원소마법,"날카로운 얼음 조각을 발사하여 적을 느리게 만듭니다. (냉기 라인)",6
-23001,연쇄 번개,마법사,원소마법,"적에게 발사된 번개가 주변의 다른 적에게 연쇄적으로 튕겨나갑니다. (번개 라인)",8
-30001,정신의 화살,마법사,정신마법,"적의 정신을 공격하여 방어력을 무시하는 소량의 고정 피해를 줍니다.",4
-31001,환각,마법사,정신마법,"적을 환각에 빠뜨려 짧은 시간 동안 아군을 공격하게 만듭니다.",20
-32001,공포,마법사,정신마법,"적을 공포에 빠뜨려 전의를 상실하고 도망치게 만듭니다.",18
-33001,정신 착취,마법사,정신마법,"적의 정신력을 흡수하여 자신의 마나를 회복합니다.",15
-40001,마력 주입,마법사,변환마법,"아군의 무기에 마력을 주입하여 다음 공격에 추가 마법 피해를 부여합니다.",12
-41001,골렘 생성,마법사,변환마법,"작은 흙 골렘을 소환하여 잠시 동안 함께 싸우게 합니다.",40
-42001,지형 융기,마법사,변환마법,"지정한 위치의 땅을 솟아오르게 하여 적의 이동을 방해하는 벽을 만듭니다.",18
-43001,금속화 피부,마법사,변환마법,"자신의 피부를 금속처럼 단단하게 만들어 일시적으로 방어력을 크게 높입니다.",30
-50001,마나 순환,마법사,마법이론,"패시브. 마나 회복 속도가 15% 증가합니다.",0
-51001,주문 증폭,마법사,마법이론,"패시브. 모든 마법의 위력이 7% 증가합니다.",0
-52001,효율적인 시전,마법사,마법이론,"패시브. 모든 마법의 마나 소모량이 15% 감소합니다.",0
-53001,원소 조화,마법사,마법이론,"패시브. 서로 다른 원소 마법을 연달아 사용할 경우 추가 피해를 줍니다.",0
-60001,약병 투척,도적,연금술,"작은 산성 약병을 던져 부딪힌 곳에 소량의 지속 피해를 입힙니다.",6
-61001,독약 제조,도적,연금술,"단검에 맹독을 발라, 5초 동안 지속적인 독 피해를 입힙니다.",15
-62001,강화 물약,도적,연금술,"자신 또는 아군에게 공격력을 높여주는 물약을 사용합니다.",25
-63001,연막탄,도적,연금술,"연막탄을 터뜨려 적의 시야를 가리고, 잠시 동안 자신의 회피율을 높입니다.",20
-70001,전술 지시,기사,리더십,"가장 가까운 아군에게 전술을 지시하여, 10초 동안 치명타 확률을 15% 증가시킵니다.",35
-71001,영감,기사,리더십,"주변 모든 동료들의 스킬 쿨다운을 즉시 2초 감소시킵니다.",45
-72001,희생 정신,기사,리더십,"5초 동안 주변 동료들이 받는 피해의 30%를 대신 받습니다.",40
-73001,단체 행동,기사,리더십,"1분 동안 파티 전체의 이동 속도가 10% 증가합니다.",60
+skillCode,Name_ko,Name_en,Job,Type,Description,skillLevel,amount,duration,hitCount,coolTime,consumeMana,range,skillType,targetType,damageType,skillPrefabAddress,skillImageAddress,requiredLevel,requiredSkills,requiredPoint
+100,강격,PowerStrike,공용,근접 무기술,"무기를 힘껏 휘둘러 적에게 120%의 물리 피해를 줍니다.",1,120,0,1,4,10,2.5,Attack,Enemy,Physical,Skills/PowerStrike,Skills/PowerStrike,1,0,1
+101,신속한 연타,SwiftStrikes,공용,근접 무기술,"눈에 보이지 않는 속도로 2회 연속 공격합니다. 각 타격은 70%의 물리 피해를 줍니다.",1,70,0,2,8,15,2.5,Attack,Enemy,Physical,Skills/SwiftStrikes,Skills/SwiftStrikes,5,100,1
+102,방어구 부수기,ArmorBreak,공용,근접 무기술,"적의 방어구를 강타하여 100%의 물리 피해를 주고, 5초간 방어력을 15% 감소시킵니다.",1,15,5,1,10,18,2.5,Attack,Enemy,Physical,Skills/ArmorBreak,Skills/ArmorBreak,5,100,1
+103,회전 베기,Whirlwind,공용,근접 무기술,"자신 주변의 모든 적에게 80%의 물리 피해를 주는 회전 공격을 합니다.",1,80,0,1,12,20,3.0,Attack,Area,Physical,Skills/Whirlwind,Skills/Whirlwind,5,100,1
+104,질풍,Gale,공용,근접 무기술,"폭풍처럼 몰아쳐 4회 연속 공격을 가합니다. 각 타격은 80%의 물리 피해를 줍니다.",1,80,0,4,15,25,2.5,Attack,Enemy,Physical,Skills/Gale,Skills/Gale,15,101,1
+105,분쇄,Pulverize,공용,근접 무기술,"적의 방어구를 완전히 분쇄하여 150%의 물리 피해를 주고, 10초간 방어력을 30% 감소시킵니다.",1,30,10,1,18,30,2.5,Attack,Enemy,Physical,Skills/Pulverize,Skills/Pulverize,15,102,1
+106,대지 가르기,Earthshatter,공용,근접 무기술,"전방의 넓은 범위에 강력한 충격파를 일으켜 140%의 물리 피해를 줍니다.",1,140,0,1,20,35,5.0,Attack,Area,Physical,Skills/Earthshatter,Skills/Earthshatter,15,103,1
+107,폭풍의 칼날,BladeStorm,공용,근접 무기술,"[궁극기] 지정된 위치에 칼날의 폭풍을 소환하여 5초 동안 10회에 걸쳐 총 1000%의 광역 물리 피해를 줍니다.",1,100,5,10,45,60,8.0,Attack,Area,Physical,Skills/BladeStorm,Skills/BladeStorm,20,104,1
+108,파열격,RupturingStrike,공용,근접 무기술,"[궁극기] 적에게 치명적인 일격을 가해 250%의 물리 피해를 주고, 5초에 걸쳐 250%의 추가 출혈 피해를 줍니다.",1,250,5,1,40,50,2.5,Attack,Enemy,Physical,Skills/RupturingStrike,Skills/RupturingStrike,20,105,1
+109,검기 폭발,SwordKiExplosion,공용,근접 무기술,"[궁극기] 검기를 응축했다가 폭발시켜 주변 모든 적에게 300%의 물리 피해를 주고 밀쳐냅니다.",1,300,0,1,50,70,6.0,Attack,Area,Physical,Skills/SwordKiExplosion,Skills/SwordKiExplosion,20,106,1
+110,방패 막기,ShieldBlock,공용,방어술,"5초 동안 다음 1회의 공격을 완전히 방어합니다.",1,100,5,1,8,10,0,Buff,Player,None,Skills/ShieldBlock,Skills/ShieldBlock,1,0,1
+111,철벽 태세,IronStance,공용,방어술,"10초 동안 자신의 방어력을 20% 증가시킵니다.",1,20,10,0,15,15,0,Buff,Player,None,Skills/IronStance,Skills/IronStance,5,110,1
+112,도발의 포효,TauntingRoar,공용,방어술,"주변 모든 적을 도발하여 5초 동안 자신을 공격하게 만듭니다. 시전 시 방어력이 50% 증가합니다.",1,50,5,0,20,20,8.0,Debuff,Area,None,Skills/TauntingRoar,Skills/TauntingRoar,5,110,1
+113,반격 태세,CounterStance,공용,방어술,"3초 동안 방어 태세를 취합니다. 이 시간 동안 공격받으면 즉시 150%의 물리 피해로 반격합니다.",1,150,3,1,18,22,2.5,Buff,Player,Physical,Skills/CounterStance,Skills/CounterStance,5,110,1
+114,불굴의 의지,IndomitableWill,공용,방어술,"[패시브] 최대 체력이 15% 영구적으로 증가합니다.",1,15,0,0,0,0,0,Passive,Player,None,Skills/IndomitableWill,Skills/IndomitableWill,15,111,1
+115,수호자의 영역,GuardianAura,공용,방어술,"자신 주변에 수호의 영역을 생성하여 10초 동안 자신과 아군의 방어력을 15% 증가시킵니다.",1,15,10,0,30,40,6.0,Buff,Area,None,Skills/GuardianAura,Skills/GuardianAura,15,112,1
+116,완전한 방어,PerfectDefense,공용,방어술,"3초 동안 모든 피해에 면역이 됩니다.",1,100,3,0,40,50,0,Buff,Player,None,Skills/PerfectDefense,Skills/PerfectDefense,15,113,1
+117,최후의 보루,LastBastion,공용,방어술,"[궁극기] 10초 동안 체력이 1 이하로 내려가지 않습니다.",1,100,10,0,90,80,0,Buff,Player,None,Skills/LastBastion,Skills/LastBastion,20,114,1
+118,신의 가호,DivineProtection,공용,방어술,"[궁극기] 자신을 포함한 모든 아군에게 5초 동안 모든 피해를 50% 감소시키는 보호막을 부여합니다.",1,50,5,0,70,100,10.0,Buff,Area,None,Skills/DivineProtection,Skills/DivineProtection,20,115,1
+119,가시 갑옷,Thornmail,공용,방어술,"[궁극기] 15초 동안 자신을 공격하는 적에게 받는 피해의 30%를 되돌려줍니다.",1,30,15,0,60,60,0,Buff,Player,Physical,Skills/Thornmail,Skills/Thornmail,20,116,1
+120,전력 질주,Sprint,공용,전투 기술,"5초 동안 이동 속도가 30% 증가합니다.",1,30,5,0,10,5,0,Buff,Player,None,Skills/Sprint,Skills/Sprint,1,0,1
+121,암습,Ambush,공용,전투 기술,"적의 배후에서 공격 시 150%의 피해를 주고 1초간 기절시킵니다. (은신 상태 요구)",1,150,1,1,12,15,2.0,Attack,Enemy,Physical,Skills/Ambush,Skills/Ambush,5,120,1
+122,회피 기동,EvasiveManeuver,공용,전투 기술,"짧은 거리를 구르며 다음 1회의 공격을 회피합니다.",1,100,1,1,8,10,0,Buff,Player,None,Skills/EvasiveManeuver,Skills/EvasiveManeuver,5,120,1
+123,약점 분석,AnalyzeWeakness,공용,전투 기술,"[패시브] 적의 약점을 파악하여 치명타 확률이 5% 영구적으로 증가합니다.",1,5,0,0,0,0,0,Passive,Player,None,Skills/AnalyzeWeakness,Skills/AnalyzeWeakness,5,120,1
+124,은신,Stealth,공용,전투 기술,"10초 동안 적에게 보이지 않는 은신 상태가 됩니다. 공격하거나 스킬 사용 시 해제됩니다.",1,100,10,0,25,30,0,Buff,Player,None,Skills/Stealth,Skills/Stealth,15,121,1
+125,흐르는 물처럼,FlowLikeWater,공용,전투 기술,"[패시브] 회피 성공 시 3초간 공격 속도가 20% 증가합니다.",1,20,3,0,0,0,0,Passive,Player,None,Skills/FlowLikeWater,Skills/FlowLikeWater,15,122,1
+126,치명적인 일격,LethalStrike,공용,전투 기술,"[패시브] 치명타 발생 시 50%의 추가 피해를 줍니다.",1,50,0,0,0,0,0,Passive,Player,None,Skills/LethalStrike,Skills/LethalStrike,15,123,1
+127,그림자 습격,ShadowAssault,공용,전투 기술,"[궁극기] 은신 상태에서 적에게 즉시 접근하여 400%의 물리 피해를 줍니다.",1,400,0,1,50,60,10.0,Attack,Enemy,Physical,Skills/ShadowAssault,Skills/ShadowAssault,20,124,1
+128,폭풍의 눈,EyeOfTheStorm,공용,전투 기술,"[궁극기] 5초 동안 모든 공격을 자동으로 회피합니다.",1,100,5,0,80,70,0,Buff,Player,None,Skills/EyeOfTheStorm,Skills/EyeOfTheStorm,20,125,1
+129,죽음의 표식,MarkOfDeath,공용,전투 기술,"[궁극기] 적에게 죽음의 표식을 남깁니다. 10초 안에 표식이 남은 적이 받는 모든 피해가 30% 증가합니다.",1,30,10,0,60,80,15.0,Debuff,Enemy,None,Skills/MarkOfDeath,Skills/MarkOfDeath,20,126,1
+130,정신 집중,Meditate,공용,정신력,"3초간 정신을 집중하여 최대 마나의 20%를 회복합니다. 집중 중에는 움직일 수 없습니다.",1,20,3,0,20,0,0,Buff,Player,None,Skills/Meditate,Skills/Meditate,1,0,1
+131,마나 보호막,ManaShield,공용,정신력,"받는 피해의 30%를 마나로 대신 흡수하는 보호막을 10초간 생성합니다.",1,30,10,0,25,20,0,Buff,Player,None,Skills/ManaShield,Skills/ManaShield,5,130,1
+132,정신력 강화,FortifyMind,공용,정신력,"[패시브] 최대 마나가 10% 영구적으로 증가합니다.",1,10,0,0,0,0,0,Passive,Player,None,Skills/FortifyMind,Skills/FortifyMind,5,130,1
+133,침묵의 일격,SilencingStrike,공용,정신력,"적에게 80%의 물리 피해를 주고 3초간 스킬을 사용하지 못하게 만듭니다.",1,80,3,1,18,25,2.5,Attack,Enemy,Physical,Skills/SilencingStrike,Skills/SilencingStrike,5,130,1
+134,마나샘,ManaSpring,공용,정신력,"[패시브] 마나 자연 회복량이 초당 5씩 영구적으로 증가합니다.",1,5,0,0,0,0,0,Passive,Player,None,Skills/ManaSpring,Skills/ManaSpring,15,131,1
+135,지혜의 샘,WellOfWisdom,공용,정신력,"[패시브] 최대 마나가 추가로 15% 영구적으로 증가하고, 모든 스킬의 마나 소모량이 10% 감소합니다.",1,15,0,0,0,0,0,Passive,Player,None,Skills/WellOfWisdom,Skills/WellOfWisdom,15,132,1
+136,정신 붕괴,MindBreak,공용,정신력,"적의 정신을 파고들어 10초 동안 마법 방어력을 30% 감소시킵니다.",1,30,10,0,30,40,12.0,Debuff,Enemy,None,Skills/MindBreak,Skills/MindBreak,15,133,1
+137,마력 폭풍,ManaStorm,공용,정신력,"[궁극기] 자신의 마나를 모두 소모하여, 소모한 마나의 3배에 해당하는 마법 피해를 주변에 광역으로 줍니다.",1,300,0,1,60,0,8.0,Attack,Area,Magical,Skills/ManaStorm,Skills/ManaStorm,20,134,1
+138,무한한 정신,LimitlessMind,공용,정신력,"[궁극기] 15초 동안 모든 스킬의 마나 소모가 0이 됩니다.",1,100,15,0,120,50,0,Buff,Player,None,Skills/LimitlessMind,Skills/LimitlessMind,20,135,1
+139,망각의 권능,PowerOfOblivion,공용,정신력,"[궁극기] 적 하나의 모든 강화 효과를 제거하고, 10초간 스킬 사용 불가 및 침묵 상태로 만듭니다.",1,100,10,0,90,100,15.0,Debuff,Enemy,None,Skills/PowerOfOblivion,Skills/PowerOfOblivion,20,136,1
+140,원소 저항,ElementalResistance,공용,마법 친화도,"[패시브] 모든 원소(화염, 냉기, 번개) 저항력이 5% 영구적으로 증가합니다.",1,5,0,0,0,0,0,Passive,Player,None,Skills/ElementalResistance,Skills/ElementalResistance,1,0,1
+141,화염 친화,FlameAffinity,공용,마법 친화도,"[패시브] 화염 저항력이 추가로 15% 증가하고, 화염 속성 공격 시 10%의 추가 피해를 줍니다.",1,15,0,0,0,0,0,Passive,Player,None,Skills/FlameAffinity,Skills/FlameAffinity,5,140,1
+142,냉기 친화,FrostAffinity,공용,마법 친화도,"[패시브] 냉기 저항력이 추가로 15% 증가하고, 냉기 속성 공격 시 10%의 추가 피해를 줍니다.",1,15,0,0,0,0,0,Passive,Player,None,Skills/FrostAffinity,Skills/FrostAffinity,5,140,1
+143,번개 친화,LightningAffinity,공용,마법 친화도,"[패시브] 번개 저항력이 추가로 15% 증가하고, 번개 속성 공격 시 10%의 추가 피해를 줍니다.",1,15,0,0,0,0,0,Passive,Player,None,Skills/LightningAffinity,Skills/LightningAffinity,5,140,1
+144,타오르는 영혼,BurningSoul,공용,마법 친화도,"[패시브] 화염 속성 공격에 피격 시, 5초간 공격력이 10% 증가합니다. (30초에 한 번 발동)",1,10,5,0,30,0,0,Passive,Player,None,Skills/BurningSoul,Skills/BurningSoul,15,141,1
+145,얼어붙은 심장,FrozenHeart,공용,마법 친화도,"[패시브] 냉기 속성 공격에 피격 시, 공격한 적을 2초간 30% 둔화시킵니다. (10초에 한 번 발동)",1,30,2,0,10,0,0,Passive,Player,None,Skills/FrozenHeart,Skills/FrozenHeart,15,142,1
+146,전류가 흐르는 육체,StaticBody,공용,마법 친화도,"[패시브] 번개 속성 공격에 피격 시, 주변 적들에게 50%의 연쇄 번개 피해를 줍니다. (15초에 한 번 발동)",1,50,0,1,15,0,0,Passive,Player,None,Skills/StaticBody,Skills/StaticBody,15,143,1
+147,불사조의 현신,PhoenixIncarnate,공용,마법 친화도,"[궁극기] 사망 시, 5초 후 최대 체력의 50%로 부활하며 주변에 강력한 화염 폭발을 일으킵니다. (전투 당 1회)",1,50,0,1,0,0,0,Passive,Player,None,Skills/PhoenixIncarnate,Skills/PhoenixIncarnate,20,144,1
+148,겨울의 지배자,Winter'sReign,공용,마법 친화도,"[궁극기] 10초간 자신 주변에 눈보라를 소환하여, 범위 내 적들의 이동속도와 공격속도를 30% 감소시킵니다.",1,30,10,0,80,100,10.0,Debuff,Area,None,Skills/WintersReign,Skills/WintersReign,20,145,1
+149,뇌신의 강림,ThundergodsDescent,공용,마법 친화도,"[궁극기] 5초간 매초마다 무작위 적 3명에게 150%의 마법 피해를 주는 낙뢰를 떨어뜨립니다.",1,150,5,15,90,120,20.0,Attack,Area,Magical,Skills/ThundergodsDescent,Skills/ThundergodsDescent,20,146,1
+150,격려의 외침,RallyingCry,공용,리더십,"주변 아군들의 사기를 북돋아 10초간 공격력을 10% 증가시킵니다.",1,10,10,0,30,30,8.0,Buff,Area,None,Skills/RallyingCry,Skills/RallyingCry,1,0,1
+151,지휘관의 통솔력,CommanderPresence,공용,리더십,"[오라] 자신 주변 아군들의 방어력이 5% 영구적으로 증가합니다.",1,5,0,0,0,0,8.0,Aura,Area,None,Skills/CommanderPresence,Skills/CommanderPresence,5,150,1
+152,전술적 후퇴,TacticalRetreat,공용,리더십,"자신을 포함한 주변 아군들의 이동 속도를 5초간 30% 증가시킵니다.",1,30,5,0,25,25,8.0,Buff,Area,None,Skills/TacticalRetreat,Skills/TacticalRetreat,5,150,1
+153,결속의 힘,PowerOfUnity,공용,리더십,"주변 아군 한 명과 자신을 연결하여, 10초 동안 서로가 받는 피해를 25%씩 나눠 받습니다.",1,25,10,0,40,40,15.0,Buff,Ally,None,Skills/PowerOfUnity,Skills/PowerOfUnity,5,150,1
+154,승리의 돌격,VictoriousCharge,공용,리더십,"모든 아군에게 10초간 공격력과 공격 속도를 15% 증가시키는 버프를 겁니다.",1,15,10,0,60,50,15.0,Buff,Area,None,Skills/VictoriousCharge,Skills/VictoriousCharge,15,151,1
+155,구원의 손길,SavingGrace,공용,리더십,"쓰러진 아군 한 명을 최대 체력의 30%로 즉시 부활시킵니다.",1,30,0,1,180,100,15.0,Heal,Ally,None,Skills/SavingGrace,Skills/SavingGrace,15,152,1
+156,희생의 각오,VowOfSacrifice,공용,리더십,"아군 한 명의 모든 해로운 효과를 자신에게 옮겨오고, 5초간 자신의 방어력을 100% 증가시킵니다.",1,100,5,0,50,60,15.0,Buff,Player,None,Skills/VowOfSacrifice,Skills/VowOfSacrifice,15,153,1
+157,전장의 영웅,HeroOfTheBattlefield,공용,리더십,"[궁극기] 15초 동안 모든 아군에게 공격력/방어력 20%, 이동속도 20% 증가 버프를 부여합니다.",1,20,15,0,120,150,20.0,Buff,Area,None,Skills/HeroOfTheBattlefield,Skills/HeroOfTheBattlefield,20,154,1
+158,최후의 저항 명령,LastStandOrder,공용,리더십,"[궁극기] 모든 아군에게 10초 동안 죽음에 이르는 피해를 받아도 체력 1로 생존하는 버프를 부여합니다.",1,100,10,0,240,200,20.0,Buff,Area,None,Skills/LastStandOrder,Skills/LastStandOrder,20,155,1
+159,영광의 깃발,BannerOfGlory,공용,리더십,"[궁극기] 지정 위치에 20초간 유지되는 깃발을 꽂습니다. 깃발 주변의 아군은 초당 최대 체력의 3%를 회복합니다.",1,3,20,0,100,120,10.0,Heal,Area,None,Skills/BannerOfGlory,Skills/BannerOfGlory,20,156,1
+160,마법 화살,MagicMissile,마법사,마법 기술,"마력 덩어리를 날려 적에게 150%의 마법 피해를 줍니다. 유도 성능을 가집니다.",1,150,0,1,3,10,15.0,Attack,Enemy,Magical,Skills/MagicMissile,Skills/MagicMissile,1,0,1
+161,신비한 지혜,ArcaneIntellect,마법사,마법 기술,"[패시브] 주문력이 10% 영구적으로 증가합니다.",1,10,0,0,0,0,0,Passive,Player,None,Skills/ArcaneIntellect,Skills/ArcaneIntellect,5,160,1
+162,비전 보호막,ArcaneShield,마법사,마법 기술,"자신의 최대 체력의 20%에 해당하는 피해를 흡수하는 마법 보호막을 10초간 생성합니다.",1,20,10,0,20,25,0,Buff,Player,None,Skills/ArcaneShield,Skills/ArcaneShield,5,160,1
+163,점멸,Blink,마법사,마법 기술,"지정한 위치로 짧은 거리를 순간이동합니다.",1,100,0,1,10,30,12.0,Movement,Player,None,Skills/Blink,Skills/Blink,5,160,1
+164,주문 가속,SpellHaste,마법사,마법 기술,"[패시브] 모든 스킬의 재사용 대기시간이 10% 영구적으로 감소합니다.",1,10,0,0,0,0,0,Passive,Player,None,Skills/SpellHaste,Skills/SpellHaste,15,161,1
+165,마력 증폭,AmplifyMagic,마법사,마법 기술,"다음 시전하는 스킬의 공격력을 50% 증폭시킵니다. 10초간 유지됩니다.",1,50,10,1,30,40,0,Buff,Player,None,Skills/AmplifyMagic,Skills/AmplifyMagic,15,162,1
+166,시간 왜곡,TimeWarp,마법사,마법 기술,"지정한 지역에 8초간 유지되는 왜곡장을 생성합니다. 장판 안의 아군은 스킬 재사용 대기시간이 30% 빨리 감소합니다.",1,30,8,0,50,70,10.0,Buff,Area,None,Skills/TimeWarp,Skills/TimeWarp,15,163,1
+167,운석 낙하,Meteor,마법사,마법 기술,"[궁극기] 지정한 위치에 거대한 운석을 떨어뜨려 500%의 광역 마법 피해를 주고 3초간 기절시킵니다.",1,500,3,1,90,150,20.0,Attack,Area,Magical,Skills/Meteor,Skills/Meteor,20,164,1
+168,힘의 역장,ForceField,마법사,마법 기술,"[궁극기] 10초 동안 자신 주변의 모든 적 투사체를 막아내는 역장을 생성합니다.",1,100,10,0,70,100,5.0,Buff,Area,None,Skills/ForceField,Skills/ForceField,20,165,1
+169,공간 붕괴,SpatialCollapse,마법사,마법 기술,"[궁극기] 지정한 지점을 중심으로 모든 적을 빨아들이며, 3초 후 폭발하여 350%의 고정 피해를 줍니다.",1,350,0,1,100,180,15.0,Attack,Area,True,Skills/SpatialCollapse,Skills/SpatialCollapse,20,166,1
+170,화염구,Fireball,마법사,원소 마법,"화염구를 날려 적에게 180%의 마법 피해를 주고, 주변에 작은 폭발을 일으킵니다.",1,180,0,1,5,15,15.0,Attack,Enemy,Fire,Skills/Fireball,Skills/Fireball,1,0,1
+171,얼음 송곳,IceSpike,마법사,원소 마법,"얼음 송곳을 발사하여 140%의 마법 피해를 주고, 3초간 이동 속도를 30% 감소시킵니다.",1,140,3,1,6,15,15.0,Attack,Enemy,Ice,Skills/IceSpike,Skills/IceSpike,5,170,1
+172,연쇄 번개,ChainLightning,마법사,원소 마법,"번개를 발사하여 130%의 마법 피해를 주고, 최대 3명의 주변 적에게 튕겨나갑니다.",1,130,0,3,8,20,15.0,Attack,Enemy,Lightning,Skills/ChainLightning,Skills/ChainLightning,5,170,1
+173,발화,Ignite,마법사,원소 마법,"적을 불태워 5초에 걸쳐 150%의 지속 마법 피해를 줍니다.",1,30,5,5,12,25,15.0,Attack,Enemy,Fire,Skills/Ignite,Skills/Ignite,5,170,1
+174,빙결,Freeze,마법사,원소 마법,"적을 2초 동안 얼려 행동 불가 상태로 만듭니다. 얼어있는 적은 받는 피해가 20% 증가합니다.",1,20,2,1,18,35,15.0,Debuff,Enemy,Ice,Skills/Freeze,Skills/Freeze,15,171,1
+175,전하 방출,Discharge,마법사,원소 마법,"자신 주변에 전기를 방출하여 모든 적에게 150%의 마법 피해를 주고 짧게 경직시킵니다.",1,150,0,1,15,40,6.0,Attack,Area,Lightning,Skills/Discharge,Skills/Discharge,15,172,1
+176,화염 기둥,PillarOfFlame,마법사,원소 마법,"지정한 위치에 거대한 화염 기둥을 소환하여 300%의 광역 마법 피해를 줍니다.",1,300,0,1,25,60,18.0,Attack,Area,Fire,Skills/PillarOfFlame,Skills/PillarOfFlame,15,173,1
+177,눈보라,Blizzard,마법사,원소 마법,"[궁극기] 지정된 지역에 8초 동안 강력한 눈보라를 소환합니다. 범위 내의 적들은 지속적으로 피해를 입고 이동속도가 50% 감소합니다. (총 800% 피해)",1,100,8,8,60,120,20.0,Attack,Area,Ice,Skills/Blizzard,Skills/Blizzard,20,174,1
+178,번개의 창,LightningSpear,마법사,원소 마법,"[궁극기] 번개의 창을 던져 일직선상의 모든 적을 관통하며 400%의 마법 피해를 줍니다.",1,400,0,1,45,90,25.0,Attack,Line,Lightning,Skills/LightningSpear,Skills/LightningSpear,20,175,1
+179,지옥불,Inferno,마법사,원소 마법,"[궁극기] 지정한 지역을 10초간 불바다로 만듭니다. 범위 내 적들은 강력한 지속 피해를 입고, 방어력이 30% 감소합니다. (총 900% 피해)",1,90,10,10,70,140,20.0,Attack,Area,Fire,Skills/Inferno,Skills/Inferno,20,176,1

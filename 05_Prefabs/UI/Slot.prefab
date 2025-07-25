@@ -246,12 +246,22 @@ MonoBehaviour:
   inventory: {fileID: 0}
   uiInventory: {fileID: 0}
   equipmentManager: {fileID: 0}
-  item: {fileID: 0}
+  companionEquipManager: {fileID: 0}
+  item:
+    itemName: 
+    type: 0
+    itemDescription: 
+    image: {fileID: 0}
+    inventoryIndex: 0
+    count: 0
+    maxCount: 0
   slotIndex: 0
   backGround: {fileID: 1776511931104299081}
   itemImage: {fileID: 2732921388924617626}
   itemText: {fileID: 3742904220943333870}
   basicBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  rect: {fileID: 0}
+  isInventorySlot: 1
 --- !u!114 &566830623393484718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d846b1a7b871589499939582948eea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   toolTip: {fileID: 0}
   dragitemImage: {fileID: 0}
   outline: {fileID: 7386196284197564405}

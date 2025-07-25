@@ -16,9 +16,10 @@ public class SkillTempSlotManager : MonoBehaviour
     [SerializeField] private Image dragImage;
     [SerializeField] private SkillQuickSlotManager skillQuickSlotManager;
 
-    public void Init(SkillQuickSlotManager skillQuickSlotManager)
+    public void Init()
     {
-        this.skillQuickSlotManager = skillQuickSlotManager;
+        UIManager uiManager = UIManager.Instance;   
+        this.skillQuickSlotManager = uiManager.skillQuickSlotManager;
     }
 
     public void CreateSkillTempSlot(Slot slot)

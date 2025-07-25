@@ -7,6 +7,8 @@ public class TalkCondition : IQuestCondition
     {
         questState = state;
         targetNpcId = state.questData.TargetId;
+        questState.UpdateProgress(state.questData.Amount);
+        Logger.Log($"[TalkCondition] 즉시 완료 가능 체크: {state.questData.Title}");
     }
 
     public void OnEventTriggered(object data)

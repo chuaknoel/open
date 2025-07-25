@@ -24,6 +24,7 @@ public class SkillQuickSlotDrag : BaseDrag<Slot, SkillData>, ITempSkillSlotUpdat
 
     public void Init(Canvas _canvas, Image _dragImage)
     {
+        base.Init();
         canvas = _canvas;
         dragItemImage = _dragImage;
     }
@@ -46,16 +47,49 @@ public class SkillQuickSlotDrag : BaseDrag<Slot, SkillData>, ITempSkillSlotUpdat
     {
         PlayerSkillQuickSlot currentSlot = GetComponent<PlayerSkillQuickSlot>();
 
-        if(!CheckMousePointerSlot<PlayerSkillQuickSlot>()) // 스킬 해제
-        {
-            int count = currentSlot.GetComponent<PlayerSkillQuickSlot>().slotIndex;
+       //if (SlotIsOut())
+       // {
             currentSlot.ClearSlot();
             currentSlot.UpdateSkill();
-            
+
             // 임시 스킬 슬롯도 업데이트 
             UpdateTempSkillQuickSlot();
-        }
+       // }
+        
     }
+
+    /// <summary>
+    /// 마우스가 인벤토리밖인지 검사
+    /// </summary>
+    /// <returns></returns>
+    protected override bool SlotIsOut()
+    {
+        //PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        //{
+        //    position = Input.mousePosition
+        //};
+
+        //List<RaycastResult> results = new List<RaycastResult>();
+        //EventSystem.current.RaycastAll(pointerData, results);
+        //PlayerSkillQuickSlot currentSlot = GetComponent<PlayerSkillQuickSlot>();
+
+        //foreach (var result in results)
+        //{
+        //    // 스킬 해제 
+        //    if (result.gameObject.GetComponentInParent<PlayerSkillQuickSlot>() != null)
+        //    {
+        //       // int count = currentSlot.GetComponent<PlayerSkillQuickSlot>().slotIndex;
+        //        currentSlot.ClearSlot();
+        //        currentSlot.UpdateSkill();
+
+        //        // 임시 스킬 슬롯도 업데이트 
+        //        UpdateTempSkillQuickSlot();
+        //        return false;
+        //    }
+        //}
+        return true; // 둘 다 해당 안 됨
+    }
+
 
     /// <summary>
     /// 임시 스킬 슬롯을 업데이트 해주는 함수입니다.

@@ -1,40 +1,63 @@
 using UnityEngine;
 
+/// <summary>
+/// 텔레포트 지점 역할만 수행하는 매우 가벼운 컴포넌트.
+/// 자신의 부모 계층에 있는 TeleporterManager와 통신합니다.
+/// </summary>
+[RequireComponent(typeof(Collider2D))]
 public class Teleporter : MonoBehaviour
 {
-    // Unity 에디터에서 연결할 도착 지점 Teleporter
-    [SerializeField]
-    private Teleporter destinationTeleporter;
+    [Header("텔레포터 설정")]
+    [Tooltip("이동할 목적지 텔레포터 오브젝트")]
+    [SerializeField] private Teleporter destinationTeleporter;
 
-    // 플레이어가 이 텔레포터를 사용한 직후인지 확인하는 변수
-    // (도착하자마자 다시 출발 지점으로 돌아가는 무한 루프를 방지하기 위함)
-    private bool isJustTeleported = false;
+    [Header("대상 설정")]
+    [Tooltip("텔레포터와 상호작용할 오브젝트의 레이어를 선택합니다.")]
+    [SerializeField] private LayerMask targetLayer;
 
-    // 이 트리거 영역에 다른 Collider가 들어왔을 때 호출됩니다.
+    // 자신이 속한 TeleporterManager에 대한 참조
+    private TeleporterManager teleporterManager;
+
+
+    public void Init(TeleporterManager teleporterManager, LayerMask targetLayer)
+    {
+        this.teleporterManager = teleporterManager;
+        this.targetLayer = targetLayer;
+
+        if (teleporterManager == null)
+        {
+            Logger.LogError($"[Teleporter] '{gameObject.name}'가 TeleporterManager의 자식으로 배치되지 않았습니다! 상위 계층에 TeleporterManager가 필요합니다.");
+            this.enabled = false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 들어온 오브젝트가 'Player' 태그를 가지고 있고, 방금 텔레포트한 상태가 아니라면
-        if (other.CompareTag("Player") && !isJustTeleported)
+        if (IsTargetLayer(other.gameObject.layer))
         {
-            // 도착 지점이 설정되어 있다면, 플레이어를 그 위치로 이동시킵니다.
-            if (destinationTeleporter != null)
+            if (teleporterManager.MoveCheck())
             {
-                // 도착 지점 텔레포터에게 "지금 플레이어가 도착했으니, 다시 돌려보내지 마라"고 알려줍니다.
-                destinationTeleporter.isJustTeleported = true;
-
-                // 플레이어의 위치를 도착 지점 텔레포터의 위치로 변경합니다.
-                other.transform.position = destinationTeleporter.transform.position;
+                teleporterManager.EndTeleport();
+            }
+            else
+            {
+                // 찾은 매니저에게 텔레포트를 요청합니다.
+                teleporterManager.RequestTeleport(other.transform, destinationTeleporter);
             }
         }
     }
 
-    // 이 트리거 영역에서 다른 Collider가 나갔을 때 호출됩니다.
     private void OnTriggerExit2D(Collider2D other)
     {
-        // 플레이어가 텔레포트 존을 완전히 빠져나갔다면, 다시 텔레포트할 수 있도록 상태를 초기화합니다.
-        if (other.CompareTag("Player"))
+        if (IsTargetLayer(other.gameObject.layer))
         {
-            isJustTeleported = false;
+            // 대상이 영역을 벗어나면, 매니저에게 쿨다운 해제를 알립니다.
+            teleporterManager.ClearCooldownForTarget(other.transform);
         }
+    }
+
+    private bool IsTargetLayer(int objectLayer)
+    {
+        return (targetLayer.value & (1 << objectLayer)) > 0;
     }
 }

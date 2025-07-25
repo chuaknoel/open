@@ -1,9 +1,10 @@
+using Enums;
 using UnityEngine;
 /// <summary>
 /// '낡은 단검(WEAPON_001)' 하나의 데이터만 담고 있는 테스트용 스크립트입니다.
 /// 이 컴포넌트가 붙은 게임 오브젝트는 그 즉시 '낡은 단검' 아이템이 됩니다.
 /// </summary>
-public class OldDaggerItem 
+public class OldDaggerItem : MonoBehaviour
 {
     [Header("기본 정보")]
     public string weaponID;

@@ -7,7 +7,6 @@ public class HuntingCondition : IQuestCondition
     {
         questState = state;
         requiredMonsterId = state.questData.TargetId;
-
         QuestEvents.OnMonsterKilled += HandleMonsterKilled;
     }
 

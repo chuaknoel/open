@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class Enemy : BaseCreature
 {
     public EnemyController Controller => controller;
-    private EnemyController controller;
+    protected EnemyController controller;
 
-    public EnemyEnum enemyEnum;
+    //public EnemyEnum enemyEnum;
 
     public BaseCreature target;
 
@@ -35,14 +35,9 @@ public class Enemy : BaseCreature
     public IObjectPool<Enemy> connectPool;
 
     private void Update()
-    {   
+    {
         if (stat.isDeath) return;
         controller.OnUpdate(Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            (stat as EnemyStat)?.TakeDamage(10f);
-        }
     }
 
     private void FixedUpdate()
@@ -99,25 +94,6 @@ public class Enemy : BaseCreature
         return stat as EnemyStat;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying) return;
-
-        Vector2 origin = (Vector2)rb.transform.position + Controller.CheckLookDirection().Item1 * weaponArea.x / 2f;
-        Quaternion rotation = Quaternion.Euler(0, 0, Controller.CheckLookDirection().Item2);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.matrix = Matrix4x4.TRS(origin, rotation, weaponArea);
-        Gizmos.DrawWireCube(Vector3.zero, Vector2.one);
-
-        float radius = attackTargetRange;
-        Color gizmoColor = Color.black;
-
-        Gizmos.color = gizmoColor;
-        Gizmos.matrix = Matrix4x4.identity;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
-
     public void SetBattle(Vector2 lookDir)
     {
         GetStat().ResetStat();
@@ -136,3 +112,21 @@ public class Enemy : BaseCreature
     }
 }
 
+//private void OnDrawGizmos()
+//{
+//    if (!Application.isPlaying) return;
+
+//    Vector2 origin = (Vector2)rb.transform.position + Controller.CheckLookDirection().Item1 * weaponArea.x / 2f;
+//    Quaternion rotation = Quaternion.Euler(0, 0, Controller.CheckLookDirection().Item2);
+
+//    Gizmos.color = Color.yellow;
+//    Gizmos.matrix = Matrix4x4.TRS(origin, rotation, weaponArea);
+//    Gizmos.DrawWireCube(Vector3.zero, Vector2.one);
+
+//    float radius = attackTargetRange;
+//    Color gizmoColor = Color.black;
+
+//    Gizmos.color = gizmoColor;
+//    Gizmos.matrix = Matrix4x4.identity;
+//    Gizmos.DrawWireSphere(transform.position, radius);
+//}

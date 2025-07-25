@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// U를 관리하는 매니저 스크립트입니다.
@@ -10,9 +9,12 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public ShowStatus showStatus { get; private set; }
-    public Inventory inventory { get; private set; }
-    public UIInventory uiInventory { get; private set; }
+   // public Inventory inventory { get; private set; }
+  //  public UIInventory uiInventory { get; private set; }
     public EquipmentManager equipmentManager { get; private set; }
+    public EquipmentWindow equipmentWindow { get; private set; }
+    public CompanionEquipManager companionEquipManager { get; private set; }
+    public CompanionWindow companionWindow { get; private set; }
     public QuickSlotManager quickSlotManager { get; private set; }
     public SkillQuickSlotManager skillQuickSlotManager { get; private set; }
     public SkillTempSlotManager skillTempSlotManager { get; private set; }
@@ -20,10 +22,18 @@ public class UIManager : MonoBehaviour
     public ShowBook showBook { get; private set; }
     public BookWindow bookWindow { get; private set; }
 
-    public static UIManager Instance;
-    public DestroyWindow destroyItemWindow;
+    public Tooltip tooltip { get; private set; }
+
+    public DialogueManager dialogueManager { get; private set; }
+
     [HideInInspector] public RectTransform rect;
+    [HideInInspector] public DeliverCompanionsData deliverCompanionsData;
+
+    public static UIManager Instance;
+    public DestroyWindow destroyItemWindow;  
     private UIStack uiStack;
+    public Image dragitemImage;
+    public List<Inventory> inventorys = new List<Inventory>();
 
     private void Awake()
     {
@@ -45,25 +55,48 @@ public class UIManager : MonoBehaviour
         uiStack = GetComponent<UIStack>();
 
         showStatus = GetComponentInChildren<ShowStatus>(true);
-        inventory = GetComponentInChildren<Inventory>(true);
-        uiInventory = GetComponentInChildren<UIInventory>(true);
         equipmentManager = GetComponentInChildren<EquipmentManager>(true);
+        equipmentWindow = GetComponentInChildren<EquipmentWindow>(true);
+
+        //  inventory = GetComponentInChildren<Inventory>(true);
+        inventorys.AddRange(GetComponentsInChildren<Inventory>(true));
+        var uiInventorys = GetComponentsInChildren<UIInventory>(true);
+        companionEquipManager = GetComponentInChildren<CompanionEquipManager>(true);
+        companionWindow = GetComponentInChildren<CompanionWindow>(true);
+        // uiInventory = GetComponentInChildren<UIInventory>(true);
         quickSlotManager = GetComponentInChildren<QuickSlotManager>(true);
         skillQuickSlotManager = GetComponentInChildren<SkillQuickSlotManager>(true);
         skillTempSlotManager = GetComponentInChildren<SkillTempSlotManager>(true);
         menuWindow = GetComponentInChildren<MenuWindow>(true);
         showBook = GetComponentInChildren<ShowBook>(true);
         bookWindow = GetComponentInChildren<BookWindow>(true);
-        inventory = GetComponentInChildren<Inventory>(true);
+      //  inventory = GetComponentInChildren<Inventory>(true);
         destroyItemWindow = GetComponentInChildren<DestroyWindow>(true);
 
-        quickSlotManager.Init(inventory, uiInventory);
-        skillTempSlotManager.Init(skillQuickSlotManager);
-        skillQuickSlotManager.Init(skillTempSlotManager);
+        tooltip = GetComponentInChildren<Tooltip>(true);
+        dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
+
+        dialogueManager = GetComponentInChildren<DialogueManager>(true);
+        dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
+
+        deliverCompanionsData = GetComponentInChildren<DeliverCompanionsData>(true);
+
+        equipmentManager.Init();
+        quickSlotManager.Init();
+        companionEquipManager?.Init();
+        companionWindow.Init();
+        skillTempSlotManager.Init();
+        skillQuickSlotManager.Init();
         menuWindow.Init();
         showBook.Init();
-        bookWindow.Init(skillTempSlotManager);
-        inventory.Init();
+
+        bookWindow.Init();
+        dialogueManager?.Init();
+        for (int i = 0; i < inventorys.Count; i++)
+        {
+            inventorys[i].Init();
+            uiInventorys[i].Init();
+        }
     }
     /// <summary>
     /// Window가 활성화 될 때 사용되는 함수입니다.

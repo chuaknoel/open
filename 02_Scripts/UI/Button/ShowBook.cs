@@ -13,6 +13,6 @@ public class ShowBook : MonoBehaviour
     {
         bookButton = GetComponent<Button>();
         bookButton.onClick.AddListener(playerUIInput.OnOpenBookWindow);
-        Logger.Log("Book Window 초기화");
+        //Logger.Log("Book Window 초기화");
     }
 }

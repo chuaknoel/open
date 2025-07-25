@@ -11,21 +11,23 @@ using UnityEngine.InputSystem;
 public class DeliverCompanionsData : MonoBehaviour
 {
     [SerializeField] private Transform companionParent;
-    [SerializeField] private GameObject companionPrefab;
-    [SerializeField] private List<GameObject> companions = new List<GameObject>();
-    [SerializeField] private List<CompanionInfo> companionInfos = new List<CompanionInfo>();
+    [SerializeField] private List<ShowCompanionText> companionUIObjects = new List<ShowCompanionText>();
     [SerializeField] private int slotsPerPage = 4; // 한 페이지에 4개
-    private int currentPage = 0;
-    private ShowCompanionInfo showCompanionInfo;
 
-   private void OnEnable()
+    private int currentPage = 0;
+    private CompanionWindow companionWindow;
+    public List<CompanionData> companionDatas = new List<CompanionData>(); // DBManager의 CompanionDB로 변경하기
+    CompanionEquipManager equipManager;
+  
+    private void OnEnable()
     {
-        DeliverData();
         ShowData();
     }
     public void Init()
     {
-        showCompanionInfo = GetComponent<ShowCompanionInfo>();
+        equipManager = UIManager.Instance.companionEquipManager;
+        companionWindow = GetComponent<CompanionWindow>();
+        DeliverData();
     }
     private CompanionData GetData(string key)
     {
@@ -37,40 +39,53 @@ public class DeliverCompanionsData : MonoBehaviour
     /// </summary>
     public void DeliverData()
     {
-        if(companions.Count > 0)
-        {
-            return;
-        }
         for (int i = 1; i <= DataManager.Instance.CompanionDB.Count; i++)
         {
-            var companion = Instantiate(companionPrefab);
-
-            companion.transform.SetParent(companionParent);
-
             string key = "COMPANION_" + i.ToString("D3");
-            CompanionInfo companionInfo = new CompanionInfo(GetData(key).NameKey, GetData(key).IsJoined,
-                GetData(key).TrustLevel, GetData(key).DialogueKey, GetData(key).DescKey, GetData(key).SkillNameKey, GetData(key).SkillDescKey,5,5,5,100,100,0.1f);
+            //CompanionData companionInfo = new CompanionData(GetData(key).NameKey, GetData(key).IsJoined,
+            //    GetData(key).TrustLevel, GetData(key).DialogueKey, GetData(key).DescKey, GetData(key).SkillNameKey, GetData(key).SkillDescKey,5,5,5,100,100,0.1f);
 
-            companions.Add(companion);
-            companionInfos.Add(companionInfo);
+            // 값 설정
+            CompanionData companionData = new CompanionData();
+            var data = GetData(key);
+            companionData.ID = data.ID;
+            companionData.NameKey = data.NameKey;
+            companionData.IsJoined = data.IsJoined;
+            companionData.TrustLevel = data.TrustLevel;
+            companionData.DialogueKey = data.DialogueKey;
+            companionData.DescKey = data.DescKey;
+            companionData.SkillNameKey = data.SkillNameKey;
+            companionData.SkillDescKey = data.SkillDescKey;
+
+            companionData.AttackPower = 5;
+            companionData.DefensePower = 5;
+            companionData.MoveSpeed = 5;
+            companionData.Hp = 100;
+            companionData.Mp = 100;
+            companionData.EvasionRate = 0.1f;
+            companionDatas.Add(companionData);
+
         }
     }
     private void ShowData()
     {
-        int startIndex = currentPage *slotsPerPage;
-
-        for (int i = 0; i < companions.Count; i++)
+        // int startIndex = currentPage *slotsPerPage;
+        Logger.Log("companionUIObjects의 개수 " + companionDatas.Count);
+        for (int i = 0; i < companionUIObjects.Count; i++)
         {
-            if (i >= startIndex && i < startIndex + slotsPerPage)
-            {          
-                ShowCompanionText showCompanionText = companions[i].GetComponent<ShowCompanionText>();
-                showCompanionText.ShowText(companionInfos[i]);
+            //if (i >= startIndex && i < startIndex + slotsPerPage)
+            //{
+                if (DataManager.Instance.CompanionDB.ElementAt(i).Value.IsJoined == false)
+                {
+                    companionUIObjects[i].gameObject.SetActive(true);
+                    ShowCompanionText showCompanionText = companionUIObjects[i].GetComponent<ShowCompanionText>();
+                    showCompanionText.ShowText(companionDatas[i]);
 
-                int capturedIndex = i;
-
-                showCompanionText.managementButton.onClick.RemoveAllListeners();
-                showCompanionText.managementButton.onClick.AddListener( () => showCompanionInfo.UpdateInfo(companionInfos[capturedIndex]));
-            }
+                    int capturedIndex = i;
+                    showCompanionText.managementButton.onClick.RemoveAllListeners();
+                    showCompanionText.managementButton.onClick.AddListener(() => companionWindow.UpdateInfo(companionDatas[capturedIndex], equipManager.inventories[capturedIndex]));
+                }       
+           // }
         }
     }
 }

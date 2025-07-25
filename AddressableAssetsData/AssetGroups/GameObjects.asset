@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 67b5a81ef08819e4493bd6e5522bbf6f
-  m_SerializeEntries:
-  - m_GUID: ce13c2f7f429081479d6977ae58e6f6a
-    m_Address: GameObject/Quest/QuestLocationZone
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 45db864391b0f9e4fa299571cca89098, type: 2}
   m_SchemaSet:

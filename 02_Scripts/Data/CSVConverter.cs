@@ -46,8 +46,33 @@ public class CharacterData : IGetCSVData
     public string ID { get; set; }
     public string NameKey { get; set; }
     public string DescKey { get; set; }
-    public int BaseHP;
-    public int BaseMP;
+
+    [Header("Base Stat")]
+    public float baseAttack;
+    public float baseDefence;
+
+    public float baseMoveSpeed;
+
+    public float baseHealth;
+    public float currentHealth;
+
+    public float baseMana;
+    public float currentMana;
+
+    public float baseEvasionRate; // 회피율
+
+    [Header("Player Stat")]
+    public int baseStr;
+    public int baseDex;
+    public int baseInt;
+    public int baseSanctity;
+
+    public int level;
+    public int Exp;
+    public int nextLevelExp;
+
+    [Header("Player Skill")]
+    public List<int> skillTree;
 }
 
 [System.Serializable]
@@ -266,7 +291,7 @@ public static class CSVConverter
         {
             try
             {
-                var data = new CharacterData { ID = values[0], NameKey = values[1], DescKey = values[2], BaseHP = int.Parse(values[3]), BaseMP = int.Parse(values[4]) };
+                var data = new CharacterData { ID = values[0], NameKey = values[1], DescKey = values[2], baseHealth = int.Parse(values[3]), baseMoveSpeed = int.Parse(values[4]) };
                 db[data.ID] = data;
             }
             catch { /* 데이터 형식 오류 시 해당 줄은 건너뜁니다. */ }

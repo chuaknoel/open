@@ -8,11 +8,15 @@ public class SkillTree : MonoBehaviour
 
     public Dictionary<int, Skill> skillTree = new Dictionary<int, Skill>();
 
-    public void Init()
+    public void Init(List<int> skillData)
     {
+        treeData = skillData;
+
         foreach (int tree in treeData)
         {
-            skillTree[tree] = SkillManager.Instance.FindSkill(tree);
+            Skill skill = SkillManager.Instance.FindSkill(tree);
+            if (skill == null) continue;
+            skillTree[tree] = skill;
         }
     }
 

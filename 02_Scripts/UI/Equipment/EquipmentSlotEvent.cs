@@ -32,6 +32,50 @@ public class EquipmentSlotEvent : SlotEvent
     }
     protected override void ChangeSlot()
     {
-        base.ChangeSlot();
+        if (dragitemImage != null && DragData<Slot, Item>.DraggedData != null)
+        {
+           Slot originSlot = DragData<Slot, Item>.OriginSlot;
+
+            // 두 슬롯의 아이템 참조
+            Item draggedItem = DragData<Slot, Item>.DraggedData;
+            EquipItem item = draggedItem as EquipItem;
+           
+            if(slot is EquipmentSlot _slot)
+            {
+                if (item.EquipType != _slot.equipSlotType)
+                {
+                    Logger.Log("장비 타입이 일치하지 않음");
+                    return; // 타입 다르면 교체 안함
+                }
+            }
+             if(draggedItem is CompanionItem companionItem)
+            {
+                return;
+            }
+
+            Item currentItem = slot.Item;
+
+            // 아이템 정보 임시 저장
+            Item temp = slot.Item;
+
+            // 드래그 받은 슬롯의 정보를 변경
+            slot.SetItem(DragData<Slot, Item>.DraggedData);
+            slot.Item.Move(slot.slotIndex);
+
+            // 드래그한 슬롯의 정보를 변경
+            originSlot.SetItem(temp);
+
+            if (originSlot.isInventorySlot)
+            {
+                originSlot.ClearSlot();
+                return;
+            }
+            //// 드래그 받은 슬롯에 아이템이 없지 않다면
+            //if (temp != null)
+            //{
+            //    // 드래그한 슬롯의 아이템의 위치 변경
+            //    originSlot.Item.Move(originSlot.slotIndex);
+            //}
+        }
     }
 }

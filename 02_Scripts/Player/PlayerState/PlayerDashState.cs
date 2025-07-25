@@ -15,7 +15,7 @@ public class PlayerDashState : BaseState<Player>
     public override void Init(Player owner)
     {
         base.Init(owner);
-        owner.playerActions.Dash.started += Dash;
+        owner.defaultActions.Dash.started += Dash;
     }
 
     public override void OnEnter()
@@ -59,6 +59,6 @@ public class PlayerDashState : BaseState<Player>
     public override void OnDestory()
     {
         base.OnDestory();
-        owner.playerActions.Dash.started -= Dash;
+        owner.defaultActions.Dash.started -= Dash;
     }
 }

@@ -1,30 +1,16 @@
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public enum ItemType
-{
-    None, // 기타
-    Consume, // 소모품
-    Equip, // 장비 아이템
-    Important, // 중요 아이템(퀘스트,열쇠,문서 등등)
-    Collectibles // 수집품
-}
-public enum ItemGrade
-{
-    Common, // 일반
-    Uncommon, //고급
-    Rare, // 희귀
-    Epic, // 영웅
-    Legendary // 전설
-}
 [System.Serializable]
 [CreateAssetMenu(fileName ="NewItem", menuName ="Item")]
 public class Item  
 {
     [Header("Info")]
+    [SerializeField] protected string itemId;
     [SerializeField] protected string itemName;
     [SerializeField] protected ItemType type;
     [SerializeField] protected string itemDescription;
@@ -35,6 +21,7 @@ public class Item
     [SerializeField] protected int count;
     [SerializeField] protected int maxCount;
 
+    public string ItemId => itemId;
     public string ItemName => itemName;
     public ItemType Type => type;
     public string ItemDescription => itemDescription;
@@ -44,9 +31,10 @@ public class Item
     public int MaxCount => maxCount;
     public int InventoryIndex => inventoryIndex;
 
-    public Item(string itemName,ItemType type, string itemDescription, Sprite image,
+    public Item(string itemId,string itemName,ItemType type, string itemDescription, Sprite image,
     int inventoryIndex, int count, int maxCount)
     {
+        this.itemId = itemId;
         this.itemName = itemName;
         this.type = type;
 

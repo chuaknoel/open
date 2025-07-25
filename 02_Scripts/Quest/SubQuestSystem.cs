@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 using UnityEngine.Pool;
 using static Constants;
@@ -7,18 +6,19 @@ using static Constants;
 public class SubQuestSystem : MonoBehaviour
 {
     [SerializeField] private QuestConditionChecker conditionChecker;
-    [Header("SubQuest List")]
-    private List<Quest> activeSubQuests = new();
-    private List<Quest> completedSubQuests = new();
-    [Header("Addressable")]
-    private Dictionary<string, GameObject> gameObjects = new();
-    private List<string> addressList = new List<string>()
+
+    [Header("SubQuest Lists")]
+    private readonly List<Quest> activeSubQuests = new();
+    private readonly List<Quest> completedSubQuests = new();
+
+    [Header("Addressables")]
+    private readonly Dictionary<string, GameObject> gameObjects = new();
+    private readonly List<string> addressList = new()
     {
-        GameObjects.QuestLocationZonePrefab,
+        GameObjects.QuestLocationZonePrefab
     };
 
-    private Dictionary<int, Quest> subQuestStates = new();
-
+    private readonly Dictionary<int, Quest> subQuestStates = new();
     private IObjectPool<LocationTrigger> locationTriggerPool;
 
     public static SubQuestSystem Instance { get; private set; }
@@ -30,7 +30,6 @@ public class SubQuestSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
@@ -38,87 +37,83 @@ public class SubQuestSystem : MonoBehaviour
     {
         foreach (var address in addressList)
         {
-            var obj = await AddressableManager.Instance.LoadAsset<GameObject>(address);
-            if (obj != null && !gameObjects.ContainsKey(address))
+            var prefab = await AddressableManager.Instance.LoadAsset<GameObject>(address);
+            if (prefab != null && !gameObjects.ContainsKey(address))
             {
-                gameObjects[address] = obj;
-                var trigger = obj.GetComponent<LocationTrigger>();
+                gameObjects[address] = prefab;
                 locationTriggerPool = PoolingManager.Instance.CreatePool<LocationTrigger>(GameObjects.QuestLocationZonePrefab, CreateLocationTrigger, 3);
+
                 for (int i = 0; i < 3; i++)
                 {
-                    var locationTrigger = CreateLocationTrigger();
-                    locationTriggerPool.Release(locationTrigger); // 미리 만들어 놓은 오브젝트이기 때문에 회수하여 저장
+                    var trigger = CreateLocationTrigger();
+                    locationTriggerPool.Release(trigger);
                 }
+                QuestConditionFactory.InitializePool(locationTriggerPool);
             }
         }
     }
-
+    /// <summary>
+    /// LocationCondition에서 사용될 트리거를 생성합니다.
+    /// </summary>
     public LocationTrigger CreateLocationTrigger()
     {
-        GameObject zone = Instantiate(gameObjects[GameObjects.QuestLocationZonePrefab]);
-        var trigger = zone.GetComponent<LocationTrigger>();
+        var zoneObj = Instantiate(gameObjects[GameObjects.QuestLocationZonePrefab]);
+        var trigger = zoneObj.GetComponent<LocationTrigger>();
         trigger.Init(locationTriggerPool);
         return trigger;
     }
-
+    /// <summary>
+    /// 서브 퀘스트를 수락하고, 타입별 Condition을 생성·초기화·등록합니다.
+    /// </summary>
     public void AcceptSubQuest(Quest quest)
     {
         int id = quest.questData.QuestId;
-        if (subQuestStates.ContainsKey(id)) return;
+        if (subQuestStates.ContainsKey(id))
+        {
+            Logger.LogError($"[SubQuest] 이미 수락된 퀘스트입니다: {quest.questData.Title}");
+            return;
+        }
 
         quest.StartQuest();
         subQuestStates.Add(id, quest);
         activeSubQuests.Add(quest);
         conditionChecker.Register(quest);
+        QuestManager.Instance.RegisterQuest(quest);
 
         Logger.Log($"[SubQuest] 수락: {quest.questData.Title}");
-
-        if (quest.questData.QuestType == QuestType.Talk)
-        {
-            quest.UpdateProgress(quest.questData.Amount);
-            Logger.Log($"[SubQuest] Talk 퀘스트 즉시 완료 가능: {quest.questData.Title}");
-        }
-
-        if (quest.questData.QuestType == QuestType.Location)
-        {
-            var trigger = locationTriggerPool.Get();
-            trigger.questId = quest.questData.QuestId;
-            var parts = quest.questData.TargetId.Split('.');
-            if (parts.Length == 3&& float.TryParse(parts[0], out var px) && float.TryParse(parts[1], out var py) && float.TryParse(parts[2], out var pz))
-            {
-                trigger.transform.position = new Vector3(px, py, pz);
-            }
-
-            var collider = trigger.GetComponent<BoxCollider2D>();
-            if (collider != null)
-            {
-                float size = Mathf.Max(1f, quest.questData.Amount);
-                collider.size = new Vector2(size, size);
-            }
-        }
     }
     /// <summary>
-    /// 해당 NPC에게 완료 보고를 시도합니다.
-    /// 완료 가능 상태인 퀘스트를 완료 처리하고 리스트에 담습니다.
+    /// NPC에게 보고했을 때 호출됩니다.
+    /// ClearNpcID와 progress 상태를 보고 완료 처리합니다.
     /// </summary>
     public void TryCompleteSubQuestByNpcId(string npcId)
     {
         foreach (var quest in subQuestStates.Values)
         {
-            if (quest.progressState == QuestProgressState.CanComplete &&
-                quest.questData.ClearNpcID == npcId)
+            if (quest.progressState == QuestProgressState.CanComplete && quest.questData.ClearNpcID == npcId)
             {
-                quest.CompleteQuest();
-                conditionChecker.Unregister(quest.questData.QuestId);
-                activeSubQuests.Remove(quest);
-                completedSubQuests.Add(quest);
-                Logger.Log($"[SubQuest] 완료: {quest.questData.Title}");
+                ForceCompleteQuest(quest.questData.QuestId);
                 return;
             }
         }
     }
     /// <summary>
-    /// 진행 중인 서브 퀘스트의 진행량을 갱신합니다.
+    /// ConditionChecker가 완료 조건을 감지했을 때 호출합니다.
+    /// 실제 완료 처리(완료 메서드 호출, 보상, 리스트 이동 등)를 수행합니다.
+    /// </summary>
+    public void ForceCompleteQuest(int questId)
+    {
+        if (!subQuestStates.TryGetValue(questId, out var quest)) return;
+        if (quest.progressState != QuestProgressState.CanComplete) return;
+
+        quest.CompleteQuest();
+        activeSubQuests.Remove(quest);
+        completedSubQuests.Add(quest);
+
+        Logger.Log($"[SubQuest] 완료: {quest.questData.Title}");
+    }
+    /// <summary>
+    /// 외부에서 진행량을 갱신하고 싶을 때 사용합니다.
     /// </summary>
     public void UpdateSubQuestProgress(int questId, int amount)
     {
@@ -126,32 +121,24 @@ public class SubQuestSystem : MonoBehaviour
         {
             quest.UpdateProgress(amount);
             if (quest.progressState == QuestProgressState.CanComplete)
-            {
                 Logger.Log($"[SubQuest] 완료 조건 달성: {quest.questData.Title}");
-            }
         }
         else
         {
-            Logger.Log($"서브 퀘스트 {questId} 가 진행 중이 아닙니다.");
+            Logger.Log($"서브 퀘스트 {questId}가 진행 중이 아닙니다.");
         }
     }
     /// <summary>
-    /// 특정 퀘스트의 현재 상태를 반환합니다. 없으면 null.
+    /// 현재 진행 중인 Quest 객체를 가져옵니다.
     /// </summary>
-    public Quest GetQuestState(int questId) => subQuestStates.TryGetValue(questId, out var state) ? state : null;
-    /// <summary>
-    /// 특정 퀘스트가 완료되었는지 확인합니다.
-    /// </summary>
-    public bool IsQuestCompleted(int questId) => subQuestStates.TryGetValue(questId, out var state) && state.IsCompleted;
-    /// <summary>
-    /// 수락은 되었지만 아직 완료되지 않은 모든 서브 퀘스트 상태를 반환합니다.
-    /// </summary>
-    public IEnumerable<Quest> GetAllActiveSubQuestStates() =>subQuestStates.Values;
-    /// <summary>
-    /// 지금까지 완료된 서브 퀘스트 상태들의 리스트 (읽기 전용)
-    /// </summary>
+    public Quest GetQuestState(int questId) => subQuestStates.TryGetValue(questId, out var q) ? q : null;
+    public bool IsQuestCompleted(int questId) => subQuestStates.TryGetValue(questId, out var s) && s.IsCompleted;
+    public IEnumerable<Quest> GetAllActiveSubQuestStates() => subQuestStates.Values;
     public IReadOnlyList<Quest> CompletedSubQuests => completedSubQuests;
 
+    /// <summary>
+    /// 싱글턴 해제 처리
+    /// </summary>
     public void UnLoad()
     {
         if (Instance == this)

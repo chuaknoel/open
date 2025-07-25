@@ -1,3 +1,4 @@
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,7 @@ public class Slot : MonoBehaviour
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected UIInventory uiInventory;
     [SerializeField] protected EquipmentManager equipmentManager;
+    [SerializeField] protected CompanionEquipManager companionEquipManager;
     private QuickSlotManager quickSlotManager;
 
     [SerializeField] protected Item item;
@@ -27,19 +29,23 @@ public class Slot : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI itemText;
 
     public Color basicBackgroundColor;
-
     public Item Item => item;
     public Image ItemImage => itemImage;
     public TextMeshProUGUI ItemText => itemText;
+    public RectTransform rect;
+    public bool isInventorySlot = false;
 
-    public virtual void Init(Inventory _inventory, EquipmentManager _equipmentManager, QuickSlotManager _quickSlotManager)
+    public virtual void Init()
     {
-        inventory = _inventory;
-        equipmentManager = _equipmentManager;
-     //   itemImage = transform.GetChild(0).GetComponent<Image>();
+        UIManager uIManager = UIManager.Instance;
+        inventory = uIManager.inventorys[0];
+        equipmentManager = uIManager.equipmentManager;
+        companionEquipManager = uIManager.companionEquipManager;
+        //   itemImage = transform.GetChild(0).GetComponent<Image>();
         uiInventory = inventory.gameObject.GetComponent<UIInventory>();
         itemColorHelper = inventory.gameObject.GetComponent<ItemColorHelper>();
-        quickSlotManager = _quickSlotManager;
+        quickSlotManager = uIManager.quickSlotManager;
+        rect = GetComponent<RectTransform>();   
     }
     public virtual void SetItem(Item _item)
     {
@@ -65,10 +71,17 @@ public class Slot : MonoBehaviour
         if (item == null) { return; }
         item.Use();
 
-        if (item is EquipItem equip)
+        // 동료 아이템이라면
+        if (item is CompanionItem companionItem)
         {
-            equipmentManager.Equip(equip);
+            companionEquipManager.Equip(companionItem);
         }
+        // 장비 아이템이라면
+        else if (item is EquipItem equip)
+        {
+            equipmentManager.Equip(equip);          
+        }
+        // 소모품이라면
         else if (item.Type == ItemType.Consume)
         {
             // 퀵슬롯도 같이 사용
@@ -114,11 +127,15 @@ public class Slot : MonoBehaviour
     // 슬롯 비우기
     public virtual void ClearSlot()
     {
+        if(item !=null && item.Count > 0)
+        {
+            this.item.Remove(item.Count);
+        }
         this.item = null;
         itemImage.sprite = null;
         itemImage.enabled = false;
         itemText.text = "";
-
+   
         basicBackgroundColor.a = 1;
         backGround.color = basicBackgroundColor;
     }

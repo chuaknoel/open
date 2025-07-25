@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3294565184397498350}
   - component: {fileID: 5742226020759715099}
-  - component: {fileID: 261105314709821660}
   m_Layer: 0
   m_Name: OldDaggerItem
   m_TagString: Untagged
@@ -85,23 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &261105314709821660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8050794203250954102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8683b307df94749bd4d614c2651c2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponID: 
-  weaponName: 
-  weaponImage: {fileID: 0}
-  description: 
-  weaponType: 
-  rank: 
-  attackPower: 0
-  attackArea: {x: 0, y: 0}

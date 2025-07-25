@@ -59,12 +59,8 @@ public class EnemyAttackState : BaseState<Enemy>
     public void RotateCollider()
     {
         Vector2 origin = (Vector2)owner.Rb.transform.position + controller.CheckLookDirection().Item1 * owner.weaponArea.x / 2f;
-
-        // 회전 각도
         Quaternion rotation = Quaternion.Euler(0, 0, controller.CheckLookDirection().Item2);
 
-        //Logger.Log(controller.CheckLookDirection().Item2);
-        // 적용
         owner.AttackAreaTransform.position = origin;
         owner.AttackAreaTransform.rotation = rotation;
     }

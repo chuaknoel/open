@@ -40,6 +40,7 @@ public class MainQuestSystem : MonoBehaviour
                 state.StartQuest();
                 mainQuestStates.Add(data.QuestId, state);
                 conditionChecker.Register(state);
+                QuestManager.Instance.RegisterQuest(state);
 
                 Logger.Log($"[MainQuest] 시작: {data.Title}");
                 return;

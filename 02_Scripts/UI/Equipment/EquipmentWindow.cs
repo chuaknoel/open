@@ -1,3 +1,4 @@
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,19 +13,25 @@ public class EquipmentWindow : MonoBehaviour
     [SerializeField] private EquipmentSlot[] equipmentSlots = new EquipmentSlot[4];
     [SerializeField] private TextMeshProUGUI[] equipInfoTexts = new TextMeshProUGUI[6];
     [SerializeField] private Button[] increaseButtons = new Button[3]; // 힘,민첩,지능 증가량 버튼
+  
     private bool needToCheckLevelUp = false;
-
 
    private void OnEnable()
     {
+        playerStat = PlayManager.Instance.player.GetStat();
         UpdateEquipSlot();
        //CheckLevelUp();
     }
+
     public void Init()
     {
-        playerStat = PlayManager.Instance.player.GetStat();
-
-        Logger.Log("장비창 초기화");
+      //  playerStat = PlayManager.Instance.player.GetStat();
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            equipmentSlots[i].gameObject.GetComponent<EquipmentSlot>().Init();
+            equipmentSlots[i].gameObject.GetComponent<EquipmentSlotEvent>().Init();
+            equipmentSlots[i].gameObject.GetComponent<EquipmentSlotDrag>().Init();
+        }
     }
     public void UpdateEquipSlot()
     {

@@ -1,3 +1,4 @@
+using Pathfinding.Ionic.Zlib;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -22,6 +23,8 @@ public class BattleManager : MonoBehaviour
     private InputManager inputManager;
 
     private int spawnEnemyCount;
+
+    private Fader fader;
 
     private void Awake()
     {
@@ -52,11 +55,12 @@ public class BattleManager : MonoBehaviour
     {
         inputManager = InputManager.Instance;
 
+        fader = GameManager.Instance.fader;
+
         defalutScene = SceneManager.GetSceneByName(DefaultScene);
         battleScene = SceneManager.GetSceneByName(BattleScene);
 
         battleObject.Add(UIManager.Instance.showStatus.gameObject);
-
 
         DefaultSceneToggle(true);
         BattleSceneToggle(false);
@@ -72,22 +76,40 @@ public class BattleManager : MonoBehaviour
     {
         Time.timeScale = 0;
         inputManager.inputActions.Disable();
-        yield return new WaitForSecondsRealtime(2f);
+
+        yield return fader.FadeInRoutine(1f);
 
         DefaultSceneToggle(false);
+        SetEnemy(externalEnemy);
+        BattleSceneToggle(true);
 
+        yield return fader.FadeOutRoutine(1f, doEarlyLogic : ()=> SetPlayer(true),earlyTime : 0.7f);
+    }
+
+    public void SetEnemy(ExternalEnemy externalEnemy)
+    {
         spawnEnemyCount = EnemyManager.Instance.SetBattleScene(externalEnemy);
         //Logger.Log(spawnEnemyCount);
-        if(spawnEnemyCount == 0)
+        if (spawnEnemyCount == 0)
         {
             Logger.LogError("enemy spawn count : 0, check external enemy");
         }
         CompanionManager.Instance.SetBattleScene();
-        BattleSceneToggle(true);
-        yield return null;
+    }
 
+    public void SetPlayer(bool battleStart)
+    {
+        //Logger.Log("Playerset");
         Time.timeScale = 1;
         inputManager.inputActions.Enable();
+        if (battleStart)
+        {
+            inputManager.inputActions.BattleAction.Enable();
+        }
+        else
+        {
+            inputManager.inputActions.BattleAction.Disable();
+        }
     }
 
     public void PlayerDeath()
@@ -133,8 +155,7 @@ public class BattleManager : MonoBehaviour
 
         yield return null;
 
-        Time.timeScale = 1;
-        inputManager.inputActions.Enable();
+        SetPlayer(false);
         Logger.Log("Default Scene Loaded & Active!");
     }
 

@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba1f87e3a88f2f44b8ff18178e8606d, type: 3}
   m_Name: SubQuestData 1
   m_EditorClassIdentifier: 
+  completeType: 1
   questType: 2
   questId: 2
-  title: "\uC9C0\uD638\uC5D0\uAC8C \uB9D0\uC744 \uAC78\uC5B4\uBCF4\uC790"
-  description: "\uC9C0\uD638\uC5D0\uAC8C \uB9D0\uC744 \uAC78\uC5B4\uBCF4\uC790"
-  targetId: Jiho
+  title: "\uB3D9\uB8CC \uC601\uC785\uD558\uAE30"
+  description: "\uB2E4\uC2DC \uB9D0\uC744 \uAC78\uC5B4\uBCF4\uC790"
+  targetId: Haneul
   amount: 0
-  clearNpcID: Jiho
+  clearNpcID: Haneul
   dialogueList:
   - "\uC548\uB1FD"
-  - "\uC9C0\uD638\uC5D0\uAC8C \uAC00\uC11C \uB9D0\uC744 \uAC78\uC5B4\uBD10"
+  - "\uB2E4\uC2DC \uB9D0\uC744 \uAC78\uC5B4\uBD10"
   clearDialogue:
   - "\uC798\uD588\uC5B4"
   inprogressDialogue: "\uC9C0\uD638\uC5D0\uAC8C \uB9D0\uC744 \uAC78\uC5B4\uBD10"
   refusalDialogue: "\uC798\uAC00"
+  rewardType: 2
   rewardItemId: 
   rewardAmount: 0

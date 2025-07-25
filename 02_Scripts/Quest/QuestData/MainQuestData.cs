@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MainQuestData", menuName = "Quest/MainQuest")]
 public class MainQuestData : QuestData
 {
+    [SerializeField] private CompleteType completeType;
     [SerializeField] private QuestType questType;
     [SerializeField] private int questId;
     [SerializeField] private int prerequisiteQuestId;
@@ -20,9 +21,11 @@ public class MainQuestData : QuestData
     [SerializeField][TextArea] private string refusalDialogue;
 
     [Header("Reward")]
+    [SerializeField] private RewardType rewardType;
     [SerializeField] private string rewardItemId;
     [SerializeField] private int rewardAmount;
 
+    public override CompleteType CompleteType => completeType;
     public override QuestType QuestType => questType;
     public override int QuestId => questId;
     public int PrerequisiteQuestId => prerequisiteQuestId;
@@ -38,6 +41,7 @@ public class MainQuestData : QuestData
     public override string InprogressDialogue => inprogressDialogue;
     public override string RefusalDialogue => refusalDialogue;
 
+    public override RewardType RewardType => rewardType;
     public override string RewardItemId => rewardItemId;
     public override int RewardAmount => rewardAmount;
 }

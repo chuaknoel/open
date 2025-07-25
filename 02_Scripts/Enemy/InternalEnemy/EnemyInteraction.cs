@@ -4,14 +4,20 @@ public class EnemyInteraction : MonoBehaviour
 {
     private Enemy enemy;
 
-    public BoxCollider2D boxCollider;
+    private BoxCollider2D attackCollider;
 
     public bool isHItInMotion = false;
-    private void Start()
+  
+
+    public void Init(Enemy enemy)
     {
-        enemy = GetComponentInParent<Enemy>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.enabled = false;
+        this.enemy = enemy;
+        attackCollider = GetComponent<BoxCollider2D>();
+    }
+
+    public void AttackBoxToggle(bool isActive)
+    {
+        attackCollider.enabled = isActive;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

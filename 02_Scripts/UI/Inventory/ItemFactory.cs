@@ -1,3 +1,4 @@
+using Enums;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,14 @@ public class ItemFactory : MonoBehaviour
         OldDaggerItem oldDaggerItem = new OldDaggerItem();
         oldDaggerItem.LoadData();
         inventory.items.Add(CreateItemFromTemplate(oldDaggerItem, 1));
+        //Logger.Log(oldDaggerItem.weaponName);
+     
+        // 임시 동료 아이템 넣기
+        TempCompannionItem tempCompanionItem = new TempCompannionItem();
+        tempCompanionItem.LoadData();
+
+        inventory.items.Add(CreateItemFromTemplate(tempCompanionItem, 1));
+        Logger.Log(tempCompanionItem.weaponName);
 
     }
 
@@ -29,22 +38,47 @@ public class ItemFactory : MonoBehaviour
     /// <param name="template">낡은 단검</param>
     /// <param name="count">아이템 개수</param>
     /// <returns></returns>
-    public EquipItem CreateItemFromTemplate(OldDaggerItem template, int count = 1)
+    public Item CreateItemFromTemplate(object template, int count = 1)
     {
-        EquipItem oldDaggerItem = new EquipItem(
-            template.weaponName,
-            template.weaponType,
-            template.rank,
-            template.description,
-            template.weaponImage,
+        if (template is OldDaggerItem dagger)
+        {
+            EquipItem oldDaggerItem = new EquipItem(
+                "0",
+            dagger.weaponName,
+            dagger.weaponType,
+            dagger.rank,
+            dagger.description,
+            dagger.weaponImage,
             0,
             1,
             99,
-            EquipType.Weapon,       
-            template.attackPower,
-            template.attackArea,
-             5,5,0,0,0
+            EquipType.Weapon,
+            dagger.attackPower,
+            dagger.attackArea,
+             5, 5, 0, 0, 0
         );
-        return oldDaggerItem;
+            return oldDaggerItem;
+        }
+        else if (template is TempCompannionItem item)
+        {
+            CompanionItem oldDaggerItem = new CompanionItem(
+            "1",
+            item.weaponName,
+            item.weaponType,
+            item.rank,
+            item.description,
+            item.weaponImage,
+            1,
+            1,
+            1,
+           CompanionItemType.Weapon,
+           CompanionType.COMPANION_001,
+            item.attackPowerBouns,
+            item.defensePowerBouns
+        );
+            return oldDaggerItem;
+        }
+
+        return null;
     }
 }

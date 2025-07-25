@@ -23,7 +23,7 @@ public class PlayerIdleState : BaseState<Player>
     {
         base.OnUpdate(deltaTime);
         
-        if(owner.playerActions.Move.ReadValue<Vector2>().sqrMagnitude > 0)
+        if(owner.defaultActions.Move.ReadValue<Vector2>().sqrMagnitude > 0)
         {
             controller.ChangeState(StateEnum.Move);
         }

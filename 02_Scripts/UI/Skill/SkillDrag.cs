@@ -12,7 +12,6 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
   
     private SkillSlot currentSlot;
 
-
     protected override SkillData GetData()
     {
         ISkillSlot skillSlot = slot as ISkillSlot;
@@ -25,10 +24,9 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
 
     protected override Sprite GetSprite(SkillData data) => data.skillImage;
 
-    public virtual void Init(Canvas _canvas, Image _dragImage)
+    public override void Init()
     {
-        canvas  = _canvas;
-        dragItemImage= _dragImage;
+        base.Init();
     }
     // 드래그 시작시
     public override void OnBeginDrag(PointerEventData eventData)
@@ -46,33 +44,66 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
         base.OnEndDrag(eventData);     
     }
     protected override void OnDropCompleted(SkillData droppedSkill, Slot originSlot)
-    {      
-        // 마우스가 플레이어 스킬 슬롯이라면
-        if (CheckMousePointerSlot<PlayerSkillQuickSlot>())
+    {
+        SlotIsOut();
+    }
+    /// <summary>
+    /// 마우스 포인터의 슬롯이 무엇인지 반환합니다.
+    /// </summary>
+    protected override bool SlotIsOut()
+    {
+        // 마우스 위치에서 Raycast
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
         {
-            // 임시 스킬 슬롯에 넣어줌
-            int count = 0;
-            foreach (Transform child in skillTempSlotManager._tempSkillSlot.transform)
-            {
-                SkillTempSlot slot = child.gameObject.GetComponent<SkillTempSlot>();
+            position = Input.mousePosition
+        };
 
-                if (slot.slotIndex == count)
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach (var result in results)
+        {
+            // 마우스가 플레이어 스킬 슬롯이라면
+            if (result.gameObject.GetComponentInParent<PlayerSkillQuickSlot>() != null)
+            {
+                Logger.Log("임시 스킬 슬롯" + skillTempSlotManager._tempSkillSlot != null);
+                // 임시 스킬 슬롯에 넣어줌
+                if (skillTempSlotManager._tempSkillSlot != null)
                 {
-                    slot.SetSkill(slot.GetSkill());
-                    slot.UpdateSlot();
-                }
-                count++;
+                    int count = 0;
+                    foreach (Transform child in skillTempSlotManager._tempSkillSlot.transform)
+                    {
+                        Logger.Log("임시 스킬 슬롯 : " + child.gameObject.TryGetComponent<SkillTempSlot>(out SkillTempSlot _Dslot));
+                        if(child.gameObject.TryGetComponent<SkillTempSlot>(out SkillTempSlot _slot))
+                        {
+                            SkillTempSlot slot = _slot;
+
+                            if (slot.slotIndex == count)
+                            {
+                                slot.SetSkill(slot.GetSkill());
+                                slot.UpdateSkill();
+                            }
+                            count++;
+                        }                     
+                    }
+                }             
+                return false;
+            }
+            else if (result.gameObject.GetComponentInParent<SkillTempSlot>() != null)
+            {
+                // 진짜 스킬 퀵슬롯에도 스킬을 넣어준다.       
+                if(TryGetComponent<SkillSlot>(out SkillSlot skillSlot))
+                {
+                    currentSlot = skillSlot;
+                    int count = result.gameObject.GetComponentInParent<SkillTempSlot>().slotIndex;
+
+                    skillQuickSlotManager.skillSlots[count].SetSkill(currentSlot.GetSkill());
+                    skillQuickSlotManager.skillSlots[count].UpdateSkill();
+                    return false;
+                }           
             }
         }
-        else if(CheckMousePointerSlot<SkillTempSlot>())
-        {
-            // 진짜 스킬 퀵슬롯에도 스킬을 넣어준다.
-            currentSlot = GetComponent<SkillSlot>();
-           
-            int count = draggedSlot.GetComponent<SkillTempSlot>().slotIndex;
-
-            skillQuickSlotManager.skillSlots[count].SetSkill(currentSlot.GetSkill());
-            skillQuickSlotManager.skillSlots[count].UpdateSkill();
-        }    
+        return true;
     }
+
 }

@@ -32,7 +32,7 @@ public class CompanionManager : MonoBehaviour
 
         foreach (var companionData in companionDatas)
         {
-            Logger.Log($"{companionData.Value.CompanionPrefabAddress} : {companionData.Value.IsJoined}");
+            //Logger.Log($"{companionData.Value.CompanionPrefabAddress} : {companionData.Value.IsJoined}");
             if (!companionData.Value.IsJoined) continue;
             
             GameObject companionObj = Instantiate(await AddressableManager.Instance.LoadAsset<GameObject>(companionData.Value.CompanionPrefabAddress));

@@ -17,7 +17,7 @@ public class PlayerAttackState : BaseState<Player>
     public override void Init(Player owner)
     {
         base.Init(owner);
-        owner.playerActions.Attack.started += Attack;
+        owner.battleActions.Attack.started += Attack;
         maxHitableCount = 5;
         hitTargetArray = new Collider2D[maxHitableCount];
         isAttackable = true;
@@ -50,7 +50,7 @@ public class PlayerAttackState : BaseState<Player>
     public override void OnDestory()
     {
         base.OnDestory();
-        owner.playerActions.Attack.started -= Attack;
+        owner.battleActions.Attack.started -= Attack;
     }
 
     public void DrawAttackArea()

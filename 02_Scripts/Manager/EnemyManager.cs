@@ -73,7 +73,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (externalEnemy == null) return 0;
 
-        Logger.Log("Battle");
+       // Logger.Log("Battle");
 
         List<Enemy> enemies = new();
 
@@ -102,7 +102,7 @@ public class EnemyManager : MonoBehaviour
     public void SetEnemiesFormation(List<Enemy> enemies, Vector3 center, Vector2 lookDir, float radius)
     {
         int count = enemies.Count;
-        Logger.Log(count);
+        //Logger.Log(count);
         if (count < 2) return;
 
         float angleStep = 180f / (count - 1);  // 반원 기준으로 분포

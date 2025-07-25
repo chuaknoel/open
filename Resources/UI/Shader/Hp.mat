@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Hp
-  m_Shader: {fileID: -6465566751694194690, guid: dd4dadf0964d8394cbea6562f2ed1f03, type: 3}
+  m_Shader: {fileID: 4800000, guid: a702e811ce4b170469567bdd88d8ca65, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

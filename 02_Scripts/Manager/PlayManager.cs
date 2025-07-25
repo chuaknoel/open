@@ -25,6 +25,8 @@ public class PlayManager : MonoBehaviour
     public EnemyManager enemyManager { get; private set; }
     public CompanionManager companionManager { get; private set; }
     public BattleManager battleManager { get; private set; }
+    public NpcManager npcManager { get; private set; }
+    public TeleporterManager teleporterManager { get; private set; }
 
     public UIManager uiManager { get; private set; }
 
@@ -34,7 +36,8 @@ public class PlayManager : MonoBehaviour
         SetComponents();
 
         InitComponents();
-        
+
+        InputManager.Instance.inputActions.BattleAction.Disable();
     }
 
     private void SetComponents()
@@ -48,8 +51,10 @@ public class PlayManager : MonoBehaviour
         
         uiManager = UIManager.Instance;
         battleManager = GetComponentInChildren<BattleManager>();
-
+        npcManager = GetComponentInChildren<NpcManager>();
         player = FindObjectOfType<Player>();
+
+        teleporterManager = GetComponentInChildren<TeleporterManager>();
     }
 
     private void InitComponents()
@@ -59,10 +64,13 @@ public class PlayManager : MonoBehaviour
         enemyManager.Init();
 
         uiManager?.Init();
-        battleManager.Init();
-
         player.Init();
+        battleManager.Init();
+        npcManager?.Init();
+
         companionManager?.Init();
+
+        teleporterManager?.Init();
     }
 
     public void UnLoad()
@@ -76,6 +84,7 @@ public class PlayManager : MonoBehaviour
             uiManager?.UnLoad();
             player?.UnLoad();
             battleManager?.UnLoad();
+            npcManager?.UnLoad();
             Instance = null;
         }
         else if (Instance == null)

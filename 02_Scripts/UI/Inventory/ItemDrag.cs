@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ItemDrag : BaseDrag<Slot, Item>
@@ -9,13 +10,14 @@ public class ItemDrag : BaseDrag<Slot, Item>
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject quickSlots;
 
-    public void Init(Canvas _canvas,UIManager _uIManager, GameObject _inventory, GameObject _quickSlots, Image _dragitemImage)
+    public void Init(Canvas _canvas, GameObject _quickSlots)
     {
+        base.Init();
         canvas = _canvas;
-        uiManager = _uIManager;
-        inventory = _inventory;
+        uiManager = UIManager.Instance;
+        inventory = uiManager.inventorys[0].gameObject;
         quickSlots = _quickSlots;
-        dragItemImage = _dragitemImage;
+        dragItemImage = uiManager.dragitemImage;
     }
 
     protected override Item GetData() => slot.Item;
@@ -41,9 +43,27 @@ public class ItemDrag : BaseDrag<Slot, Item>
     /// 마우스가 인벤토리밖인지 검사
     /// </summary>
     /// <returns></returns>
-    private bool SlotIsOut()
+    protected override bool SlotIsOut()
     {
-        return (!RectTransformUtility.RectangleContainsScreenPoint(inventory.gameObject.GetComponent<RectTransform>(), Input.mousePosition, null)) &&
-            (!RectTransformUtility.RectangleContainsScreenPoint(quickSlots.gameObject.GetComponent<RectTransform>(), Input.mousePosition, null));
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach (var result in results)
+        {
+            // Inventory 스크립트가 붙은 오브젝트 감지
+            if (result.gameObject.GetComponentInParent<Inventory>() != null)
+                return false;
+
+            // QuickSlot도 마찬가지로 검사
+            if (result.gameObject.transform.IsChildOf(quickSlots.transform))
+                return false;
+        }
+
+        return true; // 둘 다 해당 안 됨
     }
 }

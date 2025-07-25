@@ -1,3 +1,5 @@
+using System;
+
 public enum QuestProgressState
 {
     NotStarted,
@@ -9,6 +11,7 @@ public enum QuestProgressState
 [System.Serializable]
 public class Quest
 {
+    public event Action<Quest> OnQuestCompleted;
     public QuestData questData;
     public QuestProgressState progressState;
     public int currentAmount;
@@ -44,7 +47,15 @@ public class Quest
         if (currentAmount >= questData.Amount)
         {
             currentAmount = questData.Amount;
-            progressState = QuestProgressState.CanComplete;
+
+            if (questData.CompleteType == CompleteType.Auto)
+            {
+                CompleteQuest();
+            }
+            else
+            { 
+                progressState = QuestProgressState.CanComplete;
+            }
         }
     }
     /// <summary>
@@ -52,8 +63,10 @@ public class Quest
     /// </summary>
     public void CompleteQuest()
     {
-        if (progressState == QuestProgressState.CanComplete)
-            progressState = QuestProgressState.Completed;
+        if (progressState == QuestProgressState.Completed) return;
+
+        progressState = QuestProgressState.Completed;
+        OnQuestCompleted?.Invoke(this);
     }
 
     public bool IsCompleted => progressState == QuestProgressState.Completed;

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/02_Scripts/Npc/NpcDialogue.cs.meta
+guid: 50dc8afa44582e240b57ef1f69d67605
+========
+guid: 7defba253be7ef74ca279f493c8ca550
+>>>>>>>> develop:Assets/02_Scripts/Quest/QuestDataManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

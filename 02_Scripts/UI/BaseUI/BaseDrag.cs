@@ -22,19 +22,19 @@ public static class DragData<Slot,TData>
         OriginSlot = default;
     }
 }
-public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler  
-{
-    [SerializeField] protected Canvas canvas;
-    public Image dragItemImage;
-
+public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{  
+    protected Canvas canvas;
+    protected Image dragItemImage;
     protected Slot slot;
     protected Vector3 startPosition;
     protected Transform startParent;
-    protected GameObject draggedSlot; // 드래그 받은 슬롯;
 
-    private void OnEnable()
+    public virtual void Init()
     {
+        canvas = UIManager.Instance.GetComponent<Canvas>(); 
         slot = GetComponent<Slot>();
+        dragItemImage = UIManager.Instance.dragitemImage;
     }
 
     protected abstract TData GetData();
@@ -44,6 +44,9 @@ public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, 
     // 드래그 시작시
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
+        Logger.Log(slot);
+        Logger.Log(GetData());
+      
         if (slot == null || GetData() == null) return;
 
         // 아이템과 슬롯 임시 저장
@@ -58,7 +61,7 @@ public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, 
         startParent = dragItemImage.transform.parent;
         dragItemImage.transform.SetParent(canvas.transform);
         dragItemImage.transform.SetAsLastSibling();
-        dragItemImage.GetComponent<Image>().raycastTarget = false;
+        dragItemImage.raycastTarget = false;
 
         // 드래그 이동
         startPosition = dragItemImage.transform.position;
@@ -89,31 +92,7 @@ public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, 
         // 임시 데이터 비우기
         DragData<Slot, Item>.Clear();
     }
-    /// <summary>
-    /// 마우스 포인터의 슬롯이 무엇인지 반환합니다.
-    /// </summary>
-    protected virtual T CheckMousePointerSlot<T>() where T : Component
-    {
-        // 마우스 위치에서 Raycast
-        PointerEventData pointerData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition
-        };
+    protected abstract bool SlotIsOut();
 
-        List<RaycastResult> raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-        foreach (var result in raycastResults)
-        {
-            // 마우스 위치의 오브젝트가 스킬 임시 슬롯이 아니라면 스킬 장착 해제.
-            if (result.gameObject.TryGetComponent<T>(out var skillSlot))
-            {
-                draggedSlot = result.gameObject;
-                return skillSlot;
-            }
-        }
-        return null;
-    }
-
-   
+  
 }

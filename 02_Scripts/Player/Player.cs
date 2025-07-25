@@ -9,7 +9,8 @@ public class Player : BaseCreature, IParty
     private PlayerController controller;
 
     private PlayerInputs playerInputs;
-    public PlayerInputs.PlayerActions playerActions;
+    public PlayerInputs.PlayerActions defaultActions;
+    public PlayerInputs.BattleActionActions battleActions;
 
     public Vector2 weaponArea;
 
@@ -30,6 +31,7 @@ public class Player : BaseCreature, IParty
     private PoolingManager poolingManager;
 
     public EquipmentManager equipmentManager;
+    private CharacterData characterData;
 
     private void Update()
     {
@@ -55,7 +57,10 @@ public class Player : BaseCreature, IParty
         base.Init();
 
         playerInputs = InputManager.Instance.inputActions;
-        playerActions = playerInputs.Player;
+        defaultActions = playerInputs.Player;
+        battleActions = playerInputs.BattleAction;
+
+        characterData = DataManager.Instance.defaultData.KaelData;
 
         interaction = GetComponentInChildren<Interaction>();
         interaction.Init(this);
@@ -69,7 +74,7 @@ public class Player : BaseCreature, IParty
 
         equipmentManager.equipEvent += GetStat().EquipItem;
         equipmentManager.unequipEvent += GetStat().UnequipItem;
-
+  
         foreach (PlayerAttackAnimeState attackAnimeState in animator.GetBehaviours<PlayerAttackAnimeState>())
         {
             attackAnimeState.Init(this);
@@ -83,7 +88,7 @@ public class Player : BaseCreature, IParty
         //weaponArea = new Vector2(1, 2);
 
         skillTree ??= GetComponent<SkillTree>();
-        skillTree.Init();
+        skillTree.Init(characterData.skillTree);
         SetSkillData();
 
         PartyManager.Instance.Init(this);
@@ -147,7 +152,10 @@ public class Player : BaseCreature, IParty
         controller.ChangeState(state);
     }
 
-    
+    public CharacterData GetData()
+    {
+        return characterData;
+    }
 
     public PlayerStat GetStat()
     {

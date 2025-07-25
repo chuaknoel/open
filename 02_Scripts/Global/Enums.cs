@@ -110,4 +110,41 @@ namespace Enums
         Key,
         Interface
     }
+
+    public enum ItemType
+    {
+        None, // 기타
+        Consume, // 소모품
+        Equip, // 장비 아이템
+        Important, // 중요 아이템(퀘스트,열쇠,문서 등등)
+        Collectibles, // 수집품,
+        CompanionItem // 동료 아이템
+    }
+    public enum ItemGrade
+    {
+        Common, // 일반
+        Uncommon, //고급
+        Rare, // 희귀
+        Epic, // 영웅
+        Legendary // 전설
+    }
+    public enum EquipType
+    {
+        Helmet,
+        Armor,
+        Weapon,
+        Shoes,
+    }
+    public enum CompanionType // 동료 타입
+    {
+        COMPANION_001,
+        COMPANION_002,
+        COMPANION_003,
+        COMPANION_004
+    }
+    public enum CompanionItemType // 동료 아이템
+    {
+        Weapon,
+        Armor,
+    }
 }

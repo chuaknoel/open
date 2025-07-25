@@ -22,21 +22,14 @@ public class BookWindow : BaseWindow
     private Coroutine currentTapCoroutine;
     private int currentTapIndex = 0;
 
-    /// <summary>
-    /// 화면을 활성화하는 스크립트입니다.
-    /// </summary>
-    public override void OpenUI()
-    {
-        base.OpenUI();
-        ShowTap(0);
-    }
 
     /// <summary>
     /// 초기화 함수입니다.
     /// </summary>
-    public void Init(SkillTempSlotManager _skillTempSlotManager)
+    public void Init()
     { 
-         skillTempSlotManager = _skillTempSlotManager;
+        UIManager uiManager = UIManager.Instance;
+         skillTempSlotManager = uiManager.skillTempSlotManager;
 
         // 버튼 연결
         for (int i = 0; i < buttons.Length; i++)
@@ -53,17 +46,27 @@ public class BookWindow : BaseWindow
         isTextVisible[0] = true;
 
         windows[0].GetComponent<EquipmentWindow>().Init(); // 장비창 초기화
-        windows[1].GetComponent<SkillTap>().Init(); // Skill창 초기화            
+        windows[1].GetComponent<SkillWindow>().Init(); // Skill창 초기화            
         windows[2].GetComponent<DeliverQuestsData>().Init(); // 퀘스트창 초기화   
         windows[3].GetComponent<DeliverCompanionsData>().Init(); // 동료창 초기화
-        windows[4].GetComponent<DeliverCollectionData>().Init(); // 도감창 초기화
-        
+        windows[4].GetComponent<DeliverCollectionData>().Init(); // 도감창 초기화        
     }
+    /// <summary>
+    /// 화면을 활성화하는 스크립트입니다.
+    /// </summary>
+    public override void OpenUI()
+    {
+        base.OpenUI();
+
+          ShowTap(0);
+    }
+
     /// <summary>
     /// 화면을 비활성화하는 함수입니다.
     /// </summary>
     public override void CloseUI()
     {
+        StopClickTapButtonCoroutine();
         toolTip.CloseUI();
         skillTempSlotManager.DestroySkillTempSlot();
         base.CloseUI(); 
@@ -86,20 +89,18 @@ public class BookWindow : BaseWindow
     /// <param name="index">// 창의 인덱스</param>
     private void ShowTap(int index)
     {
+        if (!gameObject.activeInHierarchy)
+            return; // 비활성화 상태에서는 무시
+
         CloseAll();
-        bookAnimation.BookOpen();      
-       
+        bookAnimation.BookOpen();
+
         currentTapIndex = index;
 
-        if (currentTapCoroutine != null)
-        {
-            StopCoroutine(currentTapCoroutine);
-        }
-        currentTapCoroutine = StartCoroutine(ClickTapButton(index));
+        StartClickTapButtonCoroutine(index);
 
         skillTempSlotManager.DestroySkillTempSlot();
 
-        Logger.Log($"{index}번째 창 활성화");
     }
 
     /// <summary>
@@ -113,6 +114,30 @@ public class BookWindow : BaseWindow
         windows[index].SetActive(true);
         buttons[index].transform.GetChild(1).gameObject.SetActive(true);
         ShowTitleText(index);
+
+        currentTapCoroutine = null;
+    }
+
+    /// <summary>
+    /// ClickTapButton Coroutine을 실행시킵니다.
+    /// </summary>
+    /// <param name="index"></param>
+    private void StartClickTapButtonCoroutine(int index)
+    {
+        StopClickTapButtonCoroutine();
+        currentTapCoroutine = StartCoroutine(ClickTapButton(index));
+    }
+
+    /// <summary>
+    ///  ClickTapButton Coroutine을 정지시킵니다.
+    /// </summary>
+    private void StopClickTapButtonCoroutine()
+    {
+        if (currentTapCoroutine != null)
+        {
+            StopCoroutine(currentTapCoroutine);
+            currentTapCoroutine = null;
+        }
     }
 
     /// <summary>

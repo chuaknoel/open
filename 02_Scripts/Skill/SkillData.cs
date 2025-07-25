@@ -32,7 +32,6 @@ public class SkillData
     
     public string skillPrefabAddress;      //씬에서 사용할 프리팹의 어드레서블 주소
     public string skillImageAddress;       //스킬 이미지 주소
-    public List<string> skillSoundAddress; //스킬 사운드 주소
 
     //제약 조건
     public int requiredLevel;                           //스킬 습득 가능 레벨

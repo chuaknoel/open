@@ -1,3 +1,4 @@
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,25 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class EquipmentManager : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private UIInventory uiInventory;
+    [SerializeField] protected Inventory inventory;
+    [SerializeField] protected UIInventory uiInventory;
     [SerializeField] private GameObject equipWindow;
-    [SerializeField] private Tooltip toolTip;
+    [SerializeField] protected Tooltip toolTip;
 
     public Dictionary<EquipType, Item> equippedItems = new();
 
-    public UnityAction<EquipItem> equipEvent;
-    public UnityAction<EquipItem> unequipEvent;
+    public UnityAction<Item> equipEvent;
+    public UnityAction<Item> unequipEvent;
 
-    public void Equip(Item item)
+    public virtual void Init()
+    {
+        UIManager uIManager = UIManager.Instance;
+        this.inventory = uIManager.inventorys[0];
+        this.uiInventory = inventory.GetComponent<UIInventory>();
+        this.equipWindow = uIManager.equipmentWindow.gameObject;
+        this.toolTip = uIManager.tooltip;
+    }
+    public virtual void Equip(Item item)
     {
         EquipItem equipItem = item as EquipItem;
         EquipType type = equipItem.EquipType;
@@ -26,15 +35,15 @@ public class EquipmentManager : MonoBehaviour
         {
             // 교체
             EquipItem oldItem = equippedItems[type] as EquipItem;
-            inventory.AddItem(oldItem,false);
+            inventory.AddItem(oldItem);
             uiInventory.UpdateSlot(inventory.slots[inventory.FindItemPos(oldItem)]);
-            ShowEquipItems();
+            ShowItems();
         }
-
         equippedItems[type] = equipItem;
         equipEvent?.Invoke(equipItem);
-
-        ShowEquipItems();
+        // inventory.RemoveItem(equipItem);
+        equipItem.Remove(1);
+        ShowItems();
 
         // 툴팁 비활성화
         if(toolTip.gameObject.activeSelf)
@@ -42,19 +51,19 @@ public class EquipmentManager : MonoBehaviour
             toolTip.CloseUI();
         }
     }
-    public void UnEquip(Item item, EquipType equipSlotType)
+    public virtual void UnEquip(Item item)
     {
-        equippedItems.Remove(equipSlotType);
+        EquipItem equipItem = item as EquipItem;
+
+        equippedItems.Remove(equipItem.EquipType);
         unequipEvent?.Invoke(item as EquipItem);
 
-        inventory.AddItem(item, false);
-        ShowEquipItems();
+        inventory.AddItem(item);
+        ShowItems();
         uiInventory.UpdateSlot(inventory.slots[inventory.FindItemPos(item)]);
-        Logger.Log("장착 해제");
     }
-    public void ShowEquipItems()
+    public virtual void ShowItems()
     {
-        Logger.Log("장비창 활성화"+ equipWindow.activeSelf);
         if (equipWindow.activeInHierarchy)
         {
             EquipmentWindow equipmentWindow = equipWindow.GetComponent<EquipmentWindow>();

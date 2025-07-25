@@ -46,15 +46,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""6e7e0347-bf32-4345-80d9-ca56a09ead0c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""0076ab3f-839a-44e3-8a52-8c464a9b059a"",
@@ -76,15 +67,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Status"",
                     ""type"": ""Button"",
                     ""id"": ""e23b250b-c417-43c0-b519-7d888f29fa0e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SkillButton"",
-                    ""type"": ""Button"",
-                    ""id"": ""dadfa7ac-7f84-4e67-9cd2-020fabb2e242"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -167,17 +149,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""79e98d47-1466-4b2c-8f20-16190e3c9af0"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ae7f55e7-4580-4538-a76a-bc7e5de94683"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -217,94 +188,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Status"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9e846fa8-ca31-43cf-8817-971d6e04f9b5"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7df9774e-3261-4496-87d2-6108d946504c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d5da6124-300f-48ba-a149-b4b734986ac4"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dac471ce-90fc-472b-8d54-d0fd1e968150"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1fbea596-9dd7-46c1-b4bf-01cb82fb795e"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7fb2e4f5-a820-45ef-bdb3-f838453f5544"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0bb8b50d-3f7e-4e37-8cc3-04a91525d7b6"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ac519c7-4364-4b79-bc78-439e7aa95462"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -364,6 +247,131 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""BattleAction"",
+            ""id"": ""666db9ee-ae2c-4c71-8b4a-44bd65869129"",
+            ""actions"": [
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa09b352-b584-4f8c-9c67-52b668b0fef2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SkillButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""69e6e6c0-b47d-4845-bb71-9add387073f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bcfab3e4-9ab2-45b7-a6db-b2664f9e13a7"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dea97d57-6e30-42f8-b94f-d7241b07b66d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""401eef2c-360b-4fdf-a654-6499a7f2cbd3"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35cdd91f-e8d2-42e7-9940-bfdc67223cd7"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31ca1774-8de2-4c9f-b2b1-f47a4255db67"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75ac8ca2-e12c-49bc-a333-a2a13687da7d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c222ad4c-b520-44f1-b82b-1c2e59dd290c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1033f47-4531-4cdd-9244-e542f065b97b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""567d0d8d-541a-4910-8272-a2495bf98e9f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -372,13 +380,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Status = m_Player.FindAction("Status", throwIfNotFound: true);
-        m_Player_SkillButton = m_Player.FindAction("SkillButton", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_QuickSlot = m_Player.FindAction("QuickSlot", throwIfNotFound: true);
+        // BattleAction
+        m_BattleAction = asset.FindActionMap("BattleAction", throwIfNotFound: true);
+        m_BattleAction_Attack = m_BattleAction.FindAction("Attack", throwIfNotFound: true);
+        m_BattleAction_SkillButton = m_BattleAction.FindAction("SkillButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -442,11 +452,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Status;
-    private readonly InputAction m_Player_SkillButton;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_QuickSlot;
     public struct PlayerActions
@@ -455,11 +463,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Status => m_Wrapper.m_Player_Status;
-        public InputAction @SkillButton => m_Wrapper.m_Player_SkillButton;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @QuickSlot => m_Wrapper.m_Player_QuickSlot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -477,9 +483,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
@@ -489,9 +492,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Status.started += instance.OnStatus;
             @Status.performed += instance.OnStatus;
             @Status.canceled += instance.OnStatus;
-            @SkillButton.started += instance.OnSkillButton;
-            @SkillButton.performed += instance.OnSkillButton;
-            @SkillButton.canceled += instance.OnSkillButton;
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
@@ -508,9 +508,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
@@ -520,9 +517,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Status.started -= instance.OnStatus;
             @Status.performed -= instance.OnStatus;
             @Status.canceled -= instance.OnStatus;
-            @SkillButton.started -= instance.OnSkillButton;
-            @SkillButton.performed -= instance.OnSkillButton;
-            @SkillButton.canceled -= instance.OnSkillButton;
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
@@ -546,16 +540,73 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // BattleAction
+    private readonly InputActionMap m_BattleAction;
+    private List<IBattleActionActions> m_BattleActionActionsCallbackInterfaces = new List<IBattleActionActions>();
+    private readonly InputAction m_BattleAction_Attack;
+    private readonly InputAction m_BattleAction_SkillButton;
+    public struct BattleActionActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public BattleActionActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Attack => m_Wrapper.m_BattleAction_Attack;
+        public InputAction @SkillButton => m_Wrapper.m_BattleAction_SkillButton;
+        public InputActionMap Get() { return m_Wrapper.m_BattleAction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActionActions set) { return set.Get(); }
+        public void AddCallbacks(IBattleActionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionActionsCallbackInterfaces.Add(instance);
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @SkillButton.started += instance.OnSkillButton;
+            @SkillButton.performed += instance.OnSkillButton;
+            @SkillButton.canceled += instance.OnSkillButton;
+        }
+
+        private void UnregisterCallbacks(IBattleActionActions instance)
+        {
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @SkillButton.started -= instance.OnSkillButton;
+            @SkillButton.performed -= instance.OnSkillButton;
+            @SkillButton.canceled -= instance.OnSkillButton;
+        }
+
+        public void RemoveCallbacks(IBattleActionActions instance)
+        {
+            if (m_Wrapper.m_BattleActionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBattleActionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BattleActionActions @BattleAction => new BattleActionActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnStatus(InputAction.CallbackContext context);
-        void OnSkillButton(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnQuickSlot(InputAction.CallbackContext context);
+    }
+    public interface IBattleActionActions
+    {
+        void OnAttack(InputAction.CallbackContext context);
+        void OnSkillButton(InputAction.CallbackContext context);
     }
 }

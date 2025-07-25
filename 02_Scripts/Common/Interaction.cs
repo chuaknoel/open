@@ -18,7 +18,7 @@ public class Interaction : MonoBehaviour
     public void Init(Player player)
     {
         this.player = player;
-        player.playerActions.Interaction.started += OnInteraction;
+        player.defaultActions.Interaction.started += OnInteraction;
     }
 
     public void OnUpdate()
@@ -109,7 +109,7 @@ public class Interaction : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.playerActions.Interaction.started -= OnInteraction;
+        player.defaultActions.Interaction.started -= OnInteraction;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

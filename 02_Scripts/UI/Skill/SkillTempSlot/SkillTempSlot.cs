@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class SkillTempSlot : SkillSlot, ISkillSlot
 {
@@ -36,7 +37,7 @@ public class SkillTempSlot : SkillSlot, ISkillSlot
         else
         {
             ClearSlot();
-        }
+        }   
     }
     // 슬롯 비우기
     public override void ClearSlot()

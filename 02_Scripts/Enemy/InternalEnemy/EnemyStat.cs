@@ -15,7 +15,7 @@ public class EnemyStat : BaseStat, IDamageable
         enemy = owner as Enemy; // =(Enemy)owner
 
         enemyHealth = GetComponentInChildren<EnemyHealth>();
-        enemyHealth.Init();
+        enemyHealth?.Init();
         OnDeath += BattleManager.Instance.EnemyDeath;
     }
 
@@ -35,7 +35,6 @@ public class EnemyStat : BaseStat, IDamageable
 
         if (currentHealth > 0)
         {
-
             enemy.Controller.ChangeState(StateEnum.Damaged);
             OnDamaged?.Invoke();
         }

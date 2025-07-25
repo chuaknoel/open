@@ -18,8 +18,8 @@ public class PlayerMoveState : BaseState<Player>
     public override void Init(Player owner)
     {
         base.Init(owner);
-        owner.playerActions.Move.performed += OnMove;
-        owner.playerActions.Move.canceled += OnMoveStop;
+        owner.defaultActions.Move.performed += OnMove;
+        owner.defaultActions.Move.canceled += OnMoveStop;
         playerController = owner.Controller;
     }
 
@@ -27,7 +27,7 @@ public class PlayerMoveState : BaseState<Player>
     {
         base.OnEnter();
         owner.ChangeAnimation(MoveStateHash, true);
-        playerController.inputDir = owner.playerActions.Move.ReadValue<Vector2>().normalized;
+        playerController.inputDir = owner.defaultActions.Move.ReadValue<Vector2>().normalized;
         playerController.DetermineDir();
     }
 
@@ -71,8 +71,7 @@ public class PlayerMoveState : BaseState<Player>
 
     private float UpdateMoveSpeed()
     {
-        
-        return 8f;
+        return owner.GetStat().GetTotalMoveSpeed();
     }
 
     public override void OnExit()
@@ -84,7 +83,7 @@ public class PlayerMoveState : BaseState<Player>
     public override void OnDestory()
     {
         base.OnDestory();
-        owner.playerActions.Move.performed -= OnMove;
-        owner.playerActions.Move.canceled -= OnMoveStop;
+        owner.defaultActions.Move.performed -= OnMove;
+        owner.defaultActions.Move.canceled -= OnMoveStop;
     }
 }

@@ -18,7 +18,7 @@ public class UIPanelLocalizer : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log($"[{gameObject.name}] UIPanelLocalizer.OnEnable() 호출됨: LanguageManager 이벤트 구독 시도...");
+        Debug.Log($"[{gameObject.name}] UIPanelLocalizer.Init() 호출됨: LanguageManager 이벤트 구독 시도...");
 
         if (LanguageManager.Instance != null)
         {
@@ -43,7 +43,7 @@ public class UIPanelLocalizer : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log($"[{gameObject.name}] UIPanelLocalizer.OnDisable() 호출됨: LanguageManager 이벤트 구독 취소 시도...");
+        Debug.Log($"[{gameObject.name}] UIPanelLocalizer.Unload() 호출됨: LanguageManager 이벤트 구독 취소 시도...");
         if (LanguageManager.Instance != null)
         {
             LanguageManager.Instance.OnLanguageChanged -= RefreshAllText;

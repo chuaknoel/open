@@ -35,18 +35,7 @@ public class EnemyDamagedState : BaseState<Enemy>
 
         if(DamagedDuration >= DamagedToCurrentDelay)
         {
-            if (controller.saveOriginState == StateEnum.Idle)
-            {
-                controller.ChangeState(StateEnum.Idle);
-            }
-            else if (controller.saveOriginState == StateEnum.Move)
-            {
-                controller.ChangeState(StateEnum.Move);
-            }
-            else if (controller.saveOriginState == StateEnum.Attack)
-            {
-                controller.ChangeState(StateEnum.Attack);
-            }
+            controller.ChangeState(controller.saveOriginState);
         }
     }
 

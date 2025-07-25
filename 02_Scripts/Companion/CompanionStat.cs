@@ -11,7 +11,9 @@ public class CompanionStat : BaseStat, IDamageable
     {
         base.Init(companion);
         this.companion = companion as Companion;
+
         CompanionData data = this.companion.GetData();
+
         baseAttack = data.AttackPower;
         baseDefence = data.DefensePower;
 

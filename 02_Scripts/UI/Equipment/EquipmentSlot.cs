@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
-using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Timeline.Actions.MenuPriority;
+using Enums;
 
 
 public class EquipmentSlot : Slot
@@ -34,7 +29,7 @@ public class EquipmentSlot : Slot
         if (item == null) { return; }
 
 
-        equipmentManager.UnEquip(item, equipSlotType);
+        equipmentManager.UnEquip(item);
 
        
         ClearSlot();

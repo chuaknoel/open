@@ -30,7 +30,7 @@ public class KeyBinder : MonoBehaviour
 
     public UnityAction<KeyBinder> OnSelectHandler;
     public UnityAction<KeyBinder> DeSelectHandler;
-    public UnityAction OnCompleteRebind;
+    public UnityAction<KeyBinder> OnCompleteRebind;
 
     public UnityAction<KeyBinder> OnCheckHandler;
 
@@ -131,11 +131,7 @@ public class KeyBinder : MonoBehaviour
                 DeSelectHandler?.Invoke(this);
                 inputActions.Enable();                                          //Disable된 인풋을 다시 활성화해준다.
               
-                if(actionName == "SkillButton")
-                {
-                    OnCompleteRebind?.Invoke();
-                }
-             
+                OnCompleteRebind?.Invoke(this); 
             })
             .Start();
     }

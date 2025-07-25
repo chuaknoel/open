@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     protected Inventory inventory;
     protected UIInventory uiInventory;
     protected Slot slot;
-    protected UISlot uiSlot;
+
     [SerializeField] protected Tooltip toolTip;
 
     [SerializeField] protected Image dragitemImage;
@@ -20,17 +21,14 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     public float doubleClickThreshold = 0.3f; 
     protected float lastClickTime = -1f;
 
-    void OnEnable()
+    public virtual void Init()
     {
-        slot = GetComponent<Slot>();
-        uiSlot = GetComponent<UISlot>();
-    }
-    public virtual void Init(UIManager _uiManager, GameObject _inventory, Image _dragitemImage)
-    {
-        uiManager = _uiManager;
-        dragitemImage = _dragitemImage;
-        inventory = _inventory.GetComponent<Inventory>();
+        uiManager = UIManager.Instance;
+        dragitemImage = uiManager.dragitemImage;
+        inventory = uiManager.inventorys[0];
         toolTip = inventory.toolTip;
+
+        slot = GetComponent<Slot>();
     }
     /// <summary>
     /// 슬롯 클릭시
@@ -43,6 +41,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
         // 더블 클릭시
         if (timeSinceLastClick <= doubleClickThreshold)
         {
+            CloseTooltip(); 
             // 아이템 사용
             slot.UseItem();
         }
@@ -94,7 +93,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
             if (temp != null)
             {
                 // 드래그한 슬롯의 아이템의 위치 변경
-                originSlot.Item.Move(originSlot.slotIndex);       
+                originSlot.Item.Move(originSlot.slotIndex);
             }
         }
     }
@@ -147,8 +146,10 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     /// </summary>
     private void ChangeTooltipPos()
     {
-        Vector2 mouseScreenPos = slot.GetComponent<RectTransform>().position;
-
+        Logger.Log("Tooltip 위치 변경 " + slot.rect);
+        Logger.Log("Tooltip 위치 변경 " + uiManager.rect);
+        Vector2 mouseScreenPos = slot.rect.position;
+      
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             uiManager.rect,
             mouseScreenPos,
@@ -156,6 +157,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
             out Vector2 localPos
         );
         toolTip.rect.anchoredPosition = new Vector2(localPos.x + 198f, localPos.y - 53f);
+      
     }
 
     protected virtual void Swap<T>(T slot01, T slot02) where T : Component, ISkillSlot

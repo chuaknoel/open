@@ -39,6 +39,21 @@ public class PlayerStat : BaseStat, IDamageable
     {
         base.Init(player);
         this.player = player as Player;
+
+        CharacterData data = this.player.GetData();
+
+        baseAttack = data.baseAttack;
+        baseDefence = data.baseDefence;
+
+        baseEvasionRate = data.baseEvasionRate;
+
+        baseHealth = data.baseHealth;
+        currentHealth = data.currentHealth;
+
+        baseMana = data.baseMana;
+        currentMana = data.currentMana;
+
+        baseMoveSpeed = data.baseMoveSpeed;
     }
 
     public void TakeDamage(float damage)
@@ -86,17 +101,21 @@ public class PlayerStat : BaseStat, IDamageable
     }
 
     //장비 능력치 반영
-    public void EquipItem(EquipItem equipItem)
+    public void EquipItem(Item item)
     {
+        EquipItem equipItem = (EquipItem)item;
         addAttack += equipItem.AttackBonus;
         addDefence += equipItem.DefenseBonus;
         addHealth += equipItem.HpBonus;
         addMana += equipItem.MpBonus;
         addEvasionRate += equipItem.EvasionRate;
+
+        Logger.Log("장비 능력치 반영");
     }
 
-    public void UnequipItem(EquipItem equipItem)
+    public void UnequipItem(Item item)
     {
+        EquipItem equipItem = (EquipItem)item;  
         addAttack -= equipItem.AttackBonus;
         addDefence -= equipItem.DefenseBonus;
         addHealth -= equipItem.HpBonus;

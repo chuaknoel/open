@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     }
 
     public SceneLoader sceneLoader { get; private set; }
+    public Fader fader { get; private set; }
     public InputManager inputManager { get; private set; }
     public DataManager dataManager { get; private set; }
     public LanguageManager languageManager { get; private set; }
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
     private void SetComponents()
     {
         sceneLoader ??= SceneLoader.Instance;
+        fader ??= GetComponentInChildren<Fader>();
+
         inputManager ??= InputManager.Instance;
         dataManager ??= DataManager.Instance;
         languageManager ??= LanguageManager.Instance;

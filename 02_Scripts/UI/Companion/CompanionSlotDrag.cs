@@ -19,15 +19,8 @@ public class CompanionSlotDrag : BaseDrag<CompanionSkillSlot, SkillData>
         throw new System.NotImplementedException();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override bool SlotIsOut()
     {
-        
+        return true; 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-}

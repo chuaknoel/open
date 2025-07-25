@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7338960124442220462}
   - component: {fileID: 2875754641691474423}
+  - component: {fileID: 8898990896990736883}
+  - component: {fileID: 7904403825846864594}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -73,17 +75,47 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 250010034, guid: 908c05a8eab6db8429050a45fdf7f26b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8898990896990736883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968479556882646283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 8ca182031744a9743942de0e23381e55, type: 3}
+--- !u!114 &7904403825846864594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968479556882646283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 0
 --- !u!1 &6721529667490840070
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,11 +170,20 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  enemyEnum: 0
+  enemy:
+    Name: 
+    Description: 
+    HP: 0
+    ATK: 0
+    DEF: 0
+    DropItemID: 
+    enemyPrefabAddress: 
+  enemyGroup: []
   targetPositionList:
   - {x: -20, y: -92}
   - {x: -18, y: -83}
   - {x: -13, y: -91}
+  isDeath: 0
 --- !u!114 &689149873866531325
 MonoBehaviour:
   m_ObjectHideFlags: 0

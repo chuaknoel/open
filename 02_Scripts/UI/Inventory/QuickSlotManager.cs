@@ -1,3 +1,4 @@
+using Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +14,12 @@ public class QuickSlotManager : MonoBehaviour
     /// </summary>
     /// <param name="inventory">인벤토리</param>
     /// <param name="uiInventory">UI 인벤토리</param>
-    public void Init(Inventory inventory, UIInventory uiInventory)
+    public void Init()
     {
+        UIManager uIManager = UIManager.Instance;
+        Inventory inventory = uIManager.inventorys[0];
+        UIInventory uiInventory = inventory.GetComponent<UIInventory>();    
+
         foreach (var slot in slots)
         {
             slot.Init(inventory, uiInventory);

@@ -75,7 +75,15 @@ public class SkillManager : MonoBehaviour
 
     public Skill FindSkill(int skillCode)
     {
-        return allSkillDictionary[skillCode];
+        if (allSkillDictionary.ContainsKey(skillCode))
+        {
+            return allSkillDictionary[skillCode];
+        }
+        else
+        {
+            Logger.Log($"{skillCode} was not found in the skill registry. Please check if it's properly defined.");
+            return null;
+        }
     }
 
     public void UnLoad()
