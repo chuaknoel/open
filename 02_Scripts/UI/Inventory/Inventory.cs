@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,14 +34,14 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// 슬롯을 동적으로 생성합니다.
     /// </summary>
-    public void CreateSlots()
+    public async Task CreateSlots()
     {
         // 초기화
         for (int i = 0; i < slotCount; i++)
-        {
-            GameObject slot = Instantiate(uiSlotPrefab, slotsParent);
-
-            if(slot.TryGetComponent<Slot>(out Slot _slot))
+        {           
+           // GameObject slot = Instantiate(uiSlotPrefab, slotsParent);
+            GameObject slot = Instantiate(await AddressableManager.Instance.LoadAsset<GameObject>("Slot"), slotsParent);
+            if (slot.TryGetComponent<Slot>(out Slot _slot))
             {
                 slots.Add(_slot);
                 slots[i].slotIndex = i;
@@ -63,6 +64,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void SetInventory()
     {
+        Logger.Log("인벤토리 초기 설정 : "+ items.Count);
         for (int i = 0; i < items.Count; i++)
         {
             AddItemAtIndex(items[i]); // 아이템 넣기
@@ -122,12 +124,10 @@ public class Inventory : MonoBehaviour
     {
         // 아이템 위치 인덱스가 유효하고, 슬롯 리스트 안에 들어갈 수 있는 범위라면
         if (item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
-        //  if (item.InventoryIndex >= 0 && item.InventoryIndex < slots.Count)
         {
             Slot slot = slots[item.InventoryIndex];
             slot.SetItem(item);
-
-            uiInventory.UpdateSlot(slot);
+            uiInventory.UpdateSlot(slot);         
             return;
         }
     }

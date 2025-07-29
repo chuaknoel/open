@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "IsJoined": false,
+            "TrustLevel": 0,
+            "DialogueKey": "리온 기본 대화",
+            "SkillNameKey": "용의 포효",
+            "SkillDescKey": "전방의 적들에게 강력한 피해를 입히고 공포에 빠뜨립니다.",
+            "AttackPower": 10.0,
+            "DefensePower": 10.0,
+            "MoveSpeed": 8.0,
+            "Hp": 50.0,
+            "Mp": 50.0,
+            "EvasionRate": 0.0,
+            "CompanionPrefabAddress": "Lion"
+        },
+        {
+            "IsJoined": false,
+            "TrustLevel": 0,
+            "DialogueKey": "세라핀 기본 대화",
+            "SkillNameKey": "신성의 기도",
+            "SkillDescKey": "모든 아군의 체력을 회복시키고 짧은 시간 동안 방어력을 증가시킵니다.",
+            "AttackPower": 10.0,
+            "DefensePower": 10.0,
+            "MoveSpeed": 8.0,
+            "Hp": 50.0,
+            "Mp": 50.0,
+            "EvasionRate": 0.0,
+            "CompanionPrefabAddress": "Seraphine"
+        },
+        {
+            "IsJoined": false,
+            "TrustLevel": 0,
+            "DialogueKey": "엘라라 기본 대화",
+            "SkillNameKey": "특제 폭탄 투척",
+            "SkillDescKey": "지정한 위치에 강력한 폭발을 일으키는 특제 폭탄을 던집니다.",
+            "AttackPower": 10.0,
+            "DefensePower": 10.0,
+            "MoveSpeed": 8.0,
+            "Hp": 50.0,
+            "Mp": 50.0,
+            "EvasionRate": 0.0,
+            "CompanionPrefabAddress": "Elara"
+        },
+        {
+            "IsJoined": false,
+            "TrustLevel": 0,
+            "DialogueKey": "가렛 기본 대화",
+            "SkillNameKey": "그림자 기습",
+            "SkillDescKey": "적의 배후로 순간이동하여 치명적인 일격을 가합니다.",
+            "AttackPower": 10.0,
+            "DefensePower": 10.0,
+            "MoveSpeed": 8.0,
+            "Hp": 50.0,
+            "Mp": 50.0,
+            "EvasionRate": 0.0,
+            "CompanionPrefabAddress": "Gerrett"
+        }
+    ]
+}

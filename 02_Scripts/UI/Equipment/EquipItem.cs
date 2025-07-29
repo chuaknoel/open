@@ -40,28 +40,52 @@ public class EquipItem : Item
     public int EvasionRate => evasionRate;
     public bool Equipped => equipped;
 
+    // 기본 생성자
+    public EquipItem() { }
+
+    public EquipItem(EquipItem item) : base(item)
+    {
+        if (item is EquipItem equip)
+        {
+            this.equipType = equip.equipType;
+            this.itemGrade = equip.itemGrade;
+            this.attackPower = equip.attackPower;
+            this.attackArea = equip.attackArea;
+            this.attackBonus = equip.attackBonus;
+            this.defenseBonus = equip.defenseBonus;
+            this.hpBonus = equip.hpBonus;
+            this.mpBonus = equip.mpBonus;
+            this.evasionRate = equip.evasionRate;
+            this.equipped = equip.equipped;
+        }
+        else
+        {
+            Debug.LogWarning("Item을 EquipItem으로 캐스팅할 수 없습니다.");
+        }
+    }
+
     public EquipItem(
         string itemId,
-       string itemName,
-       ItemType type,
-       ItemGrade itemGrade,
-       string itemDescription,
-       Sprite image,
-       int inventoryIndex,
-       int count,
-       int maxCount,
-       EquipType equipType,
-       int attackPower,
-       Vector2 attackArea,
-       int attackBonus,
-       int defenseBonus,
-       int hpBonus,
-       int mpBonus,
-       int evasionRate
-   ) : base(itemId,itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
+        string itemName,
+        ItemType type,
+        string itemGrade,
+        string itemDescription,
+        Sprite image,
+        int inventoryIndex,
+        int count,
+        int maxCount,
+        EquipType equipType,
+        int attackPower,
+        Vector2 attackArea,
+        int attackBonus,
+        int defenseBonus,
+        int hpBonus,
+        int mpBonus,
+        int evasionRate
+    ) : base(itemId, itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
     {
         this.equipType = equipType;
-        this.itemGrade = itemGrade;
+        this.itemGrade = ParseItemGrade(itemGrade);
         this.attackPower = attackPower;
         this.attackArea = attackArea;
         this.attackBonus = attackBonus;
@@ -71,10 +95,28 @@ public class EquipItem : Item
         this.evasionRate = evasionRate;
     }
 
-    public EquipItem(string itemId, string itemName, ItemType type, string itemDescription, Sprite image, int inventoryIndex, int count, int maxCount) : base(itemId,itemName, type, itemDescription, image, inventoryIndex, count, maxCount)
+    public EquipItem(string itemId, string itemName, ItemType type, string itemDescription, Sprite image, int count, int maxCount, int inventoryIndex) : base(itemId, itemName, type, itemDescription, image, count, maxCount, inventoryIndex)
     {
     }
+    public static ItemGrade ParseItemGrade(string gradeKorean)
+    {
+        Dictionary<string, ItemGrade> gradeMap = new Dictionary<string, ItemGrade>()
+    {
+        { "일반", ItemGrade.Common },
+        { "고급", ItemGrade.Uncommon },
+        { "희귀", ItemGrade.Rare },
+        { "영웅", ItemGrade.Epic },
+        { "전설", ItemGrade.Legendary }
+    };
 
+        if (gradeMap.TryGetValue(gradeKorean.Trim(), out ItemGrade result))
+        {
+            return result;
+        }
+
+        Debug.LogError($"ItemGrade 변환 실패: {gradeKorean}");
+        return ItemGrade.Common; // 기본값으로 Common을 반환하거나 예외 처리 가능
+    }
     public override void Use()
     {  
         base.Use();

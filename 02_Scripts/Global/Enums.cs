@@ -68,25 +68,47 @@ namespace Enums
         Melee,
         Range,
     }
-    
+
     public enum SkillType
     {
-
+        Attack,
+        Buff,
+        Debuff,
+        Passive,
+        Aura,
+        Heal,
+        Movement
     }
 
     public enum SkillEffectType
     {
-
+        Burn,
+        Freeze,
+        Stun,
+        Slow,
+        Poison,
+        Shield,
+        Heal
     }
 
     public enum SkillTargetType
     {
-
+        Enemy,
+        Player,
+        Area,
+        Ally,
+        Line
     }
 
     public enum SKillDamageType
     {
-
+        Physical,
+        Magical,
+        Fire,
+        Ice,
+        Lightning,
+        None,
+        True
     }
 
     public enum SoundType

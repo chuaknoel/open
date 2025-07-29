@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "Name": "레아",
+            "IsMerchant": false,
+            "InitialDialogue": "DLG_REA_GREETING",
+            "LocationHint": "북방 전초기지"
+        },
+        {
+            "Name": "상인 발두르",
+            "IsMerchant": true,
+            "InitialDialogue": "DLG_BALDUR_GREETING",
+            "LocationHint": "북방 전초기지"
+        }
+    ]
+}

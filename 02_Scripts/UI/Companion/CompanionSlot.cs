@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CompanionSlot : Slot
 {
     public CompanionType companionType;
+    public CompanionItemType companionItemType;
 
     public override void Init()
     {
@@ -20,7 +21,8 @@ public class CompanionSlot : Slot
     {     
         if (_item is CompanionItem companionItem)
         {
-            if (companionType != companionItem.CompanionType)
+            if (companionType != companionItem.CompanionType ||
+                companionItemType != companionItem.CompanionItemType)
             {
                 return;
             }

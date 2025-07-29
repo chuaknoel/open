@@ -66,14 +66,12 @@ public class SkillDrag : BaseDrag<Slot, SkillData>
             // 마우스가 플레이어 스킬 슬롯이라면
             if (result.gameObject.GetComponentInParent<PlayerSkillQuickSlot>() != null)
             {
-                Logger.Log("임시 스킬 슬롯" + skillTempSlotManager._tempSkillSlot != null);
                 // 임시 스킬 슬롯에 넣어줌
                 if (skillTempSlotManager._tempSkillSlot != null)
                 {
                     int count = 0;
                     foreach (Transform child in skillTempSlotManager._tempSkillSlot.transform)
-                    {
-                        Logger.Log("임시 스킬 슬롯 : " + child.gameObject.TryGetComponent<SkillTempSlot>(out SkillTempSlot _Dslot));
+                    {                    
                         if(child.gameObject.TryGetComponent<SkillTempSlot>(out SkillTempSlot _slot))
                         {
                             SkillTempSlot slot = _slot;

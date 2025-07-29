@@ -62,6 +62,10 @@ public class ItemDrag : BaseDrag<Slot, Item>
             // QuickSlot도 마찬가지로 검사
             if (result.gameObject.transform.IsChildOf(quickSlots.transform))
                 return false;
+
+            // CompanionSlot 스크립트가 붙은 오브젝트 감지
+            if (result.gameObject.GetComponentInParent<CompanionSlot>() != null)
+                return false;
         }
 
         return true; // 둘 다 해당 안 됨

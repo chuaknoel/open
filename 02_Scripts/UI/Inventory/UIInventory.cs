@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Search;
@@ -43,7 +44,7 @@ public class UIInventory : BaseWindow
     public GameObject uiSlotPrefab;
     public Transform slotsParent;
 
-    public virtual void Init()
+    public virtual async Task Init()
     {
         if (!isInitialized)
         {
@@ -51,7 +52,7 @@ public class UIInventory : BaseWindow
             inventory = GetComponent<Inventory>();
 
             // 레벨업 시 슬롯 동적으로 생성하는 코드는 추후에 레벨업 기능 완성되면 이벤트로 처리하기
-            inventory.CreateSlots();  // 슬롯 동적 생성
+            await inventory.CreateSlots();  // 슬롯 동적 생성
             itemFactory.AddItemData();
             inventory.SetInventory(); // 인벤토리 초기 설정
 

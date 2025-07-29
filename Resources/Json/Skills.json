@@ -1,0 +1,2148 @@
+{
+    "items": [
+        {
+            "skillCode": 100,
+            "skillName": "강격",
+            "skillDescription": "무기를 힘껏 휘둘러 적에게 120%의 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 120.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 4.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 10,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/PowerStrike",
+            "skillImageAddress": "Skills/PowerStrike",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 101,
+            "skillName": "신속한 연타",
+            "skillDescription": "눈에 보이지 않는 속도로 2회 연속 공격합니다. 각 타격은 70%의 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 70.0,
+            "duration": 0.0,
+            "hitCount": 2,
+            "coolTime": 8.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 15,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/SwiftStrikes",
+            "skillImageAddress": "Skills/SwiftStrikes",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                100
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 102,
+            "skillName": "방어구 부수기",
+            "skillDescription": "적의 방어구를 강타하여 100%의 물리 피해를 주고, 5초간 방어력을 15% 감소시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 5.0,
+            "hitCount": 1,
+            "coolTime": 10.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 18,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/ArmorBreak",
+            "skillImageAddress": "Skills/ArmorBreak",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                100
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 103,
+            "skillName": "회전 베기",
+            "skillDescription": "자신 주변의 모든 적에게 80%의 물리 피해를 주는 회전 공격을 합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 80.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 12.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 20,
+            "range": 3.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Whirlwind",
+            "skillImageAddress": "Skills/Whirlwind",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                100
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 104,
+            "skillName": "질풍",
+            "skillDescription": "폭풍처럼 몰아쳐 4회 연속 공격을 가합니다. 각 타격은 80%의 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 80.0,
+            "duration": 0.0,
+            "hitCount": 4,
+            "coolTime": 15.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 25,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Gale",
+            "skillImageAddress": "Skills/Gale",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                101
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 105,
+            "skillName": "분쇄",
+            "skillDescription": "적의 방어구를 완전히 분쇄하여 150%의 물리 피해를 주고, 10초간 방어력을 30% 감소시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 10.0,
+            "hitCount": 1,
+            "coolTime": 18.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 30,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Pulverize",
+            "skillImageAddress": "Skills/Pulverize",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                102
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 106,
+            "skillName": "대지 가르기",
+            "skillDescription": "전방의 넓은 범위에 강력한 충격파를 일으켜 140%의 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 140.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 20.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 35,
+            "range": 5.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Earthshatter",
+            "skillImageAddress": "Skills/Earthshatter",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                103
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 107,
+            "skillName": "폭풍의 칼날",
+            "skillDescription": "[궁극기] 지정된 위치에 칼날의 폭풍을 소환하여 5초 동안 10회에 걸쳐 총 1000%의 광역 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 5.0,
+            "hitCount": 10,
+            "coolTime": 45.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 60,
+            "range": 8.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/BladeStorm",
+            "skillImageAddress": "Skills/BladeStorm",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                104
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 108,
+            "skillName": "파열격",
+            "skillDescription": "[궁극기] 적에게 치명적인 일격을 가해 250%의 물리 피해를 주고, 5초에 걸쳐 250%의 추가 출혈 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 250.0,
+            "duration": 5.0,
+            "hitCount": 1,
+            "coolTime": 40.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 50,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/RupturingStrike",
+            "skillImageAddress": "Skills/RupturingStrike",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                105
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 109,
+            "skillName": "검기 폭발",
+            "skillDescription": "[궁극기] 검기를 응축했다가 폭발시켜 주변 모든 적에게 300%의 물리 피해를 주고 밀쳐냅니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 300.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 50.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 70,
+            "range": 6.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/SwordKiExplosion",
+            "skillImageAddress": "Skills/SwordKiExplosion",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                106
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 110,
+            "skillName": "방패 막기",
+            "skillDescription": "5초 동안 다음 1회의 공격을 완전히 방어합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 5.0,
+            "hitCount": 1,
+            "coolTime": 8.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 10,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ShieldBlock",
+            "skillImageAddress": "Skills/ShieldBlock",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 111,
+            "skillName": "철벽 태세",
+            "skillDescription": "10초 동안 자신의 방어력을 20% 증가시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 15.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 15,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/IronStance",
+            "skillImageAddress": "Skills/IronStance",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                110
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 112,
+            "skillName": "도발의 포효",
+            "skillDescription": "주변 모든 적을 도발하여 5초 동안 자신을 공격하게 만듭니다. 시전 시 방어력이 50% 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 20.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 20,
+            "range": 8.0,
+            "skillType": 2,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/TauntingRoar",
+            "skillImageAddress": "Skills/TauntingRoar",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                110
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 113,
+            "skillName": "반격 태세",
+            "skillDescription": "3초 동안 방어 태세를 취합니다. 이 시간 동안 공격받으면 즉시 150%의 물리 피해로 반격합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 150.0,
+            "duration": 3.0,
+            "hitCount": 1,
+            "coolTime": 18.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 22,
+            "range": 2.5,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/CounterStance",
+            "skillImageAddress": "Skills/CounterStance",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                110
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 114,
+            "skillName": "불굴의 의지",
+            "skillDescription": "[패시브] 최대 체력이 15% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/IndomitableWill",
+            "skillImageAddress": "Skills/IndomitableWill",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                111
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 115,
+            "skillName": "수호자의 영역",
+            "skillDescription": "자신 주변에 수호의 영역을 생성하여 10초 동안 자신과 아군의 방어력을 15% 증가시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 30.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 40,
+            "range": 6.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/GuardianAura",
+            "skillImageAddress": "Skills/GuardianAura",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                112
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 116,
+            "skillName": "완전한 방어",
+            "skillDescription": "3초 동안 모든 피해에 면역이 됩니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 3.0,
+            "hitCount": 0,
+            "coolTime": 40.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 50,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/PerfectDefense",
+            "skillImageAddress": "Skills/PerfectDefense",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                113
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 117,
+            "skillName": "최후의 보루",
+            "skillDescription": "[궁극기] 10초 동안 체력이 1 이하로 내려가지 않습니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 90.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 80,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/LastBastion",
+            "skillImageAddress": "Skills/LastBastion",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                114
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 118,
+            "skillName": "신의 가호",
+            "skillDescription": "[궁극기] 자신을 포함한 모든 아군에게 5초 동안 모든 피해를 50% 감소시키는 보호막을 부여합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 70.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 100,
+            "range": 10.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/DivineProtection",
+            "skillImageAddress": "Skills/DivineProtection",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                115
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 119,
+            "skillName": "가시 갑옷",
+            "skillDescription": "[궁극기] 15초 동안 자신을 공격하는 적에게 받는 피해의 30%를 되돌려줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 15.0,
+            "hitCount": 0,
+            "coolTime": 60.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 60,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Thornmail",
+            "skillImageAddress": "Skills/Thornmail",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                116
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 120,
+            "skillName": "전력 질주",
+            "skillDescription": "5초 동안 이동 속도가 30% 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 10.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 5,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/Sprint",
+            "skillImageAddress": "Skills/Sprint",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 121,
+            "skillName": "암습",
+            "skillDescription": "적의 배후에서 공격 시 150%의 피해를 주고 1초간 기절시킵니다. (은신 상태 요구)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 150.0,
+            "duration": 1.0,
+            "hitCount": 1,
+            "coolTime": 12.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 15,
+            "range": 2.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/Ambush",
+            "skillImageAddress": "Skills/Ambush",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                120
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 122,
+            "skillName": "회피 기동",
+            "skillDescription": "짧은 거리를 구르며 다음 1회의 공격을 회피합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 1.0,
+            "hitCount": 1,
+            "coolTime": 8.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 10,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/EvasiveManeuver",
+            "skillImageAddress": "Skills/EvasiveManeuver",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                120
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 123,
+            "skillName": "약점 분석",
+            "skillDescription": "[패시브] 적의 약점을 파악하여 치명타 확률이 5% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 5.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/AnalyzeWeakness",
+            "skillImageAddress": "Skills/AnalyzeWeakness",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                120
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 124,
+            "skillName": "은신",
+            "skillDescription": "10초 동안 적에게 보이지 않는 은신 상태가 됩니다. 공격하거나 스킬 사용 시 해제됩니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 25.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 30,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/Stealth",
+            "skillImageAddress": "Skills/Stealth",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                121
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 125,
+            "skillName": "흐르는 물처럼",
+            "skillDescription": "[패시브] 회피 성공 시 3초간 공격 속도가 20% 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 3.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/FlowLikeWater",
+            "skillImageAddress": "Skills/FlowLikeWater",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                122
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 126,
+            "skillName": "치명적인 일격",
+            "skillDescription": "[패시브] 치명타 발생 시 50%의 추가 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/LethalStrike",
+            "skillImageAddress": "Skills/LethalStrike",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                123
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 127,
+            "skillName": "그림자 습격",
+            "skillDescription": "[궁극기] 은신 상태에서 적에게 즉시 접근하여 400%의 물리 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 400.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 50.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 60,
+            "range": 10.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/ShadowAssault",
+            "skillImageAddress": "Skills/ShadowAssault",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                124
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 128,
+            "skillName": "폭풍의 눈",
+            "skillDescription": "[궁극기] 5초 동안 모든 공격을 자동으로 회피합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 80.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 70,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/EyeOfTheStorm",
+            "skillImageAddress": "Skills/EyeOfTheStorm",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                125
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 129,
+            "skillName": "죽음의 표식",
+            "skillDescription": "[궁극기] 적에게 죽음의 표식을 남깁니다. 10초 안에 표식이 남은 적이 받는 모든 피해가 30% 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 60.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 80,
+            "range": 15.0,
+            "skillType": 2,
+            "targetType": 0,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/MarkOfDeath",
+            "skillImageAddress": "Skills/MarkOfDeath",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                126
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 130,
+            "skillName": "정신 집중",
+            "skillDescription": "3초간 정신을 집중하여 최대 마나의 20%를 회복합니다. 집중 중에는 움직일 수 없습니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 3.0,
+            "hitCount": 0,
+            "coolTime": 20.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/Meditate",
+            "skillImageAddress": "Skills/Meditate",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 131,
+            "skillName": "마나 보호막",
+            "skillDescription": "받는 피해의 30%를 마나로 대신 흡수하는 보호막을 10초간 생성합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 25.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 20,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ManaShield",
+            "skillImageAddress": "Skills/ManaShield",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                130
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 132,
+            "skillName": "정신력 강화",
+            "skillDescription": "[패시브] 최대 마나가 10% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 10.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/FortifyMind",
+            "skillImageAddress": "Skills/FortifyMind",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                130
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 133,
+            "skillName": "침묵의 일격",
+            "skillDescription": "적에게 80%의 물리 피해를 주고 3초간 스킬을 사용하지 못하게 만듭니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 80.0,
+            "duration": 3.0,
+            "hitCount": 1,
+            "coolTime": 18.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 25,
+            "range": 2.5,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 0,
+            "skillPrefabAddress": "Skills/SilencingStrike",
+            "skillImageAddress": "Skills/SilencingStrike",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                130
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 134,
+            "skillName": "마나샘",
+            "skillDescription": "[패시브] 마나 자연 회복량이 초당 5씩 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 5.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ManaSpring",
+            "skillImageAddress": "Skills/ManaSpring",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                131
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 135,
+            "skillName": "지혜의 샘",
+            "skillDescription": "[패시브] 최대 마나가 추가로 15% 영구적으로 증가하고, 모든 스킬의 마나 소모량이 10% 감소합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/WellOfWisdom",
+            "skillImageAddress": "Skills/WellOfWisdom",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                132
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 136,
+            "skillName": "정신 붕괴",
+            "skillDescription": "적의 정신을 파고들어 10초 동안 마법 방어력을 30% 감소시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 30.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 40,
+            "range": 12.0,
+            "skillType": 2,
+            "targetType": 0,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/MindBreak",
+            "skillImageAddress": "Skills/MindBreak",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                133
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 137,
+            "skillName": "마력 폭풍",
+            "skillDescription": "[궁극기] 자신의 마나를 모두 소모하여, 소모한 마나의 3배에 해당하는 마법 피해를 주변에 광역으로 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 300.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 60.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 8.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 1,
+            "skillPrefabAddress": "Skills/ManaStorm",
+            "skillImageAddress": "Skills/ManaStorm",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                134
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 138,
+            "skillName": "무한한 정신",
+            "skillDescription": "[궁극기] 15초 동안 모든 스킬의 마나 소모가 0이 됩니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 15.0,
+            "hitCount": 0,
+            "coolTime": 120.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 50,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/LimitlessMind",
+            "skillImageAddress": "Skills/LimitlessMind",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                135
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 139,
+            "skillName": "망각의 권능",
+            "skillDescription": "[궁극기] 적 하나의 모든 강화 효과를 제거하고, 10초간 스킬 사용 불가 및 침묵 상태로 만듭니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 90.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 100,
+            "range": 15.0,
+            "skillType": 2,
+            "targetType": 0,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/PowerOfOblivion",
+            "skillImageAddress": "Skills/PowerOfOblivion",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                136
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 140,
+            "skillName": "원소 저항",
+            "skillDescription": "[패시브] 모든 원소(화염, 냉기, 번개) 저항력이 5% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 5.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ElementalResistance",
+            "skillImageAddress": "Skills/ElementalResistance",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 141,
+            "skillName": "화염 친화",
+            "skillDescription": "[패시브] 화염 저항력이 추가로 15% 증가하고, 화염 속성 공격 시 10%의 추가 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/FlameAffinity",
+            "skillImageAddress": "Skills/FlameAffinity",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                140
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 142,
+            "skillName": "냉기 친화",
+            "skillDescription": "[패시브] 냉기 저항력이 추가로 15% 증가하고, 냉기 속성 공격 시 10%의 추가 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/FrostAffinity",
+            "skillImageAddress": "Skills/FrostAffinity",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                140
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 143,
+            "skillName": "번개 친화",
+            "skillDescription": "[패시브] 번개 저항력이 추가로 15% 증가하고, 번개 속성 공격 시 10%의 추가 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/LightningAffinity",
+            "skillImageAddress": "Skills/LightningAffinity",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                140
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 144,
+            "skillName": "타오르는 영혼",
+            "skillDescription": "[패시브] 화염 속성 공격에 피격 시, 5초간 공격력이 10% 증가합니다. (30초에 한 번 발동)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 10.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 30.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/BurningSoul",
+            "skillImageAddress": "Skills/BurningSoul",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                141
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 145,
+            "skillName": "얼어붙은 심장",
+            "skillDescription": "[패시브] 냉기 속성 공격에 피격 시, 공격한 적을 2초간 30% 둔화시킵니다. (10초에 한 번 발동)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 2.0,
+            "hitCount": 0,
+            "coolTime": 10.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/FrozenHeart",
+            "skillImageAddress": "Skills/FrozenHeart",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                142
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 146,
+            "skillName": "전류가 흐르는 육체",
+            "skillDescription": "[패시브] 번개 속성 공격에 피격 시, 주변 적들에게 50%의 연쇄 번개 피해를 줍니다. (15초에 한 번 발동)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 15.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/StaticBody",
+            "skillImageAddress": "Skills/StaticBody",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                143
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 147,
+            "skillName": "불사조의 현신",
+            "skillDescription": "[궁극기] 사망 시, 5초 후 최대 체력의 50%로 부활하며 주변에 강력한 화염 폭발을 일으킵니다. (전투 당 1회)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/PhoenixIncarnate",
+            "skillImageAddress": "Skills/PhoenixIncarnate",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                144
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 148,
+            "skillName": "겨울의 지배자",
+            "skillDescription": "[궁극기] 10초간 자신 주변에 눈보라를 소환하여, 범위 내 적들의 이동속도와 공격속도를 30% 감소시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 80.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 100,
+            "range": 10.0,
+            "skillType": 2,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/WintersReign",
+            "skillImageAddress": "Skills/WintersReign",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                145
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 149,
+            "skillName": "뇌신의 강림",
+            "skillDescription": "[궁극기] 5초간 매초마다 무작위 적 3명에게 150%의 마법 피해를 주는 낙뢰를 떨어뜨립니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 150.0,
+            "duration": 5.0,
+            "hitCount": 15,
+            "coolTime": 90.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 120,
+            "range": 20.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 1,
+            "skillPrefabAddress": "Skills/ThundergodsDescent",
+            "skillImageAddress": "Skills/ThundergodsDescent",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                146
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 150,
+            "skillName": "격려의 외침",
+            "skillDescription": "주변 아군들의 사기를 북돋아 10초간 공격력을 10% 증가시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 10.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 30.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 30,
+            "range": 8.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/RallyingCry",
+            "skillImageAddress": "Skills/RallyingCry",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 151,
+            "skillName": "지휘관의 통솔력",
+            "skillDescription": "[오라] 자신 주변 아군들의 방어력이 5% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 5.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 8.0,
+            "skillType": 4,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/CommanderPresence",
+            "skillImageAddress": "Skills/CommanderPresence",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                150
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 152,
+            "skillName": "전술적 후퇴",
+            "skillDescription": "자신을 포함한 주변 아군들의 이동 속도를 5초간 30% 증가시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 25.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 25,
+            "range": 8.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/TacticalRetreat",
+            "skillImageAddress": "Skills/TacticalRetreat",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                150
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 153,
+            "skillName": "결속의 힘",
+            "skillDescription": "주변 아군 한 명과 자신을 연결하여, 10초 동안 서로가 받는 피해를 25%씩 나눠 받습니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 25.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 40.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 40,
+            "range": 15.0,
+            "skillType": 1,
+            "targetType": 3,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/PowerOfUnity",
+            "skillImageAddress": "Skills/PowerOfUnity",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                150
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 154,
+            "skillName": "승리의 돌격",
+            "skillDescription": "모든 아군에게 10초간 공격력과 공격 속도를 15% 증가시키는 버프를 겁니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 15.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 60.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 50,
+            "range": 15.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/VictoriousCharge",
+            "skillImageAddress": "Skills/VictoriousCharge",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                151
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 155,
+            "skillName": "구원의 손길",
+            "skillDescription": "쓰러진 아군 한 명을 최대 체력의 30%로 즉시 부활시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 180.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 100,
+            "range": 15.0,
+            "skillType": 5,
+            "targetType": 3,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/SavingGrace",
+            "skillImageAddress": "Skills/SavingGrace",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                152
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 156,
+            "skillName": "희생의 각오",
+            "skillDescription": "아군 한 명의 모든 해로운 효과를 자신에게 옮겨오고, 5초간 자신의 방어력을 100% 증가시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 5.0,
+            "hitCount": 0,
+            "coolTime": 50.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 60,
+            "range": 15.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/VowOfSacrifice",
+            "skillImageAddress": "Skills/VowOfSacrifice",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                153
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 157,
+            "skillName": "전장의 영웅",
+            "skillDescription": "[궁극기] 15초 동안 모든 아군에게 공격력/방어력 20%, 이동속도 20% 증가 버프를 부여합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 15.0,
+            "hitCount": 0,
+            "coolTime": 120.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 150,
+            "range": 20.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/HeroOfTheBattlefield",
+            "skillImageAddress": "Skills/HeroOfTheBattlefield",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                154
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 158,
+            "skillName": "최후의 저항 명령",
+            "skillDescription": "[궁극기] 모든 아군에게 10초 동안 죽음에 이르는 피해를 받아도 체력 1로 생존하는 버프를 부여합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 240.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 200,
+            "range": 20.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/LastStandOrder",
+            "skillImageAddress": "Skills/LastStandOrder",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                155
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 159,
+            "skillName": "영광의 깃발",
+            "skillDescription": "[궁극기] 지정 위치에 20초간 유지되는 깃발을 꽂습니다. 깃발 주변의 아군은 초당 최대 체력의 3%를 회복합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 3.0,
+            "duration": 20.0,
+            "hitCount": 0,
+            "coolTime": 100.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 120,
+            "range": 10.0,
+            "skillType": 5,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/BannerOfGlory",
+            "skillImageAddress": "Skills/BannerOfGlory",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                156
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 160,
+            "skillName": "마법 화살",
+            "skillDescription": "마력 덩어리를 날려 적에게 150%의 마법 피해를 줍니다. 유도 성능을 가집니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 150.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 3.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 10,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 1,
+            "skillPrefabAddress": "Skills/MagicMissile",
+            "skillImageAddress": "Skills/MagicMissile",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 161,
+            "skillName": "신비한 지혜",
+            "skillDescription": "[패시브] 주문력이 10% 영구적으로 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 10.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ArcaneIntellect",
+            "skillImageAddress": "Skills/ArcaneIntellect",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                160
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 162,
+            "skillName": "비전 보호막",
+            "skillDescription": "자신의 최대 체력의 20%에 해당하는 피해를 흡수하는 마법 보호막을 10초간 생성합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 20.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 25,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ArcaneShield",
+            "skillImageAddress": "Skills/ArcaneShield",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                160
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 163,
+            "skillName": "점멸",
+            "skillDescription": "지정한 위치로 짧은 거리를 순간이동합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 10.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 30,
+            "range": 12.0,
+            "skillType": 6,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/Blink",
+            "skillImageAddress": "Skills/Blink",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                160
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 164,
+            "skillName": "주문 가속",
+            "skillDescription": "[패시브] 모든 스킬의 재사용 대기시간이 10% 영구적으로 감소합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 10.0,
+            "duration": 0.0,
+            "hitCount": 0,
+            "coolTime": 0.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 0,
+            "range": 0.0,
+            "skillType": 3,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/SpellHaste",
+            "skillImageAddress": "Skills/SpellHaste",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                161
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 165,
+            "skillName": "마력 증폭",
+            "skillDescription": "다음 시전하는 스킬의 공격력을 50% 증폭시킵니다. 10초간 유지됩니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 50.0,
+            "duration": 10.0,
+            "hitCount": 1,
+            "coolTime": 30.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 40,
+            "range": 0.0,
+            "skillType": 1,
+            "targetType": 1,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/AmplifyMagic",
+            "skillImageAddress": "Skills/AmplifyMagic",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                162
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 166,
+            "skillName": "시간 왜곡",
+            "skillDescription": "지정한 지역에 8초간 유지되는 왜곡장을 생성합니다. 장판 안의 아군은 스킬 재사용 대기시간이 30% 빨리 감소합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 8.0,
+            "hitCount": 0,
+            "coolTime": 50.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 70,
+            "range": 10.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/TimeWarp",
+            "skillImageAddress": "Skills/TimeWarp",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                163
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 167,
+            "skillName": "운석 낙하",
+            "skillDescription": "[궁극기] 지정한 위치에 거대한 운석을 떨어뜨려 500%의 광역 마법 피해를 주고 3초간 기절시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 500.0,
+            "duration": 3.0,
+            "hitCount": 1,
+            "coolTime": 90.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 150,
+            "range": 20.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 1,
+            "skillPrefabAddress": "Skills/Meteor",
+            "skillImageAddress": "Skills/Meteor",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                164
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 168,
+            "skillName": "힘의 역장",
+            "skillDescription": "[궁극기] 10초 동안 자신 주변의 모든 적 투사체를 막아내는 역장을 생성합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 10.0,
+            "hitCount": 0,
+            "coolTime": 70.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 100,
+            "range": 5.0,
+            "skillType": 1,
+            "targetType": 2,
+            "damageType": 5,
+            "skillPrefabAddress": "Skills/ForceField",
+            "skillImageAddress": "Skills/ForceField",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                165
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 169,
+            "skillName": "공간 붕괴",
+            "skillDescription": "[궁극기] 지정한 지점을 중심으로 모든 적을 빨아들이며, 3초 후 폭발하여 350%의 고정 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 350.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 100.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 180,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 6,
+            "skillPrefabAddress": "Skills/SpatialCollapse",
+            "skillImageAddress": "Skills/SpatialCollapse",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                166
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 170,
+            "skillName": "화염구",
+            "skillDescription": "화염구를 날려 적에게 180%의 마법 피해를 주고, 주변에 작은 폭발을 일으킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 180.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 5.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 15,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 2,
+            "skillPrefabAddress": "Skills/Fireball",
+            "skillImageAddress": "Skills/Fireball",
+            "requiredLevel": 1,
+            "requiredSkills": [],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 171,
+            "skillName": "얼음 송곳",
+            "skillDescription": "얼음 송곳을 발사하여 140%의 마법 피해를 주고, 3초간 이동 속도를 30% 감소시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 140.0,
+            "duration": 3.0,
+            "hitCount": 1,
+            "coolTime": 6.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 15,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 3,
+            "skillPrefabAddress": "Skills/IceSpike",
+            "skillImageAddress": "Skills/IceSpike",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                170
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 172,
+            "skillName": "연쇄 번개",
+            "skillDescription": "번개를 발사하여 130%의 마법 피해를 주고, 최대 3명의 주변 적에게 튕겨나갑니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 130.0,
+            "duration": 0.0,
+            "hitCount": 3,
+            "coolTime": 8.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 20,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 4,
+            "skillPrefabAddress": "Skills/ChainLightning",
+            "skillImageAddress": "Skills/ChainLightning",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                170
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 173,
+            "skillName": "발화",
+            "skillDescription": "적을 불태워 5초에 걸쳐 150%의 지속 마법 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 30.0,
+            "duration": 5.0,
+            "hitCount": 5,
+            "coolTime": 12.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 25,
+            "range": 15.0,
+            "skillType": 0,
+            "targetType": 0,
+            "damageType": 2,
+            "skillPrefabAddress": "Skills/Ignite",
+            "skillImageAddress": "Skills/Ignite",
+            "requiredLevel": 5,
+            "requiredSkills": [
+                170
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 174,
+            "skillName": "빙결",
+            "skillDescription": "적을 2초 동안 얼려 행동 불가 상태로 만듭니다. 얼어있는 적은 받는 피해가 20% 증가합니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 20.0,
+            "duration": 2.0,
+            "hitCount": 1,
+            "coolTime": 18.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 35,
+            "range": 15.0,
+            "skillType": 2,
+            "targetType": 0,
+            "damageType": 3,
+            "skillPrefabAddress": "Skills/Freeze",
+            "skillImageAddress": "Skills/Freeze",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                171
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 175,
+            "skillName": "전하 방출",
+            "skillDescription": "자신 주변에 전기를 방출하여 모든 적에게 150%의 마법 피해를 주고 짧게 경직시킵니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 150.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 15.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 40,
+            "range": 6.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 4,
+            "skillPrefabAddress": "Skills/Discharge",
+            "skillImageAddress": "Skills/Discharge",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                172
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 176,
+            "skillName": "화염 기둥",
+            "skillDescription": "지정한 위치에 거대한 화염 기둥을 소환하여 300%의 광역 마법 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 300.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 25.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 60,
+            "range": 18.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 2,
+            "skillPrefabAddress": "Skills/PillarOfFlame",
+            "skillImageAddress": "Skills/PillarOfFlame",
+            "requiredLevel": 15,
+            "requiredSkills": [
+                173
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 177,
+            "skillName": "눈보라",
+            "skillDescription": "[궁극기] 지정된 지역에 8초 동안 강력한 눈보라를 소환합니다. 범위 내의 적들은 지속적으로 피해를 입고 이동속도가 50% 감소합니다. (총 800% 피해)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 100.0,
+            "duration": 8.0,
+            "hitCount": 8,
+            "coolTime": 60.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 120,
+            "range": 20.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 3,
+            "skillPrefabAddress": "Skills/Blizzard",
+            "skillImageAddress": "Skills/Blizzard",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                174
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 178,
+            "skillName": "번개의 창",
+            "skillDescription": "[궁극기] 번개의 창을 던져 일직선상의 모든 적을 관통하며 400%의 마법 피해를 줍니다.",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 400.0,
+            "duration": 0.0,
+            "hitCount": 1,
+            "coolTime": 45.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 90,
+            "range": 25.0,
+            "skillType": 0,
+            "targetType": 4,
+            "damageType": 4,
+            "skillPrefabAddress": "Skills/LightningSpear",
+            "skillImageAddress": "Skills/LightningSpear",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                175
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        },
+        {
+            "skillCode": 179,
+            "skillName": "지옥불",
+            "skillDescription": "[궁극기] 지정한 지역을 10초간 불바다로 만듭니다. 범위 내 적들은 강력한 지속 피해를 입고, 방어력이 30% 감소합니다. (총 900% 피해)",
+            "skillImage": {
+                "instanceID": 0
+            },
+            "skillLevel": 1,
+            "amount": 90.0,
+            "duration": 10.0,
+            "hitCount": 10,
+            "coolTime": 70.0,
+            "remainingTime": 0.0,
+            "cunsumeMana": 140,
+            "range": 20.0,
+            "skillType": 0,
+            "targetType": 2,
+            "damageType": 2,
+            "skillPrefabAddress": "Skills/Inferno",
+            "skillImageAddress": "Skills/Inferno",
+            "requiredLevel": 20,
+            "requiredSkills": [
+                176
+            ],
+            "requiredPoint": 1,
+            "isLock": true
+        }
+    ]
+}

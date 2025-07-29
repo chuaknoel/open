@@ -59,7 +59,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     /// 아이템이 Drop 됬을 경우
     /// </summary>
     /// <param name="eventData">이벤트 데이터</param>
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         if (slot.slotType != SlotType.item) { return; }
 
@@ -102,6 +102,7 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     /// </summary>
     protected void ShowTooltip()
     {
+        if (slot.Item == null) { return; }
         // Tooltip 내용 변환
         TooltipParam tooltipParam = new TooltipParam(slot.Item.ItemName, ChangeItemType(slot.Item.Type),
                                     slot.Item.ItemDescription);
@@ -146,8 +147,6 @@ public class SlotEvent : MonoBehaviour, IDropHandler
     /// </summary>
     private void ChangeTooltipPos()
     {
-        Logger.Log("Tooltip 위치 변경 " + slot.rect);
-        Logger.Log("Tooltip 위치 변경 " + uiManager.rect);
         Vector2 mouseScreenPos = slot.rect.position;
       
         RectTransformUtility.ScreenPointToLocalPointInRectangle(

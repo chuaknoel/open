@@ -19,12 +19,16 @@ public class SkillSlot :Slot , ISkillSlot
         skill = skillManager.skillDatas[0];
 
         //dragImage = GetComponent<SkillDrag>().dragItemImage;
-
+        itemImage = transform.GetChild(0).GetComponent<Image>();
         tempSlotManager = _tempSlotManager;
     }
 
     public override void UseItem()
     {
+        if (skill.isLock) 
+        {
+            return; 
+        }
         tempSlotManager.CreateSkillTempSlot(this);
     }
 

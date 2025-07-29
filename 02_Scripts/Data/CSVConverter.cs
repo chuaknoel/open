@@ -13,15 +13,18 @@ using UnityEngine;
 /// <summary>
 /// 무기 데이터의 구조를 정의하는 클래스입니다.
 /// </summary>
+[System.Serializable]  // ⬅️ 추가 필요
 public class WeaponData : IGetCSVData
 {
-    public string ID { get; set; }
+    public string ID { get; set; }    // 프로퍼티는 직렬화 안됨
     public string Type;
     public string Rank;
+    public int RanktoInt;        // 새로 추가
     public int Atk;
     public string Name;
     public string Description;
     public Vector2 Area;
+    public string PrefabAddress; // 새로 추가
 }
 
 /// <summary>
@@ -151,9 +154,11 @@ public class ArmorData : IGetCSVData
     public string ID { get; set; }
     public string Type;
     public string Rank;
+    public int RanktoInt;        // ← 새로 추가
     public int DEF;
     public string Name;
     public string Description;
+    public string PrefabAddress; // ← 새로 추가
 }
 
 #endregion
@@ -214,6 +219,71 @@ public static class CSVConverter
         }
         catch { }
         return Vector2.zero;
+    }
+
+    // 스킬 목록을 파싱하는 헬퍼 메서드 (예: "101;202;301")
+    private static List<int> ParseIntList(string s)
+    {
+        var list = new List<int>();
+        if (string.IsNullOrEmpty(s)) return list;
+
+        var parts = s.Split(';');
+        foreach (var part in parts)
+        {
+            if (int.TryParse(part, out int val))
+            {
+                list.Add(val);
+            }
+        }
+        return list;
+    }
+
+    public static Dictionary<string, SkillData> LoadSkills(string csvText)
+    {
+        var db = new Dictionary<string, SkillData>();
+        foreach (var values in Parse(csvText))
+        {
+            // CSV 열 개수에 맞게 수정하세요. (예시: 20개)
+            if (values.Length < 20) continue;
+
+            try
+            {
+                var data = new SkillData
+                {
+                    // CSV 열 순서에 맞춰 데이터를 읽어옵니다.
+                    // 이 순서는 Skills.csv 파일의 실제 열 순서와 일치해야 합니다.
+                    skillCode = int.Parse(values[0]),
+                    skillName = values[1],
+                    skillDescription = values[2],
+                    skillLevel = int.Parse(values[3]),
+                    amount = float.Parse(values[4]),
+                    duration = float.Parse(values[5]),
+                    hitCount = int.Parse(values[6]),
+                    coolTime = float.Parse(values[7]),
+                    cunsumeMana = int.Parse(values[8]),
+                    range = float.Parse(values[9]),
+                    skillType = (Enums.SkillType)System.Enum.Parse(typeof(Enums.SkillType), values[10]),
+                    targetType = (Enums.SkillTargetType)System.Enum.Parse(typeof(Enums.SkillTargetType), values[11]),
+                    damageType = (Enums.SKillDamageType)System.Enum.Parse(typeof(Enums.SKillDamageType), values[12]),
+                    skillPrefabAddress = values[13],
+                    skillImageAddress = values[14],
+                    requiredLevel = int.Parse(values[15]),
+                    requiredSkills = ParseIntList(values[16]), // "101;202" 같은 형식을 처리
+                    requiredPoint = int.Parse(values[17]),
+                    isLock = bool.Parse(values[18])
+                };
+                // skillImage는 CSV로 관리하기 어려우므로 여기서는 비워둡니다.
+                // data.skillImage = ...
+
+                // 딕셔너리의 키는 string이어야 하므로 skillCode를 문자열로 변환하여 사용합니다.
+                db[data.skillCode.ToString()] = data;
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Skill CSV 파싱 오류: {string.Join(",", values)} | 오류: {ex.Message}");
+            }
+        }
+        return db;
     }
 
     public static Dictionary<string, NPCData> LoadNPCs(string csvText)

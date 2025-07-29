@@ -25,11 +25,12 @@ public class CompanionEquipManager : EquipmentManager
         foreach (var inventory in inventories)
         {
             inventory.Init();
+
             foreach (var slot in inventory.slots)
             {
                 slot.Init();
-                slot.GetComponent<SlotEvent>().Init();
-               // slot.GetComponent<ItemDrag>().Init();
+                slot.GetComponent<CompanionSlotDrag>().Init();
+                slot.GetComponent<CompanionSlotEvent>().Init();
             }
         }
     }
@@ -45,7 +46,7 @@ public class CompanionEquipManager : EquipmentManager
         currentItem = _item as CompanionItem;
         CompanionType type = currentItem.CompanionType;
         CompanionItemType itemType = currentItem.CompanionItemType;
-        Logger.Log("동료타입 : "+type);
+  
         FindCurrentInventory(type); // 현재 동료 인벤토리 찾기
       
         //Slot slot = currentInventory.slots[0];
@@ -76,7 +77,9 @@ public class CompanionEquipManager : EquipmentManager
     public override void UnEquip(Item item)
     {
         currentItem = item as CompanionItem;
-        Logger.Log(currentItem);
+        CompanionType type = currentItem.CompanionType;
+        FindCurrentInventory(type); // 현재 동료 인벤토리 찾기
+
         currentInventory.companionItems.Remove(currentItem.CompanionItemType);
         unequipEvent?.Invoke(item as EquipItem);
 
@@ -93,27 +96,31 @@ public class CompanionEquipManager : EquipmentManager
            // companionWindow.ShowEquipInfo();
         }
     }
-    private CompanionData ReturnCompanionData()
+
+    /// <summary>
+    /// 현재 동료 아이템에 알맞은 동료 데이터를 반환합니다.
+    /// </summary>
+    /// <returns></returns>
+    public CompanionData ReturnCompanionData()
     {
+        // CompanionManager 완성되면 추후에 수정하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         CompanionData data = null;
         DeliverCompanionsData deliverCompanionsData = UIManager.Instance.deliverCompanionsData;
         for (int i = 0; i < deliverCompanionsData.companionDatas.Count; i++)
         {
-            Logger.Log(currentItem.CompanionType.ToString());
-            Logger.Log(deliverCompanionsData.companionDatas[i].ID);
             if (currentItem.CompanionType.ToString() == deliverCompanionsData.companionDatas[i].ID)
             {
                 data = deliverCompanionsData.companionDatas[i];
             }
         }
-        Logger.Log(data);
+
         return data;
     }
     /// <summary>
     /// 현재 동료 인벤토리 찾기
     /// </summary>
     /// <param name="_itemType"></param>
-    private void FindCurrentInventory(CompanionType type)
+    public void FindCurrentInventory(CompanionType type)
     {
        for (int i = 0; i < inventories.Count;i++)
         {

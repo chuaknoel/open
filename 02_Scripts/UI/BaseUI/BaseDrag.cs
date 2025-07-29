@@ -44,9 +44,6 @@ public abstract class BaseDrag<Slot, TData> : MonoBehaviour, IBeginDragHandler, 
     // 드래그 시작시
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
-        Logger.Log(slot);
-        Logger.Log(GetData());
-      
         if (slot == null || GetData() == null) return;
 
         // 아이템과 슬롯 임시 저장

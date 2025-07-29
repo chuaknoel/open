@@ -20,7 +20,7 @@ public class Item
     [Header("Stacking")]
     [SerializeField] protected int count;
     [SerializeField] protected int maxCount;
-
+    
     public string ItemId => itemId;
     public string ItemName => itemName;
     public ItemType Type => type;
@@ -31,17 +31,39 @@ public class Item
     public int MaxCount => maxCount;
     public int InventoryIndex => inventoryIndex;
 
-    public Item(string itemId,string itemName,ItemType type, string itemDescription, Sprite image,
-    int inventoryIndex, int count, int maxCount)
+    // 기본 생성자
+    public Item() { }
+
+    public Item(Item item)
+    {
+        this.itemId = item.ItemId;
+        this.itemName = item.ItemName;
+        this.type = item.Type;
+
+        this.itemDescription = item.ItemDescription;
+        this.image = item.Image;
+        this.inventoryIndex = item.InventoryIndex;
+
+        this.count = item.Count;
+        this.maxCount = item.MaxCount;
+    }
+    public Item(
+    string itemId,
+    string itemName,
+    ItemType type,
+    string itemDescription,
+    Sprite image,
+    int inventoryIndex,
+    int count,
+    int maxCount
+    )
     {
         this.itemId = itemId;
         this.itemName = itemName;
         this.type = type;
-
         this.itemDescription = itemDescription;
         this.image = image;
         this.inventoryIndex = inventoryIndex;
-
         this.count = count;
         this.maxCount = maxCount;
     }

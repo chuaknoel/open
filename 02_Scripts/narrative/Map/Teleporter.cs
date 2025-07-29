@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// 텔레포트 지점 역할만 수행하는 매우 가벼운 컴포넌트.
@@ -10,6 +11,9 @@ public class Teleporter : MonoBehaviour
     [Header("텔레포터 설정")]
     [Tooltip("이동할 목적지 텔레포터 오브젝트")]
     [SerializeField] private Teleporter destinationTeleporter;
+
+    [Header("카메라 경계 설정")]
+    [SerializeField] private PolygonCollider2D destinationBoundary;
 
     [Header("대상 설정")]
     [Tooltip("텔레포터와 상호작용할 오브젝트의 레이어를 선택합니다.")]
@@ -41,6 +45,9 @@ public class Teleporter : MonoBehaviour
             }
             else
             {
+                // [추가] 텔레포트 요청 전에, 도착할 곳의 카메라 경계를 매니저에게 미리 알려줍니다.
+                teleporterManager.PrepareCameraBoundary(destinationBoundary);
+
                 // 찾은 매니저에게 텔레포트를 요청합니다.
                 teleporterManager.RequestTeleport(other.transform, destinationTeleporter);
             }

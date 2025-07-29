@@ -1,23 +1,23 @@
-ID,Type,Rank,DEF,Name,Description,PrefabAddress
-ARMOR_001,머리,일반,3,가죽 두건,"가장 기본적인 머리 보호구. 약간의 방어력을 제공한다.",LeatherHood
-ARMOR_002,몸,일반,8,가죽 갑옷,"질긴 동물 가죽으로 만든 갑옷. 평범한 수준의 방어력을 갖췄다.",LeatherArmor
-ARMOR_003,다리,일반,4,가죽 바지,"활동하기 편한 가죽 바지. 다리를 보호한다.",LeatherPants
-ARMOR_004,머리,일반,5,철제 투구,"제국군 신병에게 보급되는 기본적인 투구. 머리를 안전하게 보호한다.",IronHelmet
-ARMOR_005,몸,일반,12,철제 흉갑,"가슴 부분을 보호하는 철제 흉갑. 제법 단단하다.",IronChestplate
-ARMOR_006,다리,일반,6,철제 각반,"정강이를 보호하는 철제 각반.",IronGreaves
-ARMOR_007,머리,고급,8,북방 전사의 투구,"혹한의 땅에서 살아가는 전사들이 쓰는 투구. 늑대 가죽 장식이 달려있다.",NorthernWarriorHelmet
-ARMOR_008,몸,고급,18,북방 전사의 갑옷,"여러 겹의 가죽과 철 조각을 덧대어 만든 갑옷. 보온성과 방어력을 둘 다 잡았다.",NorthernWarriorArmor
-ARMOR_009,다리,고급,10,북방 전사의 다리 갑옷,"추위를 막기 위해 두꺼운 가죽으로 만든 다리 보호구.",NorthernWarriorLeggings
-ARMOR_010,머리,고급,10,정화단의 후드,"정화단이 얼굴을 가리기 위해 쓰는 깊은 후드. 신성한 문양이 새겨져 있다.",PurifierHood
-ARMOR_011,몸,고급,22,정화단의 로브,"언데드에게 강한 신성 저항력을 부여하는 하얀 로브.",PurifierRobe
-ARMOR_012,다리,고급,12,정화단의 신발,"소리 없이 움직일 수 있도록 특수 처리된 신발.",PurifierShoes
-ARMOR_013,머리,희귀,15,용기사 투구,"온두리스 가문의 용기사들이 쓰는 용의 형상을 본뜬 투구.",DragonKnightHelmet
-ARMOR_014,몸,희귀,30,용기사 갑옷,"용의 비늘 일부를 덧대 만들었다고 전해지는 견고한 갑옷. 화염에 대한 저항력이 높다.",DragonKnightArmor
-ARMOR_015,다리,희귀,18,용기사 각반,"용의 발톱에도 찢기지 않는다는 특수 재질의 각반.",DragonKnightGreaves
-ARMOR_016,머리,영웅,25,'첫 번째 빛의 투구',솔라리움의 첫 황제가 썼다고 전해지는 투구. 착용자에게 불굴의 용기를 부여한다.,FirstLightHelmet
-ARMOR_017,몸,영웅,45,'불멸의 제국 갑옷',"어떤 공격에도 굴하지 않는 제국의 영광을 상징하는 갑옷. 엄청난 방어력을 자랑한다.",ImmortalEmpireArmor
-ARMOR_018,다리,영웅,30,'신념의 발걸음',"죽음의 저주가 만연한 땅에서도 착용자를 굳건히 지켜주는 부츠.",BootsOfConviction
-ARMOR_019,몸,일반,15,리온의 훈련용 흉갑,"[리온 전용] 용기사 가문의 문장이 새겨진 훈련용 흉갑. 튼튼하게 만들어졌다.",LionsTrainingChestplate
-ARMOR_020,몸,일반,15,세라핀의 기도 로브,"[세라핀 전용] 신성한 힘으로 축복받은 로브. 가볍고 편안하다.",SeraphinsPrayerRobe
-ARMOR_021,몸,일반,15,엘라라의 탐구 조끼,"[엘라라 전용] 마법 연구에 집중할 수 있도록 다양한 주머니가 달린 조끼.",ElarasInquiryVest
-ARMOR_022,몸,일반,15,가렛의 그림자 조끼,"[가렛 전용] 어둠 속에 스며들기 좋은 검은색 가죽 조끼. 움직임이 자유롭다.",GarettsShadowVest
+ID,Type,Rank,RanktoInt,DEF,Name,Description,PrefabAddress
+ARMOR_001,머리,일반,0,3,가죽 두건,"가장 기본적인 머리 보호구. 약간의 방어력을 제공한다.",LeatherHood
+ARMOR_002,몸,일반,0,8,가죽 갑옷,"질긴 동물 가죽으로 만든 갑옷. 평범한 수준의 방어력을 갖췄다.",LeatherArmor
+ARMOR_003,다리,일반,0,4,가죽 바지,"활동하기 편한 가죽 바지. 다리를 보호한다.",LeatherPants
+ARMOR_004,머리,일반,0,5,철제 투구,"제국군 신병에게 보급되는 기본적인 투구. 머리를 안전하게 보호한다.",IronHelmet
+ARMOR_005,몸,일반,0,12,철제 흉갑,"가슴 부분을 보호하는 철제 흉갑. 제법 단단하다.",IronChestplate
+ARMOR_006,다리,일반,0,6,철제 각반,"정강이를 보호하는 철제 각반.",IronGreaves
+ARMOR_007,머리,고급,1,8,북방 전사의 투구,"혹한의 땅에서 살아가는 전사들이 쓰는 투구. 늑대 가죽 장식이 달려있다.",NorthernWarriorHelmet
+ARMOR_008,몸,고급,1,18,북방 전사의 갑옷,"여러 겹의 가죽과 철 조각을 덧대어 만든 갑옷. 보온성과 방어력을 둘 다 잡았다.",NorthernWarriorArmor
+ARMOR_009,다리,고급,1,10,북방 전사의 다리 갑옷,"추위를 막기 위해 두꺼운 가죽으로 만든 다리 보호구.",NorthernWarriorLeggings
+ARMOR_010,머리,고급,1,10,정화단의 후드,"정화단이 얼굴을 가리기 위해 쓰는 깊은 후드. 신성한 문양이 새겨져 있다.",PurifierHood
+ARMOR_011,몸,고급,1,22,정화단의 로브,"언데드에게 강한 신성 저항력을 부여하는 하얀 로브.",PurifierRobe
+ARMOR_012,다리,고급,1,12,정화단의 신발,"소리 없이 움직일 수 있도록 특수 처리된 신발.",PurifierShoes
+ARMOR_013,머리,희귀,2,15,용기사 투구,"온두리스 가문의 용기사들이 쓰는 용의 형상을 본뜬 투구.",DragonKnightHelmet
+ARMOR_014,몸,희귀,2,30,용기사 갑옷,"용의 비늘 일부를 덧대 만들었다고 전해지는 견고한 갑옷. 화염에 대한 저항력이 높다.",DragonKnightArmor
+ARMOR_015,다리,희귀,2,18,용기사 각반,"용의 발톱에도 찢기지 않는다는 특수 재질의 각반.",DragonKnightGreaves
+ARMOR_016,머리,영웅,3,25,'첫 번째 빛의 투구',솔라리움의 첫 황제가 썼다고 전해지는 투구. 착용자에게 불굴의 용기를 부여한다.,FirstLightHelmet
+ARMOR_017,몸,영웅,3,45,'불멸의 제국 갑옷',"어떤 공격에도 굴하지 않는 제국의 영광을 상징하는 갑옷. 엄청난 방어력을 자랑한다.",ImmortalEmpireArmor
+ARMOR_018,다리,영웅,3,30,'신념의 발걸음',"죽음의 저주가 만연한 땅에서도 착용자를 굳건히 지켜주는 부츠.",BootsOfConviction
+ARMOR_019,몸,일반,0,15,리온의 훈련용 흉갑,"[리온 전용] 용기사 가문의 문장이 새겨진 훈련용 흉갑. 튼튼하게 만들어졌다.",LionsTrainingChestplate
+ARMOR_020,몸,일반,0,15,세라핀의 기도 로브,"[세라핀 전용] 신성한 힘으로 축복받은 로브. 가볍고 편안하다.",SeraphinsPrayerRobe
+ARMOR_021,몸,일반,0,15,엘라라의 탐구 조끼,"[엘라라 전용] 마법 연구에 집중할 수 있도록 다양한 주머니가 달린 조끼.",ElarasInquiryVest
+ARMOR_022,몸,일반,0,15,가렛의 그림자 조끼,"[가렛 전용] 어둠 속에 스며들기 좋은 검은색 가죽 조끼. 움직임이 자유롭다.",GarettsShadowVest

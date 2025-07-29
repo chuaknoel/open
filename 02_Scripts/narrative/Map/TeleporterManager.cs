@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// 씬에 존재하는 모든 텔레포터를 중앙에서 관리하는 매니저 클래스.
@@ -15,7 +16,12 @@ public class TeleporterManager : MonoBehaviour
 
     public LayerMask targetLayer;
 
-    private bool isMoving;
+    public bool isMoving { get; private set; }
+
+    // [추가] 시네머신 카메라의 Confiner 컴포넌트를 저장해 둘 변수
+    private CinemachineConfiner2D cameraConfiner;
+    // [추가] 텔레포터로부터 미리 전달받은 카메라 경계를 임시 저장할 변수
+    private PolygonCollider2D preparedBoundary;
 
     public void Init()
     {
@@ -27,6 +33,9 @@ public class TeleporterManager : MonoBehaviour
         {
             teleporter.Init(this, targetLayer);
         }
+
+        // [추가] 시작할 때 씬에 있는 CinemachineConfiner2D를 한 번만 찾아 저장합니다.
+        cameraConfiner = FindObjectOfType<CinemachineConfiner2D>();
     }
 
     /// <summary>
@@ -42,6 +51,10 @@ public class TeleporterManager : MonoBehaviour
         }
 
         isMoving = true;
+
+        // [추가] 플레이어 위치를 바꾸기 전에, 미리 전달받은 경계로 카메라를 업데이트합니다.
+        UpdateCameraBoundary();
+
         target.position = destination.transform.position;
         targetsOnCooldown.Add(target);
     }
@@ -88,4 +101,23 @@ public class TeleporterManager : MonoBehaviour
     {
         targetsOnCooldown.Clear();
     }
+
+
+    // [추가] 텔레포터가 호출하여, 다음에 사용할 카메라 경계를 미리 준비시키는 메서드
+    public void PrepareCameraBoundary(PolygonCollider2D boundary)
+    {
+        this.preparedBoundary = boundary;
+    }
+
+    // [추가] 준비된 경계로 실제 카메라를 업데이트하는 메서드
+    private void UpdateCameraBoundary()
+    {
+        if (cameraConfiner == null) return;
+
+        if (preparedBoundary != null)
+        {
+            cameraConfiner.m_BoundingShape2D = preparedBoundary;
+        }
+    }
+
 }

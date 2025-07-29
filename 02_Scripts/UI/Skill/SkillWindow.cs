@@ -103,6 +103,16 @@ public class SkillWindow : MonoBehaviour
             {
                 skillDrag.Init();
             }
+
+            SkillData skill = skillSlots[i].GetSkill();
+
+            // 스킬이 해금되지 않았다면
+            if(skill.isLock)
+            {
+                Color color = new Color(147, 145, 145, 255);
+                // 배경 흐리게
+                skillSlots[i].ItemImage.color = color;
+            }
         }
     }
 }

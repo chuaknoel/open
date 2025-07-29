@@ -21,10 +21,9 @@ public class UIManager : MonoBehaviour
     public MenuWindow menuWindow { get; private set; }
     public ShowBook showBook { get; private set; }
     public BookWindow bookWindow { get; private set; }
-
     public Tooltip tooltip { get; private set; }
-
     public DialogueManager dialogueManager { get; private set; }
+    public DiePanel diePanel { get; private set; }
 
     [HideInInspector] public RectTransform rect;
     [HideInInspector] public DeliverCompanionsData deliverCompanionsData;
@@ -57,29 +56,23 @@ public class UIManager : MonoBehaviour
         showStatus = GetComponentInChildren<ShowStatus>(true);
         equipmentManager = GetComponentInChildren<EquipmentManager>(true);
         equipmentWindow = GetComponentInChildren<EquipmentWindow>(true);
-
-        //  inventory = GetComponentInChildren<Inventory>(true);
         inventorys.AddRange(GetComponentsInChildren<Inventory>(true));
         var uiInventorys = GetComponentsInChildren<UIInventory>(true);
         companionEquipManager = GetComponentInChildren<CompanionEquipManager>(true);
         companionWindow = GetComponentInChildren<CompanionWindow>(true);
-        // uiInventory = GetComponentInChildren<UIInventory>(true);
         quickSlotManager = GetComponentInChildren<QuickSlotManager>(true);
         skillQuickSlotManager = GetComponentInChildren<SkillQuickSlotManager>(true);
         skillTempSlotManager = GetComponentInChildren<SkillTempSlotManager>(true);
         menuWindow = GetComponentInChildren<MenuWindow>(true);
         showBook = GetComponentInChildren<ShowBook>(true);
         bookWindow = GetComponentInChildren<BookWindow>(true);
-      //  inventory = GetComponentInChildren<Inventory>(true);
         destroyItemWindow = GetComponentInChildren<DestroyWindow>(true);
-
         tooltip = GetComponentInChildren<Tooltip>(true);
-        dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
-
         dialogueManager = GetComponentInChildren<DialogueManager>(true);
-        dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
-
         deliverCompanionsData = GetComponentInChildren<DeliverCompanionsData>(true);
+        diePanel = GetComponentInChildren<DiePanel>(true);
+
+        dragitemImage = GameObject.Find("DragImage").GetComponent<Image>();
 
         equipmentManager.Init();
         quickSlotManager.Init();
@@ -89,15 +82,17 @@ public class UIManager : MonoBehaviour
         skillQuickSlotManager.Init();
         menuWindow.Init();
         showBook.Init();
-
         bookWindow.Init();
         dialogueManager?.Init();
+        diePanel.Init();    
+
         for (int i = 0; i < inventorys.Count; i++)
         {
             inventorys[i].Init();
-            uiInventorys[i].Init();
+          //  uiInventorys[i].Init();
         }
     }
+
     /// <summary>
     /// Window가 활성화 될 때 사용되는 함수입니다.
     /// </summary>
@@ -114,6 +109,7 @@ public class UIManager : MonoBehaviour
         }
         uiStack.StackUI(window);
     }
+
     /// <summary>
     ///  Window가 비활성화 될 때 사용되는 함수입니다.
     /// </summary>

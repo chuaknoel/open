@@ -1,0 +1,836 @@
+{
+    "items": [
+        {
+            "Type": "단검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 10,
+            "Name": "\"낡은 단검\"",
+            "Description": "\"어디서나 볼 수 있는 평범한 단검. 호신용으로나 쓸만하다.\"",
+            "Area": {
+                "x": 0.800000011920929,
+                "y": 1.5
+            },
+            "PrefabAddress": "OldDagger"
+        },
+        {
+            "Type": "단검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 8,
+            "Name": "\"노예의 단검\"",
+            "Description": "\"과거 투기장에서 노예들이 사용하던 날이 무딘 단검. 절박함이 묻어난다.\"",
+            "Area": {
+                "x": 0.699999988079071,
+                "y": 1.399999976158142
+            },
+            "PrefabAddress": "SlaveDagger"
+        },
+        {
+            "Type": "단검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 12,
+            "Name": "\"정보상의 호신용 나이프\"",
+            "Description": "\"[가렛 전용] 가렛이 정보상 일을 시작했을 때부터 사용한 평범한 나이프. 손에 익어 사용하기 편하다.\"",
+            "Area": {
+                "x": 0.800000011920929,
+                "y": 1.600000023841858
+            },
+            "PrefabAddress": "InformationBrokersKnife"
+        },
+        {
+            "Type": "단검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 20,
+            "Name": "\"그림자 상회의 호신용 단검\"",
+            "Description": "\"정보상 가렛이 속한 그림자 상회의 하급 조직원들이 사용하는 단검. 평범해 보이지만 무게중심이 잘 잡혀있다.\"",
+            "Area": {
+                "x": 0.8999999761581421,
+                "y": 1.7000000476837159
+            },
+            "PrefabAddress": "ShadowGuildDagger"
+        },
+        {
+            "Type": "단검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 22,
+            "Name": "\"그림자 상회의 거래용 단검\"",
+            "Description": "\"[가렛 전용] 그림자 상회에서 거래를 성사시킬 때 증표로 사용하는 단검. 칼날이 매우 날카롭다.\"",
+            "Area": {
+                "x": 0.8999999761581421,
+                "y": 1.7999999523162842
+            },
+            "PrefabAddress": "ShadowGuildTradingDagger"
+        },
+        {
+            "Type": "단검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 25,
+            "Name": "\"독침 거미의 어금니 단검\"",
+            "Description": "\"(몬스터) 알케미아 지하의 독침 거미 어금니로 만든 단검. 약한 맹독을 품고 있다.\"",
+            "Area": {
+                "x": 0.800000011920929,
+                "y": 1.600000023841858
+            },
+            "PrefabAddress": "PoisonfangDagger"
+        },
+        {
+            "Type": "단검",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 35,
+            "Name": "\"'들리지 않는 속삭임'\"",
+            "Description": "\"[가렛 전용] 소리 없이 적의 등 뒤를 노리는 암살자를 위한 단검. 치명타 공격 시 일정 확률로 적을 침묵 상태로 만든다.\"",
+            "Area": {
+                "x": 1.0,
+                "y": 1.7999999523162842
+            },
+            "PrefabAddress": "UnheardWhisper"
+        },
+        {
+            "Type": "단검",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 42,
+            "Name": "\"'드래곤 투스'\"",
+            "Description": "\"(몬스터) 드래곤스파인 산맥의 와이번 심장에서 나온 '용의 이빨'로 만든 궁극의 단검. 모든 방어구를 꿰뚫는다 전해진다.\"",
+            "Area": {
+                "x": 1.100000023841858,
+                "y": 1.899999976158142
+            },
+            "PrefabAddress": "DragonTooth"
+        },
+        {
+            "Type": "단검",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 45,
+            "Name": "\"'계약자의 비수'\"",
+            "Description": "\"[가렛 전용] 그림자 상회의 마스터만이 소유할 수 있다는 전설적인 단검. 이 단검으로 맺은 계약은 절대 깨뜨릴 수 없다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 2.0
+            },
+            "PrefabAddress": "ContractorsDagger"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 18,
+            "Name": "\"사냥꾼의 손도끼\"",
+            "Description": "\"숲에서 나무를 베거나 짐승을 사냥할 때 사용하는 실용적인 도끼.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 1.5
+            },
+            "PrefabAddress": "HuntersHandAxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 20,
+            "Name": "\"북방 부족의 뼈 도끼\"",
+            "Description": "\"북벽 너머 야만 부족이 사용하는 조잡한 도끼. 동물의 뼈와 돌을 엮어 만들었다.\"",
+            "Area": {
+                "x": 1.600000023841858,
+                "y": 1.399999976158142
+            },
+            "PrefabAddress": "NorthernTribeBoneAxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 16,
+            "Name": "\"광부의 곡괭이\"",
+            "Description": "\"드래곤스파인 산맥의 광부들이 사용하는 단단한 곡괭이. 무기로도 쓸만하다.\"",
+            "Area": {
+                "x": 1.399999976158142,
+                "y": 1.399999976158142
+            },
+            "PrefabAddress": "MinersPickaxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 35,
+            "Name": "\"드워프의 강철 도끼\"",
+            "Description": "\"드래곤스파인 산맥의 드워프 대장장이가 제련한 무거운 강철 도끼. 바위도 쪼갤 기세다.\"",
+            "Area": {
+                "x": 1.7999999523162842,
+                "y": 1.600000023841858
+            },
+            "PrefabAddress": "DwarvenSteelAxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 38,
+            "Name": "\"해적 처형인의 도끼\"",
+            "Description": "\"포르투나의 악명 높은 해적이 사용하던 처형용 도끼. 칼날에 핏자국이 선명하다.\"",
+            "Area": {
+                "x": 1.899999976158142,
+                "y": 1.5
+            },
+            "PrefabAddress": "PirateExecutionersAxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 48,
+            "Name": "\"북방 광전사의 쌍날도끼\"",
+            "Description": "\"혹한의 땅에서 살아가는 광전사들이 사용하는 쌍날 도끼. 휘두를수록 공격 속도가 빨라진다.\"",
+            "Area": {
+                "x": 2.0,
+                "y": 1.7999999523162842
+            },
+            "PrefabAddress": "NorthernBerserkersGreataxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 45,
+            "Name": "\"용기사 온두리스의 전투도끼\"",
+            "Description": "\"강경파 용기사 가문 온두리스의 전사들이 사용하는 전투도끼. 용의 비늘도 쪼갤 수 있다고 한다.\"",
+            "Area": {
+                "x": 2.200000047683716,
+                "y": 1.7000000476837159
+            },
+            "PrefabAddress": "OndurisBattleAxe"
+        },
+        {
+            "Type": "도끼",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 65,
+            "Name": "\"'거인의 분노'\"",
+            "Description": "\"(몬스터) 산맥을 떠도는 바위 거인의 척추로 만들었다는 전설의 도끼. 타격 시 지면이 울린다.\"",
+            "Area": {
+                "x": 2.5,
+                "y": 2.0
+            },
+            "PrefabAddress": "GiantsFury"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 16,
+            "Name": "\"순례자의 호신용 망치\"",
+            "Description": "\"성지로 향하는 순례자들이 강도로부터 몸을 지키기 위해 들고 다니는 작은 망치.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 1.7999999523162842
+            },
+            "PrefabAddress": "PilgrimsHammer"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 14,
+            "Name": "\"수련 성직자의 기도봉\"",
+            "Description": "\"[세라핀 전용] 세라핀이 루미나 탑에서 처음 기도를 배울 때 사용하던 작고 가벼운 기도봉.\"",
+            "Area": {
+                "x": 1.0,
+                "y": 1.7000000476837159
+            },
+            "PrefabAddress": "AcolytesPrayerRod"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 20,
+            "Name": "\"꿰매어진 피조물의 뼈몽둥이\"",
+            "Description": "\"(몬스터) 잿빛 숲의 꿰매어진 피조물이 휘두르던 뼈 몽둥이. 여러 동물의 뼈를 조잡하게 엮어 만들었다.\"",
+            "Area": {
+                "x": 1.399999976158142,
+                "y": 1.899999976158142
+            },
+            "PrefabAddress": "StitchedCreaturesBoneClub"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 25,
+            "Name": "\"알케미아 도시 경비대의 철퇴\"",
+            "Description": "\"알케미아의 치안을 담당하는 도시 경비대의 제식 무기. 위압적인 외형을 가졌다.\"",
+            "Area": {
+                "x": 1.2999999523162842,
+                "y": 2.0
+            },
+            "PrefabAddress": "AlchemiaGuardMace"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"루미나 탑의 은빛 메이스\"",
+            "Description": "\"[세라핀 전용] 루미나 탑의 성직자들이 사용하는 은으로 만든 메이스. 언데드에게 추가 피해를 준다.\"",
+            "Area": {
+                "x": 1.399999976158142,
+                "y": 2.0
+            },
+            "PrefabAddress": "LuminaTowerSilverMace"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 32,
+            "Name": "\"오우거의 뼈 철퇴\"",
+            "Description": "\"(몬스터) 거대한 오우거의 뼈로 만든 철퇴. 육중한 무게로 모든 것을 부순다.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 2.200000047683716
+            },
+            "PrefabAddress": "OgresBoneMace"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 40,
+            "Name": "\"정화의 성물함\"",
+            "Description": "\"[세라핀 전용] 내부에 신성한 유골 가루가 담겨있는 성물함. 타격 시 주변 아군의 체력을 소량 회복시킨다.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 2.0999999046325685
+            },
+            "PrefabAddress": "ReliquaryOfPurification"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 48,
+            "Name": "\"바위 거인의 파편 둔기\"",
+            "Description": "\"(몬스터) 바위 거인의 몸에서 떨어져 나온 파편으로 만든 둔기. 적중 시 높은 확률로 적을 기절시킨다.\"",
+            "Area": {
+                "x": 1.600000023841858,
+                "y": 2.299999952316284
+            },
+            "PrefabAddress": "RockGolemFragmentClub"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 55,
+            "Name": "\"'고요한 안식'\"",
+            "Description": "\"(몬스터) 루미나 탑 지하 묘소의 고대 수호령을 잠재우고 얻은 성스러운 망치. 언데드에게 절대적인 추가 피해를 입힌다.\"",
+            "Area": {
+                "x": 1.7999999523162842,
+                "y": 2.5
+            },
+            "PrefabAddress": "SilentRest"
+        },
+        {
+            "Type": "둔기",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 52,
+            "Name": "\"'성녀의 자비'\"",
+            "Description": "\"[세라핀 전용] 루미나 탑의 성물. 타격한 아군의 모든 디버프를 정화하고 적에게는 신성한 충격을 가한다.\"",
+            "Area": {
+                "x": 1.600000023841858,
+                "y": 2.200000047683716
+            },
+            "PrefabAddress": "SaintsMercy"
+        },
+        {
+            "Type": "팔찌",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 5,
+            "Name": "\"초보 연금술사의 팔찌\"",
+            "Description": "\"[엘라라 전용] 엘라라가 처음으로 조합에 성공한 기념으로 만든 가장 기본적인 연금술 촉매 팔찌.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 0.0
+            },
+            "PrefabAddress": "NoviceAlchemistBracelet"
+        },
+        {
+            "Type": "팔찌",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 12,
+            "Name": "\"그라운드 서클의 연성 팔찌\"",
+            "Description": "\"[엘라라 전용] 알케미아의 급진적 연금술사 조직 '그라운드 서클'의 구성원임을 나타내는 증표. 폭발물의 위력을 소폭 증가시킨다.\"",
+            "Area": {
+                "x": 2.0,
+                "y": 0.0
+            },
+            "PrefabAddress": "GroundCircleTransmutationBracelet"
+        },
+        {
+            "Type": "팔찌",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 20,
+            "Name": "\"볼테르의 잊혀진 손목 보호대\"",
+            "Description": "\"[엘라라 전용] 모든 비극의 시작 연금술사 볼테르의 것이라고 전해지는 유물. 모든 독의 효과와 지속시간을 증폭시킨다.\"",
+            "Area": {
+                "x": 2.5,
+                "y": 0.0
+            },
+            "PrefabAddress": "VoltairesForgottenBracer"
+        },
+        {
+            "Type": "팔찌",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 30,
+            "Name": "\"'현자의 손길'\"",
+            "Description": "\"[엘라라 전용] 전설적인 연금술사가 만들었다는 궁극의 아티팩트. 모든 포션의 효과를 극대화하고 조합 시 일정 확률로 재료를 소모하지 않는다.\"",
+            "Area": {
+                "x": 3.0,
+                "y": 0.0
+            },
+            "PrefabAddress": "SagesTouch"
+        },
+        {
+            "Type": "활",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 12,
+            "Name": "\"사냥용 활\"",
+            "Description": "\"숲에서 짐승을 사냥할 때 사용하는 평범한 나무 활. 가볍고 실용적이다.\"",
+            "Area": {
+                "x": 0.20000000298023225,
+                "y": 0.20000000298023225
+            },
+            "PrefabAddress": "HuntingBow"
+        },
+        {
+            "Type": "활",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 22,
+            "Name": "\"제국 정찰대의 경기궁\"",
+            "Description": "\"제국군 정찰병이 사용하는 가벼운 활. 빠른 연사에 특화되어 있다.\"",
+            "Area": {
+                "x": 0.20000000298023225,
+                "y": 0.20000000298023225
+            },
+            "PrefabAddress": "ImperialScoutBow"
+        },
+        {
+            "Type": "활",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 25,
+            "Name": "\"제국군 보급용 장궁\"",
+            "Description": "\"제국군 궁병에게 보급되는 장궁. 사거리가 길지만 사용하려면 숙련이 필요하다.\"",
+            "Area": {
+                "x": 0.20000000298023225,
+                "y": 0.20000000298023225
+            },
+            "PrefabAddress": "ImperialLongbow"
+        },
+        {
+            "Type": "활",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 35,
+            "Name": "\"잿빛 숲의 가시나무 활\"",
+            "Description": "\"잿빛 숲의 뒤틀린 나무로 만든 활. 화살에 닿은 대상에게 확률적으로 '타락' 디버프를 건다.\"",
+            "Area": {
+                "x": 0.30000001192092898,
+                "y": 0.30000001192092898
+            },
+            "PrefabAddress": "AshwoodThornBow"
+        },
+        {
+            "Type": "활",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 40,
+            "Name": "\"'용 사냥꾼의 대궁'\"",
+            "Description": "\"과거 드래곤스파인에서 용을 사냥했던 전설적인 사냥꾼의 활. 거대한 적에게 추가 피해를 입힌다.\"",
+            "Area": {
+                "x": 0.30000001192092898,
+                "y": 0.30000001192092898
+            },
+            "PrefabAddress": "DragonSlayerGreatbow"
+        },
+        {
+            "Type": "활",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 50,
+            "Name": "\"'매의 눈'\"",
+            "Description": "\"바람의 흐름을 읽을 수 있다는 신비한 깃털로 장식된 활. 절대 빗나가지 않는다고 알려져 있다.\"",
+            "Area": {
+                "x": 0.4000000059604645,
+                "y": 0.4000000059604645
+            },
+            "PrefabAddress": "Hawkeye"
+        },
+        {
+            "Type": "검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 15,
+            "Name": "\"수습기사의 검\"",
+            "Description": "\"기사 서임식 때 받는 기본적인 롱소드. 제국의 문장이 희미하게 새겨져 있다.\"",
+            "Area": {
+                "x": 1.0,
+                "y": 2.0
+            },
+            "PrefabAddress": "SquireSword"
+        },
+        {
+            "Type": "검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 16,
+            "Name": "\"온두리스 가문의 훈련용 검\"",
+            "Description": "\"[리온 전용] 리온이 어릴 적부터 사용해온 훈련용 검. 손때가 묻어있다.\"",
+            "Area": {
+                "x": 1.0,
+                "y": 1.899999976158142
+            },
+            "PrefabAddress": "OndurisTrainingSword"
+        },
+        {
+            "Type": "검",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 18,
+            "Name": "\"스텔라문드 수비대의 롱소드\"",
+            "Description": "\"북방의 추위와 언데드를 상대로 싸우는 스텔라문드 수비대의 제식 검. 실용적이고 튼튼하다.\"",
+            "Area": {
+                "x": 1.100000023841858,
+                "y": 2.0999999046325685
+            },
+            "PrefabAddress": "StellamundGuardLongsword"
+        },
+        {
+            "Type": "검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 25,
+            "Name": "\"포르투나 용병의 시미터\"",
+            "Description": "\"포르투나의 용병들이 선호하는 구부러진 검. 베기 공격에 특화되어 있다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 2.200000047683716
+            },
+            "PrefabAddress": "FortunaMercenaryScimitar"
+        },
+        {
+            "Type": "검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"용기사 생도의 서약 검\"",
+            "Description": "\"[리온 전용] 리온이 용기사 생도가 되며 받은 검. 가문의 맹세가 새겨져 있다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 2.299999952316284
+            },
+            "PrefabAddress": "DragonKnightCadetSword"
+        },
+        {
+            "Type": "검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 26,
+            "Name": "\"해적 선장의 커틀러스\"",
+            "Description": "\"포르투나 항구를 공포에 떨게 했던 어느 해적 선장의 검. 손잡이에 이국적인 보석이 박혀있다.\"",
+            "Area": {
+                "x": 1.2999999523162842,
+                "y": 2.0999999046325685
+            },
+            "PrefabAddress": "PirateCaptainsCutlass"
+        },
+        {
+            "Type": "검",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"'정화의 불꽃'\"",
+            "Description": "\"정화단이 언데드와 이단자를 심판할 때 사용하는 검. 태양신의 축복으로 약한 화염 피해를 추가로 입힌다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 2.4000000953674318
+            },
+            "PrefabAddress": "FlameOfPurification"
+        },
+        {
+            "Type": "검",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 42,
+            "Name": "\"'온두리스의 유산'\"",
+            "Description": "\"[리온 전용] 온두리스 가문의 적자에게만 전해지는 보검. 강력한 용의 기운이 깃들어 있다.\"",
+            "Area": {
+                "x": 1.399999976158142,
+                "y": 2.5
+            },
+            "PrefabAddress": "LegacyOfOnduris"
+        },
+        {
+            "Type": "검",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 38,
+            "Name": "\"바벤베르크 가문의 레이피어\"",
+            "Description": "\"온건파 용기사 가문 바벤베르크의 기사들이 선호하는 검. 빠르고 정확한 찌르기에 특화되어 있다.\"",
+            "Area": {
+                "x": 1.2999999523162842,
+                "y": 2.799999952316284
+            },
+            "PrefabAddress": "BabenbergRapier"
+        },
+        {
+            "Type": "검",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 62,
+            "Name": "\"'온두리스의 긍지'\"",
+            "Description": "\"[리온 전용] 용기사 온두리스 가문에 대대로 전해져 내려오는 보검. 사용자의 용기에 반응하여 칼날이 빛을 발한다.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 2.799999952316284
+            },
+            "PrefabAddress": "PrideOfOnduris"
+        },
+        {
+            "Type": "검",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 60,
+            "Name": "\"'솔라리움의 첫 번째 빛'\"",
+            "Description": "\"솔라리움 제국의 첫 황제가 사용했다고 전해지는 전설의 검. 실제로 태양신의 권능을 비추는 검으로 죽음의 저주를 상대로 진정한 힘을 보여준다.\"",
+            "Area": {
+                "x": 1.5,
+                "y": 3.0
+            },
+            "PrefabAddress": "SolariumsFirstLight"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 18,
+            "Name": "\"민병대의 조잡한 석궁\"",
+            "Description": "\"마을을 지키는 민병대가 급조한 석궁. 위력은 약하지만 없는 것보단 낫다.\"",
+            "Area": {
+                "x": 0.30000001192092898,
+                "y": 0.30000001192092898
+            },
+            "PrefabAddress": "MilitiaCrossbow"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"상인 호위대의 경석궁\"",
+            "Description": "\"먼 길을 떠나는 상단을 호위하는 용병들이 사용하는 석궁. 휴대성과 위력의 균형을 맞췄다.\"",
+            "Area": {
+                "x": 0.30000001192092898,
+                "y": 0.30000001192092898
+            },
+            "PrefabAddress": "MerchantGuardCrossbow"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 32,
+            "Name": "\"드워프제 자동 장전 석궁\"",
+            "Description": "\"드워프의 기술력으로 만들어진 석궁. 재장전 시간을 단축시키는 기계 장치가 달려있다.\"",
+            "Area": {
+                "x": 0.4000000059604645,
+                "y": 0.4000000059604645
+            },
+            "PrefabAddress": "DwarvenAutoCrossbow"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 38,
+            "Name": "\"'그림자 추적자'\"",
+            "Description": "\"은밀하게 목표를 추적하는 암살자들이 사용하는 석궁. 소음이 거의 없고 치명타 확률이 높다.\"",
+            "Area": {
+                "x": 0.4000000059604645,
+                "y": 0.4000000059604645
+            },
+            "PrefabAddress": "ShadowStalker"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 42,
+            "Name": "\"정화단의 중형 석궁\"",
+            "Description": "\"정화단 정예병이 사용하는 강력한 석궁. 갑옷을 꿰뚫을 만큼 위력적이지만 재장전 속도가 매우 느리다.\"",
+            "Area": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "PrefabAddress": "PurifierHeavyCrossbow"
+        },
+        {
+            "Type": "석궁",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 55,
+            "Name": "\"'태양신의 심판'\"",
+            "Description": "\"태양신교의 광신도들이 이단자를 처단하기 위해 만든 성물 석궁. 발사된 볼트는 신성한 빛에 휩싸여 폭발한다.\"",
+            "Area": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "PrefabAddress": "JudgmentOfSol"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 10,
+            "Name": "\"수련용 스태프\"",
+            "Description": "\"마법을 처음 배우는 학생들이 사용하는 평범한 나무 지팡이. 마나를 증폭하는 효과는 거의 없다.\"",
+            "Area": {
+                "x": 1.0,
+                "y": 1.5
+            },
+            "PrefabAddress": "TrainingStaff"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 25,
+            "Name": "\"신성한 유적의 수호자 지팡이\"",
+            "Description": "\"루미나 탑 주변의 유적을 지키는 존재들이 사용하던 지팡이. 신성 마법의 위력을 증폭시킨다.\"",
+            "Area": {
+                "x": 1.100000023841858,
+                "y": 1.600000023841858
+            },
+            "PrefabAddress": "GuardianOfRuinsStaff"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"타락한 마법사의 지팡이\"",
+            "Description": "\"(몬스터) 저주에 잠식된 마법사가 사용하던 지팡이. 강력한 암흑 마법을 구사할 수 있지만 사용자의 생명력을 조금씩 갉아먹는다.\"",
+            "Area": {
+                "x": 1.100000023841858,
+                "y": 1.600000023841858
+            },
+            "PrefabAddress": "CorruptedMageStaff"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 35,
+            "Name": "\"마력 흡수 지팡이\"",
+            "Description": "\"적을 타격할 때마다 마나를 흡수하는 기묘한 흑단목 지팡이. 마법사들 사이에서 암암리에 거래된다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 1.7000000476837159
+            },
+            "PrefabAddress": "ManaSiphonStaff"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 38,
+            "Name": "\"리치의 해골 지팡이\"",
+            "Description": "\"(몬스터) 끝없는 반도의 리치 로드가 사용하던 지팡이. 죽은 자를 일으키는 불길한 힘이 깃들어 있다.\"",
+            "Area": {
+                "x": 1.2000000476837159,
+                "y": 1.7000000476837159
+            },
+            "PrefabAddress": "LichSkullStaff"
+        },
+        {
+            "Type": "스태프",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 50,
+            "Name": "\"'세계수의 가지'\"",
+            "Description": "\"세상의 시작과 함께했다는 거대한 나무의 가지로 만들었다는 지팡이. 모든 자연 계열 마법의 위력을 극대화한다.\"",
+            "Area": {
+                "x": 1.399999976158142,
+                "y": 2.0
+            },
+            "PrefabAddress": "WorldTreeBranch"
+        },
+        {
+            "Type": "창",
+            "Rank": "일반",
+            "RanktoInt": 0,
+            "Atk": 15,
+            "Name": "\"민병대의 나무 창\"",
+            "Description": "\"끝을 뾰족하게 깎은 나무 창. 만들기 쉽지만 내구도는 약하다.\"",
+            "Area": {
+                "x": 0.5,
+                "y": 3.0
+            },
+            "PrefabAddress": "MilitiaWoodenSpear"
+        },
+        {
+            "Type": "창",
+            "Rank": "고급",
+            "RanktoInt": 1,
+            "Atk": 28,
+            "Name": "\"제국 보병의 강철 창\"",
+            "Description": "\"제국군 보병의 표준 장비. 방패 진형 뒤에서 적을 찌르기에 용이하다.\"",
+            "Area": {
+                "x": 0.5,
+                "y": 3.5
+            },
+            "PrefabAddress": "ImperialInfantrySpear"
+        },
+        {
+            "Type": "창",
+            "Rank": "희귀",
+            "RanktoInt": 2,
+            "Atk": 45,
+            "Name": "\"와이번 기수의 랜스\"",
+            "Description": "\"드래곤스파인의 와이번 기수들이 사용하는 랜스. 돌격 시 파괴적인 위력을 발휘한다.\"",
+            "Area": {
+                "x": 0.6000000238418579,
+                "y": 4.0
+            },
+            "PrefabAddress": "WyvernRiderLance"
+        },
+        {
+            "Type": "창",
+            "Rank": "영웅",
+            "RanktoInt": 3,
+            "Atk": 58,
+            "Name": "\"'꿰뚫는 별빛'\"",
+            "Description": "\"하늘에서 떨어진 운석으로 만들었다는 전설의 창. 어떤 방패나 갑옷도 꿰뚫는다고 한다.\"",
+            "Area": {
+                "x": 0.699999988079071,
+                "y": 4.5
+            },
+            "PrefabAddress": "PiercingStarlight"
+        }
+    ]
+}

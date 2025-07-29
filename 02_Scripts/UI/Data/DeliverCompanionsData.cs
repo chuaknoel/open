@@ -20,7 +20,7 @@ public class DeliverCompanionsData : MonoBehaviour
     CompanionEquipManager equipManager;
   
     private void OnEnable()
-    {
+    {      
         ShowData();
     }
     public void Init()
@@ -28,6 +28,7 @@ public class DeliverCompanionsData : MonoBehaviour
         equipManager = UIManager.Instance.companionEquipManager;
         companionWindow = GetComponent<CompanionWindow>();
         DeliverData();
+        FindShowCompanionText(companionParent);
     }
     private CompanionData GetData(string key)
     {
@@ -70,7 +71,7 @@ public class DeliverCompanionsData : MonoBehaviour
     private void ShowData()
     {
         // int startIndex = currentPage *slotsPerPage;
-        Logger.Log("companionUIObjects의 개수 " + companionDatas.Count);
+
         for (int i = 0; i < companionUIObjects.Count; i++)
         {
             //if (i >= startIndex && i < startIndex + slotsPerPage)
@@ -86,6 +87,31 @@ public class DeliverCompanionsData : MonoBehaviour
                     showCompanionText.managementButton.onClick.AddListener(() => companionWindow.UpdateInfo(companionDatas[capturedIndex], equipManager.inventories[capturedIndex]));
                 }       
            // }
+        }
+    }
+
+    /// <summary>
+    /// BFS를 활용하여 ShowCompanionText가 붙어있는 오브젝트들을 찾습니다.
+    /// </summary>
+    private void FindShowCompanionText(Transform root)
+    {
+        Queue<Transform> queue = new Queue<Transform>();
+        queue.Enqueue(root);
+
+        while (queue.Count > 0)
+        {
+            Transform current = queue.Dequeue();
+      
+            if (current.TryGetComponent<ShowCompanionText>(out ShowCompanionText showCompanionText)) 
+            {
+                companionUIObjects.Add(showCompanionText);
+            }
+
+            // 자식들을 Queue에 추가합니다.
+            foreach(Transform child in current)
+            {
+                queue.Enqueue(child);
+            }
         }
     }
 }

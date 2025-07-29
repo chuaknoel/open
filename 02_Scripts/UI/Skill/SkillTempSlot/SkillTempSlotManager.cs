@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillTempSlotManager : MonoBehaviour
 {
-    public GameObject tempSkillSlot;
+   // public GameObject tempSkillSlot;
 
     [HideInInspector] public TempSkillQuickSlotManager tempSkillQuickSlotManager;
     [HideInInspector] public GameObject _tempSkillSlot;
@@ -22,12 +23,13 @@ public class SkillTempSlotManager : MonoBehaviour
         this.skillQuickSlotManager = uiManager.skillQuickSlotManager;
     }
 
-    public void CreateSkillTempSlot(Slot slot)
+    public async Task CreateSkillTempSlot(Slot slot)
     {
         if (_tempSkillSlot == null)
         {
-            _tempSkillSlot = Instantiate(tempSkillSlot);
-
+            // _tempSkillSlot = Instantiate(tempSkillSlot);
+            _tempSkillSlot = Instantiate(await AddressableManager.Instance.LoadAsset<GameObject>("TempSkillQuickSlots"));
+           
             tempSkillQuickSlotManager = _tempSkillSlot.GetComponent<TempSkillQuickSlotManager>();
             tempSkillQuickSlotManager.SkillQuickSlotManager = skillQuickSlotManager;
             tempSkillQuickSlotManager.SetTempSkillQuickSlot();

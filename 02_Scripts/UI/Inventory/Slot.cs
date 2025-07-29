@@ -41,7 +41,7 @@ public class Slot : MonoBehaviour
         inventory = uIManager.inventorys[0];
         equipmentManager = uIManager.equipmentManager;
         companionEquipManager = uIManager.companionEquipManager;
-        //   itemImage = transform.GetChild(0).GetComponent<Image>();
+       // itemImage = transform.GetChild(0).GetComponent<Image>();
         uiInventory = inventory.gameObject.GetComponent<UIInventory>();
         itemColorHelper = inventory.gameObject.GetComponent<ItemColorHelper>();
         quickSlotManager = uIManager.quickSlotManager;

@@ -5,8 +5,8 @@ using UnityEngine;
 public class EquipmentSlotEvent : SlotEvent
 { 
     /// <summary>
-  /// 슬롯 클릭시
-  /// </summary>
+    /// 슬롯 클릭시
+    /// </summary>
     public override void SlotClickEvent()
     {
         float timeSinceLastClick = Time.time - lastClickTime;
@@ -70,12 +70,6 @@ public class EquipmentSlotEvent : SlotEvent
                 originSlot.ClearSlot();
                 return;
             }
-            //// 드래그 받은 슬롯에 아이템이 없지 않다면
-            //if (temp != null)
-            //{
-            //    // 드래그한 슬롯의 아이템의 위치 변경
-            //    originSlot.Item.Move(originSlot.slotIndex);
-            //}
         }
     }
 }

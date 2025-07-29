@@ -19,7 +19,6 @@ public class EquipmentSlotDrag : BaseDrag<Slot, Item>
         if (SlotIsOut() && droppedItem != null)
         {
             // 인벤토리에 다시 넣어주기
-           // slot.Item.Add(1);
             inventory = UIManager.Instance.inventorys[0];
             inventory.AddItem(droppedItem);
 

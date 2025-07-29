@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,7 +8,6 @@ using UnityEngine.EventSystems;
 public class ShowSkillInfoPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Canvas canvas;
-    [SerializeField] private GameObject skillInfoPanelPrefab;
     private GameObject skillInfoPanel;
     private SkillSlot slot;
 
@@ -18,7 +18,6 @@ public class ShowSkillInfoPanel : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         ShowTooltip();
-        ChangeTooltipPos();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -29,19 +28,24 @@ public class ShowSkillInfoPanel : MonoBehaviour, IPointerEnterHandler, IPointerE
     /// <summary>
     /// 스킬 정보창 보여주기
     /// </summary>
-    protected void ShowTooltip()
-    {      
+    protected async Task ShowTooltip()
+    {
         //  활성화
-        skillInfoPanel =  Instantiate(skillInfoPanelPrefab);
-        skillInfoPanel.transform.SetParent(canvas.transform);
-        skillInfoPanel.transform.SetAsLastSibling();
+        // skillInfoPanel =  Instantiate(skillInfoPanelPrefab);
 
-        // 내용 전달
-        SkillInfoPanel _skillInfoPanel = skillInfoPanel.GetComponent<SkillInfoPanel>();
-        _skillInfoPanel.ShowText(slot.GetSkill());
+        skillInfoPanel = Instantiate(await AddressableManager.Instance.LoadAsset<GameObject>("SkillInfoPanel"));
+        if (skillInfoPanel != null)
+        {
+            skillInfoPanel.transform.SetParent(canvas.transform);
+            skillInfoPanel.transform.SetAsLastSibling();
 
-        // 스킬 정보창 위치 변경
-        ChangeTooltipPos();
+            // 내용 전달
+            SkillInfoPanel _skillInfoPanel = skillInfoPanel.GetComponent<SkillInfoPanel>();
+            _skillInfoPanel.ShowText(slot.GetSkill());
+
+            // 스킬 정보창 위치 변경
+            ChangeTooltipPos();
+        }
     }
 
     /// <summary>
@@ -57,6 +61,8 @@ public class ShowSkillInfoPanel : MonoBehaviour, IPointerEnterHandler, IPointerE
             null,
             out Vector2 localPos
         );
+
+        Logger.Log(skillInfoPanel);
         skillInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(localPos.x + 198f, localPos.y - 53f);
     }
 }
